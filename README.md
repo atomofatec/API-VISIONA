@@ -138,25 +138,25 @@
 
 <h3>1ª Sprint - 13/03 a 02/04</h3>
 
-https://user-images.githubusercontent.com/100942191/190927318-888d711f-c1ab-4541-bde9-361190ca7f67.mp4
+//https://user-images.githubusercontent.com/100942191/190927318-888d711f-c1ab-4541-bde9-361190ca7f67.mp4
 
 <br>
 
 <h3>2ª Sprint - 03/04 a 23/04</h3>
 
-https://user-images.githubusercontent.com/100942191/194786107-55f791e1-a1fd-4db5-bcc8-766697d5571b.mp4
+//https://user-images.githubusercontent.com/100942191/194786107-55f791e1-a1fd-4db5-bcc8-766697d5571b.mp4
   
 <br>
 
 <h3>3ª Sprint - 24/04 a 14/05</h3>
 
-https://user-images.githubusercontent.com/100942191/200201416-09cbe66d-5015-4b48-9acf-1a1cef44c08c.mp4
+//https://user-images.githubusercontent.com/100942191/200201416-09cbe66d-5015-4b48-9acf-1a1cef44c08c.mp4
 
 <br>
 
 <h3>4ª Sprint - 15/05 a 04/06</h3>
 
-https://user-images.githubusercontent.com/100942191/204174733-103fc2a2-7044-4532-8d8d-541e3c66117f.mp4
+//https://user-images.githubusercontent.com/100942191/204174733-103fc2a2-7044-4532-8d8d-541e3c66117f.mp4
 
 
 <br>
