@@ -185,10 +185,10 @@
 
 |Nome|Função|GitHub|
 | -------- |-------- |-------- |
-|**Víctor Henrique**|Scrum Master|[![](https://bit.ly/3f9Xo0P)](https://github.com/ViktorHenrique)|
-|**Nicholas Guilherme**|Product Owner| [![](https://bit.ly/3f9Xo0P)](https://github.com/NicholasGui29)|
-|**Elisa Carvalho**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/elisadsc)|
+|**Víctor Henrique**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/ViktorHenrique)|
+|**Nicholas Guilherme**|Developer Team| [![](https://bit.ly/3f9Xo0P)](https://github.com/NicholasGui29)|
+|**Elisa Carvalho**|Scrum Master|[![](https://bit.ly/3f9Xo0P)](https://github.com/elisadsc)|
 |**Ivan Germano**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/Ivan-Duarte)|
 |**João Gabriel**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/JoaoGRMira)|
 |**Rebeca Gama**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/RebecaGama)|
-|**Thiago Bueno**|Developer Team|[![](https://bit.ly/3f9Xo0P)](https://github.com/TjBueno)|
+|**Thiago Bueno**|Product Owner|[![](https://bit.ly/3f9Xo0P)](https://github.com/TjBueno)|
