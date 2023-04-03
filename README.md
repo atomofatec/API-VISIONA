@@ -167,7 +167,6 @@
 <h1 align="center"> <img src = "hhttps://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/5.jpeg"></h1>   
   
 <br>
-
 ## :man::computer::woman: Equipe
 
 <br>
