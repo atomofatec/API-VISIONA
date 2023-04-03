@@ -67,7 +67,7 @@
 ## :bulb: Protótipo
 
 **:link: Clique no link abaixo para visualizar o modelo do projeto.**  
-> [Protótipo do Projeto]([[https://www.figma.com/file/CVTjd7Q6JZlAeHtRpOkRzp/PrototipoTrackCash?node-id=0%3A1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=SuNcOw9XLdRU1DTd-1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=FlI7gF1VD1xOds6J-1))
+> [Protótipo do Projeto]([https://www.figma.com/file/CVTjd7Q6JZlAeHtRpOkRzp/PrototipoTrackCash?node-id=0%3A1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=SuNcOw9XLdRU1DTd-1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=FlI7gF1VD1xOds6J-1))
 
 <br>
 
@@ -154,11 +154,11 @@
 
 ## :chart_with_downwards_trend: Business Process Model and Notation - BPMN
   
-<h3>1ª Sprint</h3>
+<br>
 
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/1.jpeg" height=350px width=auto></h1> 
   
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/2.jpeg" height=350px width=auto></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/2.jpeg"></h1> 
   
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/3.jpeg" height=350px width=auto></h1> 
   
