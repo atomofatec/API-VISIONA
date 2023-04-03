@@ -146,6 +146,33 @@
 <br>
   
 <span id="equipe">
+  
+  
+<br>
+  
+<span id="burndown-das-sprints">
+
+## :chart_with_downwards_trend: Business Process Model and Notation - BPMN
+  
+<h3>1ª Sprint</h3>
+
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+  
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+  
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+  
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+  
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+  
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
+
+  
+  
+  
+  
+<br>
 
 ## :man::computer::woman: Equipe
 
