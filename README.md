@@ -10,7 +10,6 @@
   <a href ="#cronograma-das-sprints">Cronograma das Sprints </a> •
   <a href ="#backlog-do-produto">Backlog do Produto </a>
   <br>
-  <a href ="#backlog-das-sprints">Backlog das Sprints </a>  •
   <a href ="#burndown-das-sprints">Burndown das Sprints </a>  •
   <a href ="#tecnologias">Tecnologias</a>  •
   <a href ="#produto">Produto</a>  •
@@ -88,13 +87,6 @@
 
 <br>
 
-<span id="backlog-das-sprints">
-
-## :hourglass_flowing_sand: Backlog das Sprints
-
-<h1 align="center"> <img src = "readme/backlog-das-sprints.png" height=1000px width=auto></h1> 
-
-<br>
 
 <span id="burndown-das-sprints">
 
@@ -104,31 +96,6 @@
 
 <h1 align="center"> <img src = "readme/grafico-burndown-sprint-1.PNG" height=350px width=auto></h1> 
 
-<br>
-  
-<h3>2ª Sprint</h3>
-
-<h1 align="center"> <img src = "readme/grafico-burndown-sprint-2.jpeg" height=350px width=auto></h1>
-  
-<br>
- 
-<h3>3ª Sprint</h3>
-
-<h1 align="center"> <img src = "readme/grafico-burndown-sprint-3.JPG" height=350px width=auto></h1>
-
-<br>
- 
-<h3>4ª Sprint</h3>
-
-<h1 align="center"> <img src = "readme/grafico-burndown-sprint-4.PNG" height=350px width=auto></h1>
-
-<br>
-
-<span id="tecnologias">
-  
-## :gear: Tecnologias 
-
-<h1 align="center"> <img src = "readme/tecnologias.png" height=auto width=800px></h1> 
 
 <br>
 
@@ -138,7 +105,7 @@
 
 <h3>1ª Sprint - 13/03 a 02/04</h3>
 
-//
+<!-- //
 
 <br>
 
@@ -158,6 +125,7 @@
 
 //
 
+-->
 
 <br>
   
@@ -167,13 +135,17 @@
 
 <h3>Modelo Conceitual</h3>
     
-<h1 align="center"> <img src = "readme/der-modelo-relacional.png" height=auto width=800px></h1>
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20Conceitual.jpeg
+" height=auto width=800px></h1>
 
 <br>
 
 <h3>Modelo Lógico</h3>
 
-<h1 align="center"> <img src = "readme/der-modelo-lógico.png" height=auto width=800px></h1>
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20L%C3%B3gico.jpeg
+
+
+" height=auto width=800px></h1>
 
 <br>
   
