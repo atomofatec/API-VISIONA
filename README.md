@@ -94,7 +94,7 @@
   
 <h3>1ª Sprint</h3>
 
-<h1 align="center"> <img src = "readme/grafico-burndown-sprint-1.PNG" height=350px width=auto></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/77c441ebe3d21f9e390095b19ee1727afad3ef08/Visual%20-%20Visiona/Burndown%201.png" height=350px width=auto></h1> 
 
 
 <br>
@@ -135,17 +135,13 @@
 
 <h3>Modelo Conceitual</h3>
     
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20Conceitual.jpeg
-" height=auto width=800px></h1>
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20Conceitual.jpeg" height=auto width=800px></h1>
 
 <br>
 
 <h3>Modelo Lógico</h3>
 
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20L%C3%B3gico.jpeg
-
-
-" height=auto width=800px></h1>
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20L%C3%B3gico.jpeg" height=auto width=800px></h1>
 
 <br>
   
