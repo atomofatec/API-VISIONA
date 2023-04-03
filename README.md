@@ -84,7 +84,7 @@
 
 ## :pencil: Backlog do Produto
 
-<h1 align="center"> <img src = "readme/backlog-do-produto.png" height=auto width=800px></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/144814499c7e3292776f57348de7e86cb26130c4/Visual%20-%20Visiona/Backlog%20do%20Produto.png" height=auto width=800px></h1> 
 
 <br>
 
