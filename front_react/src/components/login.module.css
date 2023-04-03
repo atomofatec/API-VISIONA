@@ -1,0 +1,268 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #9e9e9e;
+    background: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+
+.container img {
+    width: 30%;
+    min-width: 10%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.container{
+    
+    margin-top: none;
+    max-width: 40%;
+    white-space: nowrap;
+    position: relative;
+}
+
+
+.align_field{
+    width: 100%;
+    height: 100%;
+
+    padding: 70px 70px 10px 90px;
+    background: none;
+  }
+
+
+  .align_field .login_htm,
+  .align_field .cadastro_htm {
+    top: 12%; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+
+  .align_field .login,
+  .align_field .cadastro,
+  .login_form .group .check {
+    display: none;
+  }
+
+
+  .align_field .item,
+  .login_form .group .label,
+  .login_form .group .button {
+    text-transform: uppercase;
+  }
+
+
+  .align_field .item {
+    font-size: 20px;
+    margin-right: 5px;
+    padding-bottom: 5px;
+    margin: 0 15px 10px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+  }
+
+
+  .align_field .login:checked+.item,
+  .align_field .cadastro:checked+.item {
+    color: #000000;
+    border-color: #E76100;
+
+    
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition: all 1.0s ease-in-out 0s;
+    transition: all 1.0s ease-in-out 0s;
+  }
+
+
+  .login_form {
+    min-height: 345px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+
+.login_form .group {
+    margin-bottom: 15px;
+}
+
+
+
+.login_form .group .label,
+.login_form .group .input {
+    color: #000000;
+    display: block;
+}
+
+
+.login_form .group .button {
+    height: 45px;
+    width: 145px;
+    color: #fff;
+    float: right;
+    border-radius: 15px;
+    border: none;
+}
+
+
+.button {
+    cursor: pointer;
+    margin-top: 10%;
+}
+
+
+.login_form .group .input {
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    width: 0%;
+    min-width: 345px;
+    background: #faf6f6;
+    margin:0.6rem 0;
+    margin-left: 90px;
+    box-shadow: 1px 1px 6px #000000c1;
+}
+
+
+.login_form .group .label{
+    color: #fff;
+    font-size: 12px;
+}
+
+
+.login_form .group .button{
+    background: #E76100;
+}
+
+
+.login_form .group .button:hover {
+background: rgb(230, 87, 31);
+}
+
+
+.login_form .group .check:checked+label {
+    color: #fff;
+}
+
+
+.align_field .login:checked+.item+.cadastro+.item+.login_form .login_htm {
+    transform: rotate(0);
+}
+
+
+.align_field .cadastro:checked+.item+.login_form .cadastro_htm {
+    transform: rotate(0);
+}
+
+
+.footer{
+    text-align: left;
+    margin-top: 10%;
+}
+
+
+.footer:hover {
+	text-decoration: underline;
+	color: #E76100;
+}
+
+
+.circle1 {
+  position: absolute;
+  top: -15%;
+  right: -35%; 
+  width: 70%;
+  height: 130%;
+  border-radius: 50%;
+  background-color: #f5ab00;
+}
+
+
+.circle2 {
+  position: absolute;
+  right: -30%;
+  top: -5%;
+  width: 60%;
+  height: 110%;
+  border-radius: 50%;
+  background-color: #ee8600;
+}
+
+
+.circle3 {
+  position: absolute;
+  right: -25%; 
+  top: 5%;
+  width: 50%; /*LARGURA*/
+  height: 90%; /*ALTURA*/
+  border-radius: 50%;
+  background-color: #E76100;
+}
+
+
+@media screen and (max-width: 1700px){
+.container img {
+    width: 200px;
+    margin-left: 61px;
+  }
+}
+
+
+  @media screen and (max-width: 1264px){
+    .container{
+      margin-top: none;
+      max-width: 500px;
+      white-space: nowrap;
+      position: relative;
+  }
+}
+
+
+@media screen and (max-width: 800px){
+  .circle1,
+  .circle2,
+  .circle3 {
+    display: none;
+  }
+}
+
+
+@media screen and (max-height: 474px) {
+  body {
+    overflow: auto;
+    
+  }
+
+  .circle1,
+  .circle2,
+  .circle3 {
+    display: none;
+  }
+}
