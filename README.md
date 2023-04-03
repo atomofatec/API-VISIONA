@@ -76,7 +76,7 @@
 
 ## :calendar: Cronograma das Sprints
 
-<h1 align="center"> <img src = "readme/cronograma-das-sprints.png" height=auto width=800px></h1>
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/4ac2d328e9406d9e84e3501589fdc6108d8fd9ee/Visual%20-%20Visiona/Cronograma%20das%20Sprints.png" height=auto width=800px></h1>
 
 <br>
 
