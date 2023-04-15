@@ -1,0 +1,36 @@
+CREATE TABLE roles (
+  role_id INT PRIMARY KEY,
+  role_name VARCHAR(50)
+);
+
+INSERT INTO roles (role_id, role_name) VALUES (1, 'user');
+INSERT INTO roles (role_id, role_name) VALUES (2, 'administrator');
+
+CREATE TABLE users (
+id_user SERIAL PRIMARY KEY,
+role_id INT,
+name_user VARCHAR (30) NOT NULL,
+email VARCHAR (30) NOT NULL UNIQUE,
+password_user VARCHAR (30) NOT NULL,
+cpf_user NUMERIC (11) NOT NULL UNIQUE,
+status_user BOOLEAN,
+creation_date TIMESTAMP NOT NULL DEFAULT NOW(),
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+CREATE TABLE permissions (
+  permission_id SERIAL PRIMARY KEY,
+  role_id INT,
+  resource_name VARCHAR(50),
+  can_view BOOLEAN,
+  can_edit_email BOOLEAN,
+  can_edit_password BOOLEAN,
+  can_edit_cpf BOOLEAN,
+  can_edit_status BOOLEAN,
+  FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+INSERT INTO permissions (role_id, resource_name, can_view, can_edit_email, can_edit_password, can_edit_cpf, can_edit_status) VALUES (1, 'regular_user', true, true, true, false, false);
+
+INSERT INTO permissions (role_id, resource_name, can_view, can_edit_email, can_edit_password, can_edit_cpf, can_edit_status) VALUES (2, 'administrator', true, true, true, true, true);
+
