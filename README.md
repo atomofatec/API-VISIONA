@@ -7,8 +7,7 @@
   <a href ="#projeto">Projeto </a>  •
   <a href ="#proposta">Proposta </a>  • 
   <a href ="#prototipo">Protótipo </a>  • 
-  <a href ="#cronograma-das-sprints">Cronograma das Sprints </a> •
-  <a href ="#backlog-do-produto">Backlog do Produto </a>
+  <a href ="#cronograma-das-sprints">Backlog do Produto e Cronograma das Sprints </a>
   <br>
   <a href ="#burndown-das-sprints">Burndown das Sprints </a>  •
   <a href ="#produto">Produto</a>  •
