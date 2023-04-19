@@ -83,7 +83,7 @@
 
 ## :pencil: Backlog do Produto
 
-<h1 align="center"> <img src = "[https://github.com/atomofatec/API-VISIONA/blob/144814499c7e3292776f57348de7e86cb26130c4/Visual%20-%20Visiona/Backlog%20do%20Produto.png](https://github.com/atomofatec/API-VISIONA/blob/efc7074dd3feec055bcd4f916d688cb4099b9ca0/Visual%20-%20Visiona/Backlog%20do%20Produto.jpeg)" height=auto width=800px></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/efc7074dd3feec055bcd4f916d688cb4099b9ca0/Visual%20-%20Visiona/Backlog%20do%20Produto.jpeg" height=auto width=800px></h1> 
 
 <br>
 
