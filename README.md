@@ -73,15 +73,8 @@
 
 <span id="cronograma-das-sprints">
 
-## :calendar: Cronograma das Sprints
+## :calendar: Backlog do Produto e Cronograma das Sprints
 
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/4ac2d328e9406d9e84e3501589fdc6108d8fd9ee/Visual%20-%20Visiona/Cronograma%20das%20Sprints.png" height=auto width=800px></h1>
-
-<br>
-
-<span id="backlog-do-produto">
-
-## :pencil: Backlog do Produto
 
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/efc7074dd3feec055bcd4f916d688cb4099b9ca0/Visual%20-%20Visiona/Backlog%20do%20Produto.jpeg" height=auto width=800px></h1> 
 
