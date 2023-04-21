@@ -89,7 +89,7 @@
 
 
 <br>
-
+<!-- //
 <span id="produto">
 
 ## :package: Produto
@@ -135,7 +135,9 @@
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7c13402372c767048cde5110fd488a321bb42339/Visual%20-%20Visiona/5.png"></h1>   
   
 <br>
-## Equipe
+
+  
+  ## :clipboard: O Projeto
 
 <br>
 
