@@ -137,7 +137,7 @@
 <br>
 
   
-  ## :clipboard: O Projeto
+  ## :clipboard: Equipe
 
 <br>
 
