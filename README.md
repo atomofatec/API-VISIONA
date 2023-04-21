@@ -150,13 +150,13 @@
 
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/e2cd2aaf2666db233cd8d409fbf23da19762bc30/Visual%20-%20Visiona/1.png" height=350px width=auto></h1> 
   
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/e2cd2aaf2666db233cd8d409fbf23da19762bc30/Visual%20-%20Visiona/2.png"></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7c13402372c767048cde5110fd488a321bb42339/Visual%20-%20Visiona/2.png"></h1> 
   
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/3.jpeg" height=350px width=auto></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7c13402372c767048cde5110fd488a321bb42339/Visual%20-%20Visiona/3.png" height=350px width=auto></h1> 
   
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/4.jpeg" ></h1> 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7c13402372c767048cde5110fd488a321bb42339/Visual%20-%20Visiona/4.png" ></h1> 
   
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/98995e7d4c629c8c1ca7c8a818f3821e5d171b69/BPMN/5.jpeg"></h1>   
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7c13402372c767048cde5110fd488a321bb42339/Visual%20-%20Visiona/5.png"></h1>   
   
 <br>
 ## :man::computer::woman: Equipe
