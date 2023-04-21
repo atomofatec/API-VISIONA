@@ -11,7 +11,6 @@
   <br>
   <a href ="#burndown-das-sprints">Burndown das Sprints </a>  •
   <a href ="#produto">Produto</a>  •
-  <a href ="#modelo-de-dados-relacional">Modelo de Dados Relacional</a>  •
   <a href ="#bpmn">BPMN</a> •
   <a href ="#equipe">Equipe</a> 
 </p>
@@ -116,29 +115,6 @@
 <h3>4ª Sprint - 15/05 a 04/06</h3>
 
 //
-
--->
-
-<br>
-  
-<span id="modelo-de-dados-relacional">
-
-## :open_file_folder: Modelo de Dados Relacional
-
-<h3>Modelo Conceitual</h3>
-    
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20Conceitual.jpeg" height=auto width=800px></h1>
-
-<br>
-
-<h3>Modelo Lógico</h3>
-
-<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/7d28eb5d6b056bf0cf0ac08e1209b36d701dbb8e/Visual%20-%20Visiona/Modelo%20L%C3%B3gico.jpeg" height=auto width=800px></h1>
-
-<br>
-  
-<span id="equipe">
-  
   
 <br>
   
