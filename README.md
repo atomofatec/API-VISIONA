@@ -89,7 +89,7 @@
 
 
 <br>
-<!-- //
+
 <span id="produto">
 
 ## :package: Produto
@@ -114,7 +114,7 @@
 
 <h3>4ª Sprint - 15/05 a 04/06</h3>
 
-//
+// -->
   
 <br>
   
