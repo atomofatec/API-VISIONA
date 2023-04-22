@@ -1,0 +1,91 @@
+.camposperfil_container img {
+    width: 30%;
+    min-width: 10%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.camposperfil_container {   
+    margin-top: none;
+    max-width: 40%;
+    white-space: nowrap;
+    position: relative;
+}
+
+@media screen and (max-width: 1700px) {
+    .camposperfil_container img {
+        width: 200px;
+        margin-left: 61px;
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .camposperfil_container{
+      margin-top: none;
+      max-width: 500px;
+      white-space: nowrap;
+      position: relative;
+    }
+}
+
+.camposperfil_align_field {
+    width: 100%;
+    height: 100%;
+    padding: 0px 70px 10px 90px;
+    background: none;
+}
+
+.camposperfil_align_field .camposperfil_perfil_htm {
+  top: 12%; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.camposperfil_perfil_form .camposperfil_group .check {
+  display: none;
+}
+
+.camposperfil_perfil_form {
+    min-height: 150px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.camposperfil_perfil_form .camposperfil_group {
+    margin-bottom: 15px;
+}
+
+.camposperfil_perfil_form .camposperfil_group .camposperfil_input {
+    color: #000000;
+    display: block;
+}
+
+.camposperfil_perfil_form .camposperfil_group .camposperfil_input {
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1rem;
+    width: 100%;
+    min-width: 345px;
+    background: #faf6f6;
+    margin:0.6rem 0;
+    box-shadow: 1px 1px 6px #000000c1;
+}
+
+.camposperfil_perfil-form .camposperfil_group .check:checked {
+    color: #fff;
+}
+
+
+.camposperfil_perfil_form .camposperfil_perfil_htm {
+    transform: rotate(0);
+}
+
+
+.camposperfil_perfil_form {
+    transform: rotate(0);
+}

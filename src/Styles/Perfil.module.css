@@ -1,0 +1,9 @@
+.perfil_user_profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .perfil_user_profile img {
+    height: 90px;
+    border-radius: 50%;
+  }

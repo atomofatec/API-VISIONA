@@ -1,0 +1,82 @@
+.tituloperfil_container img {
+    width: 30%;
+    min-width: 10%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.tituloperfil_container {    
+    margin-top: none;
+    max-width: 40%;
+    white-space: nowrap;
+    position: relative;
+}
+
+@media screen and (max-width: 1700px) {
+    .tituloperfil_container img {
+        width: 200px;
+        margin-left: 61px;
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .tituloperfil_container {
+      margin-top: none;
+      max-width: 500px;
+      white-space: nowrap;
+      position: relative;
+  }
+}
+
+.tituloperfil_align_field {
+    width: 100%;
+    height: 100%;
+    padding: 70px 70px 10px 90px;
+    background: none;
+}
+
+.tituloperfil_align_field .tituloperfil_login,
+.tituloperfil_align_field .tituloperfil_cadastro {
+  display: none;
+}
+
+.tituloperfil_align_field .tituloperfil_item {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tituloperfil_align_field .tituloperfil_login:checked+.tituloperfil_item,
+.tituloperfil_align_field .tituloperfil_cadastro:checked+.tituloperfil_item {
+  color: #000000;
+  border-color: #E76100;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: all 1.0s ease-in-out 0s;
+  transition: all 1.0s ease-in-out 0s;
+}
+
+.tituloperfil_align_field .tituloperfil_login:checked+.tituloperfil_item+.tituloperfil_cadastro+.tituloperfil_item{
+    transform: rotate(0);
+}
+
+.tituloperfil_align_field .tituloperfil_cadastro:checked+.tituloperfil_item {
+    transform: rotate(0);
+}
+
+.tituloperfil_p {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  color: #000000;
+  border-color: #E76100;
+}

@@ -1,0 +1,187 @@
+.login_container img {
+  width: 30%;
+  min-width: 10%;
+  margin-top: 5%;
+  margin-left: 10%;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+
+.login_container{
+  
+  margin-top: none;
+  max-width: 40%;
+  white-space: nowrap;
+  position: relative;
+}
+
+
+.login_align_field{
+  width: 100%;
+  height: 100%;
+
+  padding: 70px 70px 10px 90px;
+  background: none;
+}
+
+
+.login_align_field .login_login_htm,
+.login_align_field .login_cadastro_htm {
+  top: 5%; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+
+.login_align_field .login_login,
+.login_align_field .login_cadastro,
+.login_login_form .login_group .login_check {
+  display: none;
+}
+
+
+.login_align_field .login_item,
+.login_login_form .login_group .login_label,
+.login_login_form .login_group .login_button {
+  text-transform: uppercase;
+}
+
+
+.login_align_field .login_item {
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+
+.login_align_field .login_login:checked+.login_item,
+.login_align_field .login_cadastro:checked+.login_item {
+  color: #000000;
+  border-color: #E76100;
+
+  
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: all 1.0s ease-in-out 0s;
+  transition: all 1.0s ease-in-out 0s;
+}
+
+
+.login_login_form {
+  min-height: 260px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+
+.login_login_form .login_group {
+  margin-bottom: 15px;
+}
+
+
+
+.login_login_form .login_group .login_label,
+.login_login_form .login_group .login_input {
+  color: #000000;
+  display: block;
+}
+
+
+.login_login_form .login_group .login_button {
+  height: 45px;
+  width: 145px;
+  color: #fff;
+  float: right;
+  border-radius: 15px;
+  border: none;
+}
+
+
+.login_button {
+  cursor: pointer;
+  margin-top: 70%;
+}
+
+
+.login_login_form .login_group .login_input {
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 1rem;
+  width: 100%;
+  min-width: 345px;
+  background: #faf6f6;
+  margin:0.login_6rem 0;
+  box-shadow: 1px 1px 6px #000000c1;
+}
+
+
+.login_login_form .login_group .login_label{
+  color: #fff;
+  font-size: 12px;
+}
+
+
+.login_login_form .login_group .login_button{
+  background: #E76100;
+}
+
+
+.login_login_form .login_group .login_button:hover {
+background: rgb(230, 87, 31);
+}
+
+
+.login_login_form .login_group .login_check:checked+label {
+  color: #fff;
+}
+
+
+.login_align_field .login_login:checked+.login_item+.login_cadastro+.login_item+.login_login_form .login_login_htm {
+  transform: rotate(0);
+}
+
+
+.login_align_field .login_cadastro:checked+.login_item+.login_login_form .login_cadastro_htm {
+  transform: rotate(0);
+}
+
+
+.login_footer{
+  text-align: left;
+  margin-top: 10%;
+}
+
+.login_footer:hover {
+text-decoration: underline;
+color: #E76100;
+}
+
+@media screen and (max-width: 1700px){
+.login_container img {
+  width: 200px;
+  margin-left: 61px;
+}
+}
+
+
+@media screen and (max-width: 1264px){
+  .login_container{
+    margin-top: none;
+    max-width: 500px;
+    white-space: nowrap;
+    position: relative;
+}
+}
