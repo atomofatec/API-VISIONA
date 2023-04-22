@@ -1,6 +1,6 @@
 import "../../Styles/Tabela.css"
 
-function Tabela() {
+function Tabela({users}) {
 
 return (
     <article className="principal">
@@ -21,124 +21,34 @@ return (
                                 </thead>
                             
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="/"><i className="fa fa-edit"></i></a>
-                                        </td>
+                                    {users.map((item, i) => (
+                                        <tr key = {i}>
+                                            <td>
+                                                <a href="/"><i className="fa fa-edit"></i></a>
+                                            </td>
 
-                                        <td className="d-flex align-items-center">  
-                                            <div className="pl-3 email">
-                                                <span></span> 
-                                                <span>Adicionado: </span> 
-                                            </div>
-                                        </td>
+                                            <td className="d-flex align-items-center">  
+                                                <div className="pl-3 email">
+                                                    <span >{item.email}</span> 
+                                                    <span>Adicionado: {item.createdat}</span> 
+                                                </div>
+                                            </td>
 
-                                        <td></td>
+                                            <td>
+                                                <a href="/edicao" > {item.name_user} </a>
+                                            </td>
 
-                                        <td className="status">
-                                            <span className="active"></span>
-                                        </td>
+                                            <td className="status">
+                                                <span className="active">{item.status_user}</span>
+                                            </td>
 
-                                        <td>
-                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i className="fa fa-close"></i></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <a href="/"><i className="fa fa-edit"></i></a>
-                                        </td>
-
-                                        <td className="d-flex align-items-center">
-                                            <div className="pl-3 email">
-                                                <span></span> 
-                                                <span>Adicionado: </span> 
-                                            </div>
-                                        </td>
-
-                                        <td></td>
-
-                                        <td className="status">
-                                            <span className="disabled"></span>
-                                        </td>
-
-                                        <td>
-                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i className="fa fa-close"></i></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><a href="/"><i className="fa fa-edit"></i></a></td>
-
-                                        <td className="d-flex align-items-center">
-                                            <div className="pl-3 email">
-                                                <span></span> 
-                                                <span>Adicionado: </span> 
-                                            </div>
-                                        </td>
-
-                                        <td></td>
-
-                                        <td className="status">
-                                            <span className="active"></span>
-                                        </td>
-
-                                        <td>
-                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i className="fa fa-close"></i></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><a href="/"><i className="fa fa-edit"></i></a></td>
-
-                                        <td className="d-flex align-items-center">
-                                            <div className="pl-3 email">
-                                                <span></span> 
-                                                <span>Adicionado: </span> 
-                                            </div>
-                                        </td>
-
-                                        <td></td>
-
-                                        <td className="status">
-                                            <span className="active"></span>
-                                        </td>
-
-                                        <td>
-                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i className="fa fa-close"></i></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><a href="/"><i className="fa fa-edit"></i></a></td>
-                                        
-                                        <td className="d-flex align-items-center border-bottom-0">
-                                            <div className="pl-3 email">
-                                                <span></span> 
-                                                <span>Adicionado: </span> 
-                                            </div>
-                                        </td>
-
-                                        <td className="border-bottom-0"></td>
-
-                                        <td className="status border-bottom-0">
-                                            <span className="disabled"></span>
-                                        </td>
-
-                                        <td className="border-bottom-0">
-                                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i className="fa fa-close"></i></span>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i className="fa fa-close"></i></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        ))}
                                 </tbody>
                             </table>
                         </div>
