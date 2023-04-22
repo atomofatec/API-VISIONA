@@ -5,14 +5,6 @@
   margin-left: 10%;
 }
 
-
-a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-
 .login_container{
   
   margin-top: none;
@@ -25,7 +17,6 @@ a {
 .login_align_field{
   width: 100%;
   height: 100%;
-
   padding: 70px 70px 10px 90px;
   background: none;
 }
@@ -70,8 +61,6 @@ a {
 .login_align_field .login_cadastro:checked+.login_item {
   color: #000000;
   border-color: #E76100;
-
-  
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition: all 1.0s ease-in-out 0s;
@@ -80,7 +69,7 @@ a {
 
 
 .login_login_form {
-  min-height: 260px;
+  min-height: 130px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -112,7 +101,7 @@ a {
 
 .login_button {
   cursor: pointer;
-  margin-top: 70%;
+  margin-top: 35%;
 }
 
 

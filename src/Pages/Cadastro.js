@@ -34,6 +34,10 @@ export function Cadastro() {
           isVazio = true
           return isVazio
         }
+        if(document.getElementById('check5').value === ''){
+          isVazio = true
+          return isVazio
+        }
     }
 
     const clearCampos = ()=>{
@@ -41,19 +45,21 @@ export function Cadastro() {
         document.getElementById('check2').value = ''
         document.getElementById('check3').value = ''
         document.getElementById('check4').value = ''
+        document.getElementById('check5').value = ''
     }
 
     const handleClickButton = () =>{
       
         if (!checkVazio()){
           const createdat = new Date().toLocaleString();
-          const updateat = new Date().toLocaleString();
+          const updatedat = new Date().toLocaleString();
           axios.post("http://localhost:3001/cadastro", {
             name_user: values.nome,
             email: values.email,
             password_user: values.password,
+            cpf_user: values.cpf,
             createdat: createdat,
-            updateat: updateat
+            updatedat: updatedat
         }).then((response)=>{
             alert(response.data.msg);
             clearCampos();
@@ -87,8 +93,16 @@ export function Cadastro() {
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.cadastro_group}>
-                                <input placeholder="E-mail" 
+                                <input placeholder="CPF"
                                     id="check2" 
+                                    type="cpf"
+                                    name='cpf'
+                                    className={Style.cadastro_input}
+                                    onChange={handleChangeValues} />
+                            </div>
+                            <div className={Style.cadastro_group}>
+                                <input placeholder="E-mail" 
+                                    id="check3" 
                                     type="email"
                                     name='email' 
                                     className={Style.cadastro_input}
@@ -96,7 +110,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Senha"
-                                    id="check3" 
+                                    id="check4" 
                                     type="password" 
                                     name='password'
                                     className={Style.cadastro_input}
@@ -104,7 +118,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Confirmar Senha" 
-                                    id="check4" 
+                                    id="check5" 
                                     type="password"
                                     name='password'
                                     className={Style.cadastro_input}

@@ -1,143 +1,132 @@
 .cadastro_container img {
-    width: 30%;
-    min-width: 10%;
-    margin-top: 5%;
-    margin-left: 10%;
+  width: 30%;
+  min-width: 10%;
+  margin-top: 5%;
+  margin-left: 10%;
 }
-
-
-a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 14px;
-}
-
 
 .cadastro_container{
-    
-    margin-top: none;
-    max-width: 40%;
-    white-space: nowrap;
-    position: relative;
+  
+  margin-top: none;
+  max-width: 40%;
+  white-space: nowrap;
+  position: relative;
 }
 
 
 .cadastro_align_field{
-    width: 100%;
-    height: 100%;
-
-    padding: 70px 70px 10px 90px;
-    background: none;
-  }
-
-
-  .cadastro_align_field .cadastro_login_htm,
-  .cadastro_align_field .cadastro_cadastro_htm {
-    top: 5%; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
-  }
+  width: 100%;
+  height: 100%;
+  padding: 70px 70px 10px 90px;
+  background: none;
+}
 
 
-  .cadastro_align_field .cadastro_login,
-  .cadastro_align_field .cadastro_cadastro,
-  .cadastro_login_form .cadastro_group .cadastro_check {
-    display: none;
-  }
+.cadastro_align_field .cadastro_login_htm,
+.cadastro_align_field .cadastro_cadastro_htm {
+  top: 5%; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
 
 
-  .cadastro_align_field .cadastro_item,
-  .cadastro_login_form .cadastro_group .cadastro_label,
-  .cadastro_login_form .cadastro_group .cadastro_button {
-    text-transform: uppercase;
-  }
+.cadastro_align_field .cadastro_login,
+.cadastro_align_field .cadastro_cadastro,
+.cadastro_login_form .cadastro_group .cadastro_check {
+  display: none;
+}
 
 
-  .cadastro_align_field .cadastro_item {
-    font-size: 20px;
-    margin-right: 5px;
-    padding-bottom: 5px;
-    margin: 0 15px 10px 0;
-    display: inline-block;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-  }
+.cadastro_align_field .cadastro_item,
+.cadastro_login_form .cadastro_group .cadastro_label,
+.cadastro_login_form .cadastro_group .cadastro_button {
+  text-transform: uppercase;
+}
 
 
-  .cadastro_align_field .cadastro_login:checked+.cadastro_item,
-  .cadastro_align_field .cadastro_cadastro:checked+.cadastro_item {
-    color: #000000;
-    border-color: #E76100;
-
-    
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-    -webkit-transition: all 1.0s ease-in-out 0s;
-    transition: all 1.0s ease-in-out 0s;
-  }
+.cadastro_align_field .cadastro_item {
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
 
 
-  .cadastro_login_form {
-    min-height: 260px;
-    position: relative;
-    perspective: 1000px;
-    transform-style: preserve-3d;
+.cadastro_align_field .cadastro_login:checked+.cadastro_item,
+.cadastro_align_field .cadastro_cadastro:checked+.cadastro_item {
+  color: #000000;
+  border-color: #E76100;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: all 1.0s ease-in-out 0s;
+  transition: all 1.0s ease-in-out 0s;
+}
+
+
+.cadastro_login_form {
+  min-height: 315px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 
 .cadastro_login_form .cadastro_group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 
 
 .cadastro_login_form .cadastro_group .cadastro_label,
 .cadastro_login_form .cadastro_group .cadastro_input {
-    color: #000000;
-    display: block;
+  color: #000000;
+  display: block;
 }
 
 
 .cadastro_login_form .cadastro_group .cadastro_button {
-    height: 45px;
-    width: 145px;
-    color: #fff;
-    float: right;
-    border-radius: 15px;
-    border: none;
+  height: 45px;
+  width: 145px;
+  color: #fff;
+  float: right;
+  border-radius: 15px;
+  border: none;
 }
 
 
 .cadastro_button {
-    cursor: pointer;
-    margin-top: 70%;
+  cursor: pointer;
+  margin-top: 85%;
 }
 
 
 .cadastro_login_form .cadastro_group .cadastro_input {
-    border: none;
-    border-radius: 15px;
-    padding: 1rem 1rem;
-    width: 100%;
-    min-width: 345px;
-    background: #faf6f6;
-    margin:0.cadastro_6rem 0;
-    box-shadow: 1px 1px 6px #000000c1;
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 1rem;
+  width: 100%;
+  min-width: 345px;
+  background: #faf6f6;
+  margin:0.cadastro_6rem 0;
+  box-shadow: 1px 1px 6px #000000c1;
 }
 
 
 .cadastro_login_form .cadastro_group .cadastro_label{
-    color: #fff;
-    font-size: 12px;
+  color: #fff;
+  font-size: 12px;
 }
 
 
 .cadastro_login_form .cadastro_group .cadastro_button{
-    background: #E76100;
+  background: #E76100;
 }
 
 
@@ -147,43 +136,43 @@ background: rgb(230, 87, 31);
 
 
 .cadastro_login_form .cadastro_group .cadastro_check:checked+label {
-    color: #fff;
+  color: #fff;
 }
 
 
 .cadastro_align_field .cadastro_login:checked+.cadastro_item+.cadastro_cadastro+.cadastro_item+.cadastro_login_form .cadastro_login_htm {
-    transform: rotate(0);
+  transform: rotate(0);
 }
 
 
 .cadastro_align_field .cadastro_cadastro:checked+.cadastro_item+.cadastro_login_form .cadastro_cadastro_htm {
-    transform: rotate(0);
+  transform: rotate(0);
 }
 
 
 .cadastro_footer{
-    text-align: left;
-    margin-top: 10%;
+  text-align: left;
+  margin-top: 10%;
 }
 
 .cadastro_footer:hover {
-	text-decoration: underline;
-	color: #E76100;
+text-decoration: underline;
+color: #E76100;
 }
 
 @media screen and (max-width: 1700px){
 .cadastro_container img {
-    width: 200px;
-    margin-left: 61px;
-  }
+  width: 200px;
+  margin-left: 61px;
+}
 }
 
 
-  @media screen and (max-width: 1264px){
-    .cadastro_container{
-      margin-top: none;
-      max-width: 500px;
-      white-space: nowrap;
-      position: relative;
-  }
+@media screen and (max-width: 1264px){
+  .cadastro_container{
+    margin-top: none;
+    max-width: 500px;
+    white-space: nowrap;
+    position: relative;
+}
 }

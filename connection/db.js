@@ -7,7 +7,7 @@ const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'teste_api_visiona'
+    database: 'api-visiona-sprint2'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -48,9 +48,9 @@ app.post("/cadastro", (req, res)=>{
     const {name_user} = req.body;
     const {email} = req.body;
     const {password_user} = req.body;
-    const perfil = "NORMAL";
-    const cpf_user = '11111111111';
-    const status_user = "ativo";
+    const perfil = "Comum";
+    const {cpf_user} = req.body;
+    const status_user = "Ativo";
     const {createdat} = req.body;
     const {updatedat} = req.body
 
