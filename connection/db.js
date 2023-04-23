@@ -22,7 +22,6 @@ function cadUser(name_user, email, password_user, perfil, cpf_user, status_user,
 
 function logUser(email, password_user, res) {
     cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
-        var userCadastrado = true
         if(err) {
             console.log('erro query:', err);
         }

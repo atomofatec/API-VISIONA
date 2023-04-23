@@ -21,11 +21,11 @@ export function Login() {
 
     const checkVazio = () => {
         let isVazio = false
-        if(document.getElementById('check1').value === ''){
+        if(document.getElementById('Email').value === ''){
             isVazio = true
             return isVazio
         }
-        if(document.getElementById('check2').value === ''){
+        if(document.getElementById('Senha').value === ''){
             isVazio = true
             return isVazio
         }
@@ -65,7 +65,7 @@ export function Login() {
                         <div className={Style.login_cadastro_htm}>   
                             <div className={Style.login_group}>
                                 <input placeholder="E-mail" 
-                                    id="check1" 
+                                    id="Email" 
                                     type="email"
                                     name='email' 
                                     className={Style.login_input}
@@ -74,7 +74,7 @@ export function Login() {
                             </div>
                             <div className={Style.login_group}>
                                 <input placeholder="Senha"
-                                    id="check2" 
+                                    id="Senha" 
                                     type="password" 
                                     name='password'
                                     className={Style.login_input}

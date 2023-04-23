@@ -18,34 +18,34 @@ export function Cadastro() {
 
     const checkVazio = () => {
         let isVazio = false
-        if(document.getElementById('check1').value === ''){
+        if(document.getElementById('Nome').value === ''){
           isVazio = true
           return isVazio
         }
-        if(document.getElementById('check2').value === ''){
+        if(document.getElementById('CPF').value === ''){
           isVazio = true
           return isVazio
         }
-        if(document.getElementById('check3').value === ''){
+        if(document.getElementById('Email').value === ''){
           isVazio = true
           return isVazio
         }
-        if(document.getElementById('check4').value === ''){
+        if(document.getElementById('Senha').value === ''){
           isVazio = true
           return isVazio
         }
-        if(document.getElementById('check5').value === ''){
+        if(document.getElementById('CSenha').value === ''){
           isVazio = true
           return isVazio
         }
     }
 
     const clearCampos = ()=>{
-        document.getElementById('check1').value = ''
-        document.getElementById('check2').value = ''
-        document.getElementById('check3').value = ''
-        document.getElementById('check4').value = ''
-        document.getElementById('check5').value = ''
+        document.getElementById('Nome').value = ''
+        document.getElementById('CPF').value = ''
+        document.getElementById('Email').value = ''
+        document.getElementById('Senha').value = ''
+        document.getElementById('CSenha').value = ''
     }
 
     const handleClickButton = () =>{
@@ -86,7 +86,7 @@ export function Cadastro() {
                         <div className={Style.cadastro_cadastro_htm}>   
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Nome"
-                                    id="check1" 
+                                    id="Nome" 
                                     type="nome"
                                     name='nome'
                                     className={Style.cadastro_input}
@@ -94,7 +94,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="CPF"
-                                    id="check2" 
+                                    id="CPF" 
                                     type="cpf"
                                     name='cpf'
                                     className={Style.cadastro_input}
@@ -102,7 +102,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="E-mail" 
-                                    id="check3" 
+                                    id="Email" 
                                     type="email"
                                     name='email' 
                                     className={Style.cadastro_input}
@@ -110,7 +110,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Senha"
-                                    id="check4" 
+                                    id="Senha" 
                                     type="password" 
                                     name='password'
                                     className={Style.cadastro_input}
@@ -118,7 +118,7 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Confirmar Senha" 
-                                    id="check5" 
+                                    id="CSenha" 
                                     type="password"
                                     name='password'
                                     className={Style.cadastro_input}

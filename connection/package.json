@@ -2,9 +2,9 @@
   "name": "aoi_js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "db.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
