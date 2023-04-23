@@ -7,7 +7,7 @@ const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'api-visiona-sprint2'
+    database: 'visiona'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -32,6 +32,46 @@ function logUser(email, password_user, res) {
         }
     })
 }
+
+//function preencheCampos(id_user, res) {
+//  cliente.query(
+//    "SELECT * FROM users WHERE id = " + id_user + ";",
+//    (err, result) => {
+//      if (err) {
+//        console.log("erro query:", err);
+//      }
+//      if (result.rows.length === 1) {
+//        const nomeUser =  result.rows.values().next().value.name_user;
+//        const emailUser = result.rows.values().next().value.email;
+//        const mensagem = 'Usuário logado com sucesso'
+//        const data = {msg: mensagem, nome:nomeUser, email:emailUser }
+//            res.send(data);
+//          }else {
+//            res.send({ msg: "Usuário não encontrado" });
+//        }
+//      }
+//    );
+//  }
+
+  function attUser(name_user, email, id_user, updatedat, res) {
+    cliente.query(
+        "UPDATE users SET name_user = '" 
+        + name_user + 
+        "', email = '" 
+        + email +   
+        "', updatedat = '" 
+        + updatedat +   
+        "' WHERE id_user = " 
+        + id_user + 
+        ";"
+    , (err, result) => {
+        if(err) {
+            console.log("erro SQL", err);
+        } else {
+            res.send({msg: "Usuário atualizado"})
+        };
+    });
+  }
 
 app.use(cors());
 app.use(express.json());
@@ -59,12 +99,26 @@ app.post("/cadastro", (req, res)=>{
 
 app.get("/getInfo", (req, res)=>{
 
-    cliente.query('select name_user, email, perfil, status_user, createdat from users', (err, result)=>{
+    cliente.query('select id_user, name_user, email, perfil, status_user, createdat from users', (err, result)=>{
         if(err) console.log(err);
         else res.json(result.rows);
     })
 
 })
+
+//app.post('/edicao', (req, res) => {
+//   const { id_user } = req.body;
+//    preencheCampos(id_user, res)
+//})
+
+app.post("/confirmar-editar", (req, res) => {
+    const { name_user } = req.body;
+    const { email } = req.body;
+    const { id_user } = req.body;
+
+    attUser(name_user, email, id_user, res);
+});
+
 
 app.listen(3001, () => {
     console.log("Servidor sendo executado");

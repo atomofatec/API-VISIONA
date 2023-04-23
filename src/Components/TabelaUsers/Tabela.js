@@ -1,6 +1,23 @@
 import "../../Styles/Tabela.css"
+import { useNavigate } from "react-router-dom";
 
 function Tabela({users}) {
+
+    const navigate = useNavigate();
+
+    async function editUser(item) {
+        const tabelaNome = item.name_user;
+        const tabelaEmail = item.email;
+        const tabelaId = item.id_user;
+        const tabelaData = {
+            tabelaNome: tabelaNome,
+            tabelaEmail: tabelaEmail,
+            tabelaId: tabelaId
+        };
+        console.log(tabelaData);
+        localStorage.setItem("tabelaUsers", JSON.stringify(tabelaData));
+        navigate('/edicao');
+    }
 
 return (
     <article className="principal">
@@ -23,8 +40,10 @@ return (
                                 <tbody>
                                     {users.map((item, i) => (
                                         <tr key = {i}>
-                                            <td>
-                                                <a href="/"><i className="fa fa-edit"></i></a>
+                                            <td className="d-flex align-items-center">  
+                                                <div className="pl-3 email">
+                                                    <span >{item.id_user}</span>
+                                                </div>
                                             </td>
 
                                             <td className="d-flex align-items-center">  
@@ -35,7 +54,7 @@ return (
                                             </td>
 
                                             <td>
-                                                <a href="/edicao" > {item.name_user} </a>
+                                                <span> {item.name_user} </span>
                                             </td>
 
                                             <td className="status">
@@ -43,7 +62,7 @@ return (
                                             </td>
 
                                             <td>
-                                                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                                <button type="button" onClick={() => {editUser(item);}}>
                                                     <span aria-hidden="true"><i className="fa fa-close"></i></span>
                                                 </button>
                                             </td>
