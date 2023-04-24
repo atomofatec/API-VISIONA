@@ -29,11 +29,11 @@ return (
                             <table className="table table-responsive-xl">
                                 <thead>
                                     <tr>
-                                        <th>Editar</th>
+                                        <th>Id</th>
                                         <th>Email</th>
                                         <th>Nome</th>
                                         <th>Status</th>
-                                        <th>Excluir</th>
+                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                             
@@ -63,7 +63,7 @@ return (
 
                                             <td>
                                                 <button type="button" onClick={() => {editUser(item);}}>
-                                                    <span aria-hidden="true"><i className="fa fa-close"></i></span>
+                                                    <span><i >Editar</i></span>
                                                 </button>
                                             </td>
                                         </tr>

@@ -33,26 +33,6 @@ function logUser(email, password_user, res) {
     })
 }
 
-//function preencheCampos(id_user, res) {
-//  cliente.query(
-//    "SELECT * FROM users WHERE id = " + id_user + ";",
-//    (err, result) => {
-//      if (err) {
-//        console.log("erro query:", err);
-//      }
-//      if (result.rows.length === 1) {
-//        const nomeUser =  result.rows.values().next().value.name_user;
-//        const emailUser = result.rows.values().next().value.email;
-//        const mensagem = 'Usuário logado com sucesso'
-//        const data = {msg: mensagem, nome:nomeUser, email:emailUser }
-//            res.send(data);
-//          }else {
-//            res.send({ msg: "Usuário não encontrado" });
-//        }
-//      }
-//    );
-//  }
-
   function attUser(name_user, email, id_user, updatedat, res) {
     cliente.query(
         "UPDATE users SET name_user = '" 
@@ -105,11 +85,6 @@ app.get("/getInfo", (req, res)=>{
     })
 
 })
-
-//app.post('/edicao', (req, res) => {
-//   const { id_user } = req.body;
-//    preencheCampos(id_user, res)
-//})
 
 app.post("/confirmar-editar", (req, res) => {
     const { name_user } = req.body;
