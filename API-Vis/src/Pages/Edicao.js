@@ -31,10 +31,12 @@ export function Edicao() {
     const handleClickButton = () => {
         const tabelaDataJson = localStorage.getItem('tabelaUsers');
         const tabelaData = JSON.parse(tabelaDataJson);
+        const updatedat = new Date().toLocaleString();
         axios.post("http://localhost:3001/confirmar-editar", {
             name_user: document.getElementById("check1").value,
             email: document.getElementById("check2").value,
-            user_id: tabelaData.tabelaId
+            id_user: tabelaData.tabelaId,
+            updatedat: updatedat
         }).then((response) => {
             if(response.data.msg === "Usuário atualizado") {
                 alert(response.data.msg);

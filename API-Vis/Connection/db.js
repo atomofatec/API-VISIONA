@@ -7,7 +7,7 @@ const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'visiona'
+    database: 'api_visiona'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -77,7 +77,7 @@ app.post("/cadastro", (req, res)=>{
     
 })
 
-app.get("/getInfo", (req, res)=>{
+app.get("/mostrarTabela", (req, res)=>{
 
     cliente.query('select id_user, name_user, email, perfil, status_user, createdat from users', (err, result)=>{
         if(err) console.log(err);
@@ -90,8 +90,9 @@ app.post("/confirmar-editar", (req, res) => {
     const { name_user } = req.body;
     const { email } = req.body;
     const { id_user } = req.body;
+    const { updatedat } = req.body;
 
-    attUser(name_user, email, id_user, res);
+    attUser(name_user, email, id_user, updatedat, res);
 });
 
 

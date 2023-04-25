@@ -10,7 +10,7 @@ export function TabelaUsers() {
     const [users, setUsers] = useState([])
     const getUsers = async () => {
     try{
-      const res = await Axios.get("http://localhost:3001/getInfo");
+      const res = await Axios.get("http://localhost:3001/mostrarTabela");
       console.log(res.data)
       setUsers(res.data)
     }catch(error){
