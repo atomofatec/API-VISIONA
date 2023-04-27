@@ -2,7 +2,6 @@ import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Edicao.module.css';
 import { Link } from 'react-router-dom'
-import Style2 from '../Components/TelaPerfil/TituloPerfil.module.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -52,7 +51,7 @@ export function Edicao() {
             <div className={Style.edicao_container}>
                 <Logo />
                 <div className={Style.edicao_align_field}>
-                    <p className={Style2.tituloperfil_p}>Editar Usuário</p>
+                    <p className={Style.edicao_p}>Editar Usuário</p>
                     <div className={Style.edicao_login_form}>
                         <div className={Style.edicao_cadastro_htm}>   
                             <div className={Style.edicao_group}>

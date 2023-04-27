@@ -93,18 +93,18 @@ export function Cadastro() {
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.cadastro_group}>
-                                <input placeholder="CPF"
-                                    id="CPF" 
-                                    type="cpf"
-                                    name='cpf'
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
-                            </div>
-                            <div className={Style.cadastro_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
                                     type="email"
                                     name='email' 
+                                    className={Style.cadastro_input}
+                                    onChange={handleChangeValues} />
+                            </div>
+                            <div className={Style.cadastro_group}>
+                                <input placeholder="CPF"
+                                    id="CPF" 
+                                    type="cpf"
+                                    name='cpf'
                                     className={Style.cadastro_input}
                                     onChange={handleChangeValues} />
                             </div>
