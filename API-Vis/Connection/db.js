@@ -53,6 +53,26 @@ function logUser(email, password_user, res) {
     });
   }
 
+  function attPerfil(name_user, email, id_user, updatedat, res) {
+    cliente.query(
+        "UPDATE users SET name_user = '" 
+        + name_user + 
+        "', email = '" 
+        + email +   
+        "', updatedat = '" 
+        + updatedat +   
+        "' WHERE id_user = " 
+        + id_user + 
+        ";"
+    , (err, result) => {
+        if(err) {
+            console.log("erro SQL", err);
+        } else {
+            res.send({msg: "Perfil atualizado"})
+        };
+    });
+  }
+
 app.use(cors());
 app.use(express.json());
 
@@ -95,6 +115,15 @@ app.post("/confirmar-editar", (req, res) => {
     attUser(name_user, email, id_user, updatedat, res);
 });
 
+
+app.post("/atualizar-perfil", (req, res) => {
+    const { name_user } = req.body;
+    const { email } = req.body;
+    const { id_user } = req.body;
+    const { updatedat } = req.body;
+
+    attPerfil(name_user, email, id_user, updatedat, res);
+});
 
 app.listen(3001, () => {
     console.log("Servidor sendo executado");
