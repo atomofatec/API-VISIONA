@@ -1,12 +1,11 @@
 import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
-import Style from '../Styles/Cadastro.module.css';
-import { Link } from 'react-router-dom'
-import React, { useState } from "react";
-import axios from "axios";
+import Style from '../Styles/Edicao.module.css';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export function Cadastro() {
+export function Adicionar() {
     const [values, setValues] = useState();
     const navigate = useNavigate();
     const handleChangeValues = (value)=>{
@@ -53,7 +52,7 @@ export function Cadastro() {
         if (!checkVazio()){
           const createdat = new Date().toLocaleString();
           const updatedat = new Date().toLocaleString();
-          axios.post("http://localhost:3001/cadastro", {
+          axios.post("http://localhost:3001/adicionar", {
             name_user: values.nome,
             email: values.email,
             password_user: values.password,
@@ -63,71 +62,71 @@ export function Cadastro() {
         }).then((response)=>{
             alert(response.data.msg);
             clearCampos();
-            navigate('/')
+            navigate('/tabela-users')
   
         });}
         else {
             alert("Todos os campos devem ser preenchidos.")
         }
     }
-
+    
     return(
         <html>
-            <div className={Style.cadastro_container}>
+            <div className={Style.edicao_container}>
                 <Logo />
-                <div className={Style.cadastro_align_field}>
-                    <Link to='/'>
-                        <input id="item-1" type="radio" name="item" className={Style.cadastro_login} />
-                        <label for="item-1" className={Style.cadastro_item}>Login</label>
-                    </ Link>
-                    <input id="item-2" type="radio" name="item" className={Style.cadastro_cadastro} checked />
-                    <label for="item-2" className={Style.cadastro_item}>Cadastro</label>
-                    <div className={Style.cadastro_login_form}>
-                        <div className={Style.cadastro_cadastro_htm}>   
-                            <div className={Style.cadastro_group}>
+                <div className={Style.edicao_align_field}>
+                    <p className={Style.edicao_p}>Adicionar Usuário</p>
+                    <div className={Style.edicao_login_form}>
+                        <div className={Style.edicao_cadastro_htm}>   
+                            <div className={Style.edicao_group}>
                                 <input placeholder="Nome"
                                     id="Nome" 
                                     type="nome"
                                     name='nome'
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
+                                    onChange={handleChangeValues}
+                                    className={Style.edicao_input}
+                                    />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.edicao_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
                                     type="email"
-                                    name='email' 
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
+                                    name='email'
+                                    onChange={handleChangeValues}
+                                    className={Style.edicao_input}
+                                    />
                             </div>
-                            <div className={Style.cadastro_group}>
-                                <input placeholder="CPF"
+                            <div className={Style.edicao_group}>
+                                <input placeholder="CPF" 
                                     id="CPF" 
                                     type="cpf"
                                     name='cpf'
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
+                                    onChange={handleChangeValues}
+                                    className={Style.edicao_input}
+                                    />
                             </div>
-                            <div className={Style.cadastro_group}>
-                                <input placeholder="Senha"
+                            <div className={Style.edicao_group}>
+                                <input placeholder="Senha" 
                                     id="Senha" 
-                                    type="password" 
+                                    type="password"
                                     name='password'
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
+                                    onChange={handleChangeValues}
+                                    className={Style.edicao_input}
+                                    />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.edicao_group}>
                                 <input placeholder="Confirmar Senha" 
                                     id="CSenha" 
                                     type="password"
                                     name='password'
-                                    className={Style.cadastro_input}
-                                    onChange={handleChangeValues} />
+                                    onChange={handleChangeValues}
+                                    className={Style.edicao_input}
+                                    />
                             </div>
                         </div>
-                            <div className={Style.cadastro_group}> 
-                                <button type="button" className={Style.cadastro_button} onClick={()=>handleClickButton()}>
-                                    Cadastrar
+                            <div className={Style.edicao_group}> 
+                                <button type="button" id='btnCadastro'
+                                        className={Style.edicao_button} onClick={() => handleClickButton()}>Adicionar
                                 </button>
                             </div>
                     </div>

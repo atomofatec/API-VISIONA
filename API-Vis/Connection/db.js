@@ -20,6 +20,16 @@ function cadUser(name_user, email, password_user, perfil, cpf_user, status_user,
     })
 }
 
+function addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
+    cliente.query(('insert into users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user", "createdat", "updatedat") values ('+"'"+name_user+"', '"+email+"', '"+password_user+"', '"+perfil+"', '"+cpf_user+"', '"+status_user+"', '"+createdat+"', '"+updatedat+"');"), (err, result) => {
+        if(err) {
+            console.log('erro SQL', err);
+        } else {
+            res.send({msg: "Usuário adicionado com sucesso"})
+        };
+    })
+}
+
 function logUser(email, password_user, res) {
     cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
         if(err) {
@@ -94,6 +104,20 @@ app.post("/cadastro", (req, res)=>{
     const {updatedat} = req.body
 
     cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
+    
+})
+
+app.post("/adicionar", (req, res)=>{
+    const {name_user} = req.body;
+    const {email} = req.body;
+    const {password_user} = req.body;
+    const perfil = "Comum";
+    const {cpf_user} = req.body;
+    const status_user = "Ativo";
+    const {createdat} = req.body;
+    const {updatedat} = req.body
+
+    addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
     
 })
 

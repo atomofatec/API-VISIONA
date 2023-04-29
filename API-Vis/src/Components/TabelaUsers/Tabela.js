@@ -19,6 +19,10 @@ function Tabela({users}) {
         navigate('/edicao');
     }
 
+    async function addUser() {
+        navigate('/adicionar')
+    }
+
 return (
     <article className="principal">
         <div className="row justify-content-center">
@@ -63,13 +67,16 @@ return (
 
                                             <td>
                                                 <button type="button" onClick={() => {editUser(item);}}>
-                                                    <span><i >Editar</i></span>
+                                                    <span><i>Editar</i></span>
                                                 </button>
                                             </td>
                                         </tr>
                                         ))}
                                 </tbody>
                             </table>
+                            <button type="button" onClick={() => {addUser();}}>
+                                <span><i>Adicionar</i></span>
+                            </button>
                         </div>
                     </div>
                 </div>

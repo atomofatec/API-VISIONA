@@ -7,11 +7,6 @@ function Perfil() {
         <div className={Style.perfil_user_profile}>
             <div>
                 <Link to='/perfil'>
-                <a href="/perfil">Usuário</a>
-                </Link>
-            </div>
-            <div>
-                <Link to='/perfil'>
                     <a href="/perfil"><img src={UserPNG} alt="Ícone de Perfil" /></a>
                 </Link>                        
             </div>
