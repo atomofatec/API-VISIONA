@@ -1,9 +1,9 @@
-import Circulos from '../Components/Circulos';
+import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
-import Style from '../Styles/Edicao.module.css';
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import Style from '../Styles/Adicionar.module.css';
+import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function Adicionar() {
     const [values, setValues] = useState();
@@ -69,70 +69,65 @@ export function Adicionar() {
             alert("Todos os campos devem ser preenchidos.")
         }
     }
-    
+
     return(
         <html>
-            <div className={Style.edicao_container}>
+            <div className={Style.adicionar_container}>
                 <Logo />
-                <div className={Style.edicao_align_field}>
-                    <p className={Style.edicao_p}>Adicionar Usuário</p>
-                    <div className={Style.edicao_login_form}>
-                        <div className={Style.edicao_cadastro_htm}>   
-                            <div className={Style.edicao_group}>
+                <div className={Style.adicionar_align_field}>
+                    <p className={Style.adicionar_p}>Adicionar Usuário</p>
+                    <div className={Style.adicionar_login_form}>
+                        <div className={Style.adicionar_adicionar_htm}>   
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="Nome"
                                     id="Nome" 
                                     type="nome"
                                     name='nome'
-                                    onChange={handleChangeValues}
-                                    className={Style.edicao_input}
-                                    />
+                                    className={Style.adicionar_input}
+                                    onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.edicao_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
                                     type="email"
-                                    name='email'
-                                    onChange={handleChangeValues}
-                                    className={Style.edicao_input}
-                                    />
+                                    name='email' 
+                                    className={Style.adicionar_input}
+                                    onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.edicao_group}>
-                                <input placeholder="CPF" 
+                            <div className={Style.adicionar_group}>
+                                <input placeholder="CPF"
                                     id="CPF" 
                                     type="cpf"
                                     name='cpf'
-                                    onChange={handleChangeValues}
-                                    className={Style.edicao_input}
-                                    />
+                                    className={Style.adicionar_input}
+                                    onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.edicao_group}>
-                                <input placeholder="Senha" 
+                            <div className={Style.adicionar_group}>
+                                <input placeholder="Senha"
                                     id="Senha" 
-                                    type="password"
+                                    type="password" 
                                     name='password'
-                                    onChange={handleChangeValues}
-                                    className={Style.edicao_input}
-                                    />
+                                    className={Style.adicionar_input}
+                                    onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.edicao_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="Confirmar Senha" 
                                     id="CSenha" 
                                     type="password"
                                     name='password'
-                                    onChange={handleChangeValues}
-                                    className={Style.edicao_input}
-                                    />
+                                    className={Style.adicionar_input}
+                                    onChange={handleChangeValues} />
                             </div>
                         </div>
-                            <div className={Style.edicao_group}> 
-                                <button type="button" id='btnCadastro'
-                                        className={Style.edicao_button} onClick={() => handleClickButton()}>Adicionar
+                            <div className={Style.adicionar_group}> 
+                                <button type="button" className={Style.adicionar_button} onClick={()=>handleClickButton()}>
+                                    Adicionar
                                 </button>
                             </div>
                     </div>
                 </div>
             </div>
-            <Circulos />
+            <CirculosPerfil />
         </html>
     )
 }

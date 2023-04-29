@@ -17,6 +17,7 @@
 .login_align_field{
   width: 100%;
   height: 100%;
+
   padding: 70px 70px 10px 90px;
   background: none;
 }
@@ -24,11 +25,13 @@
 
 .login_align_field .login_login_htm,
 .login_align_field .login_cadastro_htm {
-  top: 5%; 
+  top: 12%; 
   left: 0;
   right: 0;
   bottom: 0;
   position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
 }
 
 
@@ -60,7 +63,7 @@
 .login_align_field .login_login:checked+.login_item,
 .login_align_field .login_cadastro:checked+.login_item {
   color: #000000;
-  border-color: #E76100;
+  border-color: #E76100; 
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition: all 1.0s ease-in-out 0s;
@@ -69,7 +72,7 @@
 
 
 .login_login_form {
-  min-height: 130px;
+  min-height: 345px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -101,7 +104,7 @@
 
 .login_button {
   cursor: pointer;
-  margin-top: 35%;
+  margin-top: 10%;
 }
 
 
@@ -112,7 +115,7 @@
   width: 100%;
   min-width: 345px;
   background: #faf6f6;
-  margin:0.login_6rem 0;
+  margin:0.6rem 0;
   box-shadow: 1px 1px 6px #000000c1;
 }
 
@@ -145,17 +148,6 @@ background: rgb(230, 87, 31);
 
 .login_align_field .login_cadastro:checked+.login_item+.login_login_form .login_cadastro_htm {
   transform: rotate(0);
-}
-
-
-.login_footer{
-  text-align: left;
-  margin-top: 10%;
-}
-
-.login_footer:hover {
-text-decoration: underline;
-color: #E76100;
 }
 
 @media screen and (max-width: 1700px){

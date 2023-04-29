@@ -55,37 +55,35 @@ export function Login() {
             <div className={Style.login_container}>
                 <Logo />
                 <div className={Style.login_align_field}>
-                        <input id="item-1" type="radio" name="item" className={Style.login_login} checked />
-                        <label for="item-1" className={Style.login_item}>Login</label>
+                    <input id="item-1" type="radio" name="item" className={Style.login_login} checked />
+                    <label for="item-1" className={Style.login_item}>Login</label>
                     <Link to='/cadastro'>
                         <input id="item-2" type="radio" name="item" className={Style.login_cadastro}  />
                         <label for="item-2" className={Style.login_item}>Cadastro</label>
                     </ Link>
                     <div className={Style.login_login_form}>
-                        <div className={Style.login_cadastro_htm}>   
+                        <div className={Style.login_adicionar_htm}>   
                             <div className={Style.login_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
                                     type="email"
                                     name='email' 
                                     className={Style.login_input}
-                                    onChange={handleChangeValues}
-                                     />
-                            </div>
+                                    onChange={handleChangeValues} />
+                            </div>                      
                             <div className={Style.login_group}>
                                 <input placeholder="Senha"
                                     id="Senha" 
                                     type="password" 
                                     name='password'
                                     className={Style.login_input}
-                                    onChange={handleChangeValues}
-                                     />
+                                    onChange={handleChangeValues} />
                             </div>
                         </div>
                             <div className={Style.login_group}> 
-                                <button type="button" 
-                                        className={Style.login_button} onClick={()=>[handleClickButton()]} >
-                                             Entrar</button>
+                                <button type="button" className={Style.login_button} onClick={()=>handleClickButton()}>
+                                    Entrar
+                                </button>
                             </div>
                     </div>
                 </div>

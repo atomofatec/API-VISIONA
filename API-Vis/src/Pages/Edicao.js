@@ -1,7 +1,6 @@
-import Circulos from '../Components/Circulos';
+import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Edicao.module.css';
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -23,8 +22,8 @@ export function Edicao() {
         const tabelaData = JSON.parse(tabelaDataJson);
         console.log(tabelaData);
 
-        document.getElementById('check1').value = tabelaData.tabelaNome;
-        document.getElementById('check2').value = tabelaData.tabelaEmail;
+        document.getElementById('nome').value = tabelaData.tabelaNome;
+        document.getElementById('email').value = tabelaData.tabelaEmail;
     }, []);
 
     const handleClickButton = () => {
@@ -32,8 +31,8 @@ export function Edicao() {
         const tabelaData = JSON.parse(tabelaDataJson);
         const updatedat = new Date().toLocaleString();
         axios.post("http://localhost:3001/confirmar-editar", {
-            name_user: document.getElementById("check1").value,
-            email: document.getElementById("check2").value,
+            name_user: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
             id_user: tabelaData.tabelaId,
             updatedat: updatedat
         }).then((response) => {
@@ -53,37 +52,33 @@ export function Edicao() {
                 <div className={Style.edicao_align_field}>
                     <p className={Style.edicao_p}>Editar Usuário</p>
                     <div className={Style.edicao_login_form}>
-                        <div className={Style.edicao_cadastro_htm}>   
+                        <div className={Style.edicao_adicionar_htm}>   
                             <div className={Style.edicao_group}>
                                 <input placeholder="Nome"
-                                    id="check1" 
-                                    type="nome"
+                                    id="nome" 
+                                    type="nome" 
                                     name='nome'
-                                    onChange={handleChangeValues}
                                     className={Style.edicao_input}
-                                    />
+                                    onChange={handleChangeValues} />
                             </div>
                             <div className={Style.edicao_group}>
                                 <input placeholder="E-mail" 
-                                    id="check2" 
+                                    id="email" 
                                     type="email"
-                                    name='email'
-                                    onChange={handleChangeValues}
+                                    name='email' 
                                     className={Style.edicao_input}
-                                    />
-                            </div>
+                                    onChange={handleChangeValues} />
+                            </div>                      
                         </div>
-                        <Link to='/tabela-users'>
                             <div className={Style.edicao_group}> 
-                                <button type="button" id='btnCadastro'
-                                        className={Style.edicao_button} onClick={() => handleClickButton()}>Editar
+                                <button type="button" className={Style.edicao_button} onClick={()=>handleClickButton()}>
+                                    Editar
                                 </button>
                             </div>
-                        </Link>
                     </div>
                 </div>
             </div>
-            <Circulos />
+            <CirculosPerfil />
         </html>
     )
 }

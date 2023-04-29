@@ -83,7 +83,7 @@ export function Cadastro() {
                     <input id="item-2" type="radio" name="item" className={Style.cadastro_cadastro} checked />
                     <label for="item-2" className={Style.cadastro_item}>Cadastro</label>
                     <div className={Style.cadastro_login_form}>
-                        <div className={Style.cadastro_cadastro_htm}>   
+                        <div className={Style.cadastro_adicionar_htm}>   
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Nome"
                                     id="Nome" 
