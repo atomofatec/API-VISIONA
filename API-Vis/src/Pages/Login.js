@@ -2,12 +2,16 @@ import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Login.module.css';
 import { Link } from 'react-router-dom'
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function Login() {
+
+    useEffect(() => {
+        localStorage.clear()
+    })
 
     const[values, setValues] = useState();
     const navigate = useNavigate();
@@ -37,7 +41,9 @@ export function Login() {
                 email: values.email,
                 password_user: values.password,
             }).then((response) => {
+                console.log(response.data);
                 if(response.data.msg === "Usuário logado") {
+                    localStorage.setItem('user', response.data.id_user)
                     alert(response.data.msg);
                     navigate('/tabela-users')
                 }

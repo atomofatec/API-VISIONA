@@ -63,24 +63,22 @@ function logUser(email, password_user, res) {
     });
   }
 
-  function attPerfil(name_user, email, id_user, updatedat, res) {
-    cliente.query(
-        "UPDATE users SET name_user = '" 
-        + name_user + 
-        "', email = '" 
-        + email +   
-        "', updatedat = '" 
-        + updatedat +   
-        "' WHERE id_user = " 
-        + id_user + 
-        ";"
-    , (err, result) => {
+  function preencheCampos(id_user, res) {
+    cliente.query("SELECT * FROM users WHERE id_user = "+ id_user + ";", (err, result) => {
         if(err) {
-            console.log("erro SQL", err);
-        } else {
-            res.send({msg: "Perfil atualizado"})
-        };
-    });
+            console.log("erro query: ", err);
+        }
+        if(result.rows.length === 1) {
+            const nomeUser = result.rows.values().next().value.name_user;
+            const emailUser = result.rows.values().next().value.email;
+            const cpfUser = result.rows.values().next().value.cpf_user;
+            const mensagem = 'Usuário logado';
+            const pessoa = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser}
+            res.send(pessoa);
+        }else{
+            res.send({msg: '"Usuário não cadastrado/Informações estão incorretas"'})
+        }
+    })
   }
 
 app.use(cors());
@@ -139,15 +137,11 @@ app.post("/confirmar-editar", (req, res) => {
     attUser(name_user, email, id_user, updatedat, res);
 });
 
-
-app.post("/atualizar-perfil", (req, res) => {
-    const { name_user } = req.body;
-    const { email } = req.body;
-    const { id_user } = req.body;
-    const { updatedat } = req.body;
-
-    attPerfil(name_user, email, id_user, updatedat, res);
-});
+app.post('/editar', (req,res) => {
+    const { id_user } = req.body
+  
+    preencheCampos(id_user, res)
+  })
 
 app.listen(3001, () => {
     console.log("Servidor sendo executado");
