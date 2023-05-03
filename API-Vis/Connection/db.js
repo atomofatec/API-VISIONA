@@ -45,16 +45,7 @@ function logUser(email, password_user, res) {
 
   function attUser(name_user, email, id_user, updatedat, res) {
     cliente.query(
-        "UPDATE users SET name_user = '" 
-        + name_user + 
-        "', email = '" 
-        + email +   
-        "', updatedat = '" 
-        + updatedat +   
-        "' WHERE id_user = " 
-        + id_user + 
-        ";"
-    , (err, result) => {
+        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat +  "' WHERE id_user = "+ id_user +";", (err, result) => {
         if(err) {
             console.log("erro SQL", err);
         } else {
