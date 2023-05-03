@@ -1,4 +1,4 @@
-import Style from './Circulos.module.css'
+import Style from '../Styles/CirculosEsquecer.module.css'
 
 function Circulos() {
     return(

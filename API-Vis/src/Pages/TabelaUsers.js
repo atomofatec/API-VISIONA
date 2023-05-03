@@ -5,6 +5,7 @@ import Rodape from "../Components/Rodape";
 import Style from "../Styles/TabelaUsers.module.css"
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
+import { Link } from 'react-router-dom'
 
 export function TabelaUsers() {
     const [users, setUsers] = useState([])
@@ -27,7 +28,9 @@ export function TabelaUsers() {
             <div className={Style.estrutura_corpo}>
                 <div className={Style.estrutura_cabecalho}>
                     <Logo />
-                    <Perfil />
+                    <div className={Style.tabela_user_profile}>
+                        <Perfil />
+                    </div>
                 </div>
                 <Tabela users = {users}/>
                 <div className={Style.estrutura_rodape}>

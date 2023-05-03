@@ -1,11 +1,11 @@
-import Circulos from '../Components/Circulos';
+import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Edicao.module.css';
-import { Link } from 'react-router-dom'
-import Style2 from '../Components/TelaPerfil/TituloPerfil.module.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export function Edicao() {
 
@@ -24,8 +24,8 @@ export function Edicao() {
         const tabelaData = JSON.parse(tabelaDataJson);
         console.log(tabelaData);
 
-        document.getElementById('check1').value = tabelaData.tabelaNome;
-        document.getElementById('check2').value = tabelaData.tabelaEmail;
+        document.getElementById('nome').value = tabelaData.tabelaNome;
+        document.getElementById('email').value = tabelaData.tabelaEmail;
     }, []);
 
     const handleClickButton = () => {
@@ -33,58 +33,87 @@ export function Edicao() {
         const tabelaData = JSON.parse(tabelaDataJson);
         const updatedat = new Date().toLocaleString();
         axios.post("http://localhost:3001/confirmar-editar", {
-            name_user: document.getElementById("check1").value,
-            email: document.getElementById("check2").value,
+            name_user: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
             id_user: tabelaData.tabelaId,
             updatedat: updatedat
         }).then((response) => {
             if(response.data.msg === "Usuário atualizado") {
-                alert(response.data.msg);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Alteração realizada',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                  })
                 navigate('/tabela-users')
             }else{
-                alert('Erro')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atenção',
+                    text: 'Não foi possível editar o usuário',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                  })
             }
         })
     }
     
     return(
-        <html>
+        <>
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
             <div className={Style.edicao_container}>
                 <Logo />
+
                 <div className={Style.edicao_align_field}>
-                    <p className={Style2.tituloperfil_p}>Editar Usuário</p>
+                    <span>
+                        <Link to="/tabela-users" className="btn">
+                        <i className="bx bx-arrow-back"></i>
+                        </Link>
+                        <p className={Style.edicao_p}>
+                            Editar Usuário
+                        </p>
+                    </span>
+
                     <div className={Style.edicao_login_form}>
-                        <div className={Style.edicao_cadastro_htm}>   
+                        <div className={Style.edicao_adicionar_htm}>   
                             <div className={Style.edicao_group}>
                                 <input placeholder="Nome"
-                                    id="check1" 
-                                    type="nome"
+                                    id="nome" 
+                                    type="nome" 
                                     name='nome'
-                                    onChange={handleChangeValues}
                                     className={Style.edicao_input}
-                                    />
+                                    onChange={handleChangeValues} />
                             </div>
                             <div className={Style.edicao_group}>
                                 <input placeholder="E-mail" 
-                                    id="check2" 
+                                    id="email" 
                                     type="email"
-                                    name='email'
-                                    onChange={handleChangeValues}
+                                    name='email' 
                                     className={Style.edicao_input}
-                                    />
-                            </div>
+                                    onChange={handleChangeValues} />
+                            </div>                      
                         </div>
-                        <Link to='/tabela-users'>
                             <div className={Style.edicao_group}> 
-                                <button type="button" id='btnCadastro'
-                                        className={Style.edicao_button} onClick={() => handleClickButton()}>Editar
+                                <button type="button" className={Style.edicao_button} onClick={()=>handleClickButton()}>
+                                    Editar
                                 </button>
                             </div>
-                        </Link>
                     </div>
                 </div>
             </div>
-            <Circulos />
-        </html>
-    )
+            <CirculosPerfil />
+        </>
+    );
 }

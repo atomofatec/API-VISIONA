@@ -1,5 +1,6 @@
 import "../../Styles/Tabela.css"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Tabela({users}) {
 
@@ -19,7 +20,18 @@ function Tabela({users}) {
         navigate('/edicao');
     }
 
+    async function addUser() {
+        navigate('/adicionar')
+    }
+
 return (
+
+    <>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <article className="principal">
         <div className="row justify-content-center">
 			<div className="col-md-6 text-center mb-5">
@@ -29,22 +41,16 @@ return (
                             <table className="table table-responsive-xl">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Email</th>
                                         <th>Nome</th>
                                         <th>Status</th>
-                                        <th>Editar</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                             
                                 <tbody>
                                     {users.map((item, i) => (
                                         <tr key = {i}>
-                                            <td className="d-flex align-items-center">  
-                                                <div className="pl-3 email">
-                                                    <span >{item.id_user}</span>
-                                                </div>
-                                            </td>
 
                                             <td className="d-flex align-items-center">  
                                                 <div className="pl-3 email">
@@ -62,22 +68,36 @@ return (
                                             </td>
 
                                             <td>
-                                                <button type="button" onClick={() => {editUser(item);}}>
-                                                    <span><i >Editar</i></span>
-                                                </button>
+                                                <div className="button" onClick={() => {editUser(item);}}>
+                                                    <Link to="/edicao">
+                                                        <i className="bx bxs-edit-alt"></i>
+                                                    </Link>
+                                                </div>
+                                                <div className="button">
+                                                    <Link to="#">
+                                                        <i className="bx bx-x"></i>
+                                                    </Link>
+                                                </div>
+
                                             </td>
                                         </tr>
                                         ))}
                                 </tbody>
                             </table>
+
+                            <Link to="/adicionar" className="btn">
+                                <i className="bx bxs-user-plus"></i>
+                            </Link>
+                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </article>
-
+    </>
     );
-};
+}
                 
-export default Tabela;               
+export default Tabela;                          

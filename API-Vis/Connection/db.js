@@ -20,6 +20,16 @@ function cadUser(name_user, email, password_user, perfil, cpf_user, status_user,
     })
 }
 
+function addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
+    cliente.query(('insert into users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user", "createdat", "updatedat") values ('+"'"+name_user+"', '"+email+"', '"+password_user+"', '"+perfil+"', '"+cpf_user+"', '"+status_user+"', '"+createdat+"', '"+updatedat+"');"), (err, result) => {
+        if(err) {
+            console.log('erro SQL', err);
+        } else {
+            res.send({msg: "Usuário adicionado com sucesso"})
+        };
+    })
+}
+
 function logUser(email, password_user, res) {
     cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
         if(err) {
@@ -53,6 +63,26 @@ function logUser(email, password_user, res) {
     });
   }
 
+  function attPerfil(name_user, email, id_user, updatedat, res) {
+    cliente.query(
+        "UPDATE users SET name_user = '" 
+        + name_user + 
+        "', email = '" 
+        + email +   
+        "', updatedat = '" 
+        + updatedat +   
+        "' WHERE id_user = " 
+        + id_user + 
+        ";"
+    , (err, result) => {
+        if(err) {
+            console.log("erro SQL", err);
+        } else {
+            res.send({msg: "Perfil atualizado"})
+        };
+    });
+  }
+
 app.use(cors());
 app.use(express.json());
 
@@ -77,6 +107,20 @@ app.post("/cadastro", (req, res)=>{
     
 })
 
+app.post("/adicionar", (req, res)=>{
+    const {name_user} = req.body;
+    const {email} = req.body;
+    const {password_user} = req.body;
+    const perfil = "Comum";
+    const {cpf_user} = req.body;
+    const status_user = "Ativo";
+    const {createdat} = req.body;
+    const {updatedat} = req.body
+
+    addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
+    
+})
+
 app.get("/mostrarTabela", (req, res)=>{
 
     cliente.query('select id_user, name_user, email, perfil, status_user, createdat from users', (err, result)=>{
@@ -95,6 +139,15 @@ app.post("/confirmar-editar", (req, res) => {
     attUser(name_user, email, id_user, updatedat, res);
 });
 
+
+app.post("/atualizar-perfil", (req, res) => {
+    const { name_user } = req.body;
+    const { email } = req.body;
+    const { id_user } = req.body;
+    const { updatedat } = req.body;
+
+    attPerfil(name_user, email, id_user, updatedat, res);
+});
 
 app.listen(3001, () => {
     console.log("Servidor sendo executado");
