@@ -1,13 +1,13 @@
-import Circulos from '../Components/Circulos';
+import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
-import Style from '../Styles/Cadastro.module.css';
-import { Link } from 'react-router-dom'
+import Style from '../Styles/Adicionar.module.css';
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
-export function Cadastro() {
+export function Adicionar() {
     const [values, setValues] = useState();
     const navigate = useNavigate();
     const handleChangeValues = (value)=>{
@@ -54,7 +54,7 @@ export function Cadastro() {
         if (!checkVazio()){
           const createdat = new Date().toLocaleString();
           const updatedat = new Date().toLocaleString();
-          axios.post("http://localhost:3001/cadastro", {
+          axios.post("http://localhost:3001/adicionar", {
             name_user: values.nome,
             email: values.email,
             password_user: values.password,
@@ -65,7 +65,7 @@ export function Cadastro() {
             Swal.fire({
                 icon: 'success',
                 title: 'Sucesso',
-                text: 'Cadastro realizado',
+                text: 'Alteração realizada',
                 confirmButtonColor: '#E76100',
                 showConfirmButton: false,
                 iconColor: '#E76100',
@@ -74,7 +74,7 @@ export function Cadastro() {
                 showCloseButton: true,
               })
             clearCampos();
-            navigate('/')
+            navigate('/tabela-users')
   
         });}
         else {
@@ -93,68 +93,77 @@ export function Cadastro() {
     }
 
     return(
-        <html>
-            <div className={Style.cadastro_container}>
+        <>
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+
+            <div className={Style.adicionar_container}>
                 <Logo />
-                <div className={Style.cadastro_align_field}>
-                    <Link to='/'>
-                        <input id="item-1" type="radio" name="item" className={Style.cadastro_login} />
-                        <label for="item-1" className={Style.cadastro_item}>Login</label>
-                    </ Link>
-                    <input id="item-2" type="radio" name="item" className={Style.cadastro_cadastro} checked />
-                    <label for="item-2" className={Style.cadastro_item}>Cadastro</label>
-                    <div className={Style.cadastro_login_form}>
-                        <div className={Style.cadastro_adicionar_htm}>   
-                            <div className={Style.cadastro_group}>
+
+                <div className={Style.adicionar_align_field}>
+                    <span>
+                        <Link to="/tabela-users" className="btn">
+                        <i className="bx bx-arrow-back"></i>
+                        </Link>
+                        <p className={Style.adicionar_p}>
+                            Adicionar Usuário
+                        </p>
+                    </span>
+
+                    <div className={Style.adicionar_login_form}>
+                        <div className={Style.adicionar_adicionar_htm}>   
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="Nome"
                                     id="Nome" 
                                     type="nome"
                                     name='nome'
-                                    className={Style.cadastro_input}
+                                    className={Style.adicionar_input}
                                     onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
                                     type="email"
                                     name='email' 
-                                    className={Style.cadastro_input}
+                                    className={Style.adicionar_input}
                                     onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="CPF"
                                     id="CPF" 
                                     type="cpf"
                                     name='cpf'
-                                    className={Style.cadastro_input}
+                                    className={Style.adicionar_input}
                                     onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="Senha"
                                     id="Senha" 
                                     type="password" 
                                     name='password'
-                                    className={Style.cadastro_input}
+                                    className={Style.adicionar_input}
                                     onChange={handleChangeValues} />
                             </div>
-                            <div className={Style.cadastro_group}>
+                            <div className={Style.adicionar_group}>
                                 <input placeholder="Confirmar Senha" 
                                     id="CSenha" 
                                     type="password"
                                     name='password'
-                                    className={Style.cadastro_input}
+                                    className={Style.adicionar_input}
                                     onChange={handleChangeValues} />
                             </div>
                         </div>
-                            <div className={Style.cadastro_group}> 
-                                <button type="button" className={Style.cadastro_button} onClick={()=>handleClickButton()}>
-                                    Cadastrar
+                            <div className={Style.adicionar_group}> 
+                                <button type="button" className={Style.adicionar_button} onClick={()=>handleClickButton()}>
+                                    Adicionar
                                 </button>
                             </div>
                     </div>
                 </div>
             </div>
-            <Circulos />
-        </html>
-    )
+            <CirculosPerfil />
+            </>
+    );
 }

@@ -2,14 +2,14 @@ body {
   color: #E76100;
 }
 
-.edicao_container img {
+.perfiluser_container img {
   width: 30%;
   min-width: 10%;
   margin-top: 5%;
   margin-left: 10%;
 }
 
-.edicao_container{
+.perfiluser_container{
   
   margin-top: none;
   max-width: 40%;
@@ -18,7 +18,7 @@ body {
 }
 
 
-.edicao_align_field{
+.perfiluser_align_field{
   width: 100%;
   height: 100%;
 
@@ -27,8 +27,8 @@ body {
 }
 
 
-.edicao_align_field .edicao_login_htm,
-.edicao_align_field .edicao_cadastro_htm {
+.perfiluser_align_field .perfiluser_login_htm,
+.perfiluser_align_field .perfiluser_cadastro_htm {
   top: 12%; 
   left: 0;
   right: 0;
@@ -39,21 +39,21 @@ body {
 }
 
 
-.edicao_align_field .edicao_login,
-.edicao_align_field .edicao_cadastro,
-.edicao_login_form .edicao_group .edicao_check {
+.perfiluser_align_field .perfiluser_login,
+.perfiluser_align_field .perfiluser_cadastro,
+.perfiluser_login_form .perfiluser_group .perfiluser_check {
   display: none;
 }
 
 
-.edicao_align_field .edicao_item,
-.edicao_login_form .edicao_group .edicao_label,
-.edicao_login_form .edicao_group .edicao_button {
+.perfiluser_align_field .perfiluser_item,
+.perfiluser_login_form .perfiluser_group .perfiluser_label,
+.perfiluser_login_form .perfiluser_group .perfiluser_button {
   text-transform: uppercase;
 }
 
 
-.edicao_align_field .edicao_item {
+.perfiluser_align_field .perfiluser_item {
   font-size: 20px;
   margin-right: 5px;
   padding-bottom: 5px;
@@ -64,8 +64,8 @@ body {
 }
 
 
-.edicao_align_field .edicao_login:checked+.edicao_item,
-.edicao_align_field .edicao_cadastro:checked+.edicao_item {
+.perfiluser_align_field .perfiluser_login:checked+.perfiluser_item,
+.perfiluser_align_field .perfiluser_cadastro:checked+.perfiluser_item {
   color: #000000;
   border-color: #E76100; 
   -webkit-transform: scaleX(1);
@@ -75,7 +75,7 @@ body {
 }
 
 
-.edicao_login_form {
+.perfiluser_login_form {
   min-height: 345px;
   position: relative;
   perspective: 1000px;
@@ -83,20 +83,20 @@ body {
 }
 
 
-.edicao_login_form .edicao_group {
+.perfiluser_login_form .perfiluser_group {
   margin-bottom: 15px;
 }
 
 
 
-.edicao_login_form .edicao_group .edicao_label,
-.edicao_login_form .edicao_group .edicao_input {
+.perfiluser_login_form .perfiluser_group .perfiluser_label,
+.perfiluser_login_form .perfiluser_group .perfiluser_input {
   color: #000000;
   display: block;
 }
 
 
-.edicao_login_form .edicao_group .edicao_button {
+.perfiluser_login_form .perfiluser_group .perfiluser_button {
   height: 45px;
   width: 145px;
   color: #fff;
@@ -106,13 +106,13 @@ body {
 }
 
 
-.edicao_button {
+.perfiluser_button {
   cursor: pointer;
   margin-top: 10%;
 }
 
 
-.edicao_login_form .edicao_group .edicao_input {
+.perfiluser_login_form .perfiluser_group .perfiluser_input {
   border: none;
   border-radius: 15px;
   padding: 1rem 1rem;
@@ -124,38 +124,38 @@ body {
 }
 
 
-.edicao_login_form .edicao_group .edicao_label{
+.perfiluser_login_form .perfiluser_group .perfiluser_label{
   color: #fff;
   font-size: 12px;
 }
 
 
-.edicao_login_form .edicao_group .edicao_button{
+.perfiluser_login_form .perfiluser_group .perfiluser_button{
   background: #E76100;
 }
 
 
-.edicao_login_form .edicao_group .edicao_button:hover {
+.perfiluser_login_form .perfiluser_group .perfiluser_button:hover {
 background: rgb(230, 87, 31);
 }
 
 
-.edicao_login_form .edicao_group .edicao_check:checked+label {
+.perfiluser_login_form .perfiluser_group .perfiluser_check:checked+label {
   color: #fff;
 }
 
 
-.edicao_align_field .edicao_login:checked+.edicao_item+.edicao_cadastro+.edicao_item+.edicao_login_form .edicao_login_htm {
+.perfiluser_align_field .perfiluser_login:checked+.perfiluser_item+.perfiluser_cadastro+.perfiluser_item+.perfiluser_login_form .perfiluser_login_htm {
   transform: rotate(0);
 }
 
 
-.edicao_align_field .edicao_cadastro:checked+.edicao_item+.edicao_login_form .edicao_cadastro_htm {
+.perfiluser_align_field .perfiluser_cadastro:checked+.perfiluser_item+.perfiluser_login_form .perfiluser_cadastro_htm {
   transform: rotate(0);
 }
 
 @media screen and (max-width: 1700px){
-.edicao_container img {
+.perfiluser_container img {
   width: 200px;
   margin-left: 61px;
 }
@@ -163,7 +163,7 @@ background: rgb(230, 87, 31);
 
 
 @media screen and (max-width: 1264px){
-  .edicao_container{
+  .perfiluser_container{
     margin-top: none;
     max-width: 500px;
     white-space: nowrap;
@@ -171,7 +171,7 @@ background: rgb(230, 87, 31);
 }
 }
 
-.edicao_p {
+.perfiluser_p {
   text-transform: uppercase;
   font-size: 20px;
   margin-right: 5px;

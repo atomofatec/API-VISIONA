@@ -17,6 +17,7 @@
 .cadastro_align_field{
   width: 100%;
   height: 100%;
+
   padding: 70px 70px 10px 90px;
   background: none;
 }
@@ -24,7 +25,7 @@
 
 .cadastro_align_field .cadastro_login_htm,
 .cadastro_align_field .cadastro_cadastro_htm {
-  top: 5%; 
+  top: 12%; 
   left: 0;
   right: 0;
   bottom: 0;
@@ -56,13 +57,14 @@
   display: inline-block;
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  color: #9e9e9e;
 }
 
 
 .cadastro_align_field .cadastro_login:checked+.cadastro_item,
 .cadastro_align_field .cadastro_cadastro:checked+.cadastro_item {
   color: #000000;
-  border-color: #E76100;
+  border-color: #E76100; 
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition: all 1.0s ease-in-out 0s;
@@ -71,7 +73,7 @@
 
 
 .cadastro_login_form {
-  min-height: 315px;
+  min-height: 345px;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -103,7 +105,7 @@
 
 .cadastro_button {
   cursor: pointer;
-  margin-top: 85%;
+  margin-top: 10%;
 }
 
 
@@ -114,7 +116,7 @@
   width: 100%;
   min-width: 345px;
   background: #faf6f6;
-  margin:0.cadastro_6rem 0;
+  margin:0.6rem 0;
   box-shadow: 1px 1px 6px #000000c1;
 }
 
@@ -147,17 +149,6 @@ background: rgb(230, 87, 31);
 
 .cadastro_align_field .cadastro_cadastro:checked+.cadastro_item+.cadastro_login_form .cadastro_cadastro_htm {
   transform: rotate(0);
-}
-
-
-.cadastro_footer{
-  text-align: left;
-  margin-top: 10%;
-}
-
-.cadastro_footer:hover {
-text-decoration: underline;
-color: #E76100;
 }
 
 @media screen and (max-width: 1700px){
