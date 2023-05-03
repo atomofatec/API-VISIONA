@@ -6,6 +6,8 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 
 export function Login() {
 
@@ -43,16 +45,34 @@ export function Login() {
             }).then((response) => {
                 console.log(response.data);
                 if(response.data.msg === "Usuário logado") {
-                    localStorage.setItem('user', response.data.id_user)
-                    alert(response.data.msg);
                     navigate('/tabela-users')
                 }
                 if(response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
-                    alert(response.data.msg)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Atenção',
+                        text: 'Usuário não cadastrado/Informações estão incorretas',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                      })
                 }
             });
         } else {
-            alert("Todos os campos devem ser preenchidos.")
+            Swal.fire({
+                icon: 'error',
+                title: 'Atenção',
+                text: 'Todos os campos devem ser preenchidos',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+              })
         }
     }
 
@@ -84,6 +104,11 @@ export function Login() {
                                     name='password'
                                     className={Style.login_input}
                                     onChange={handleChangeValues} />
+                            </div>
+                            <div className={Style.footer}>
+                                <Link to='/Esquecer'>
+                                    <a>Esqueceu a senha?</a>
+                                </ Link>
                             </div>
                         </div>
                             <div className={Style.login_group}> 

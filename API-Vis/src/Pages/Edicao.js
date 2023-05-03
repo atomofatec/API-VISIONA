@@ -3,7 +3,9 @@ import Logo from '../Components/Logo';
 import Style from '../Styles/Edicao.module.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export function Edicao() {
 
@@ -37,20 +39,52 @@ export function Edicao() {
             updatedat: updatedat
         }).then((response) => {
             if(response.data.msg === "Usuário atualizado") {
-                alert(response.data.msg);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Alteração realizada',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                  })
                 navigate('/tabela-users')
             }else{
-                alert('Erro')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atenção',
+                    text: 'Não foi possível editar o usuário',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                  })
             }
         })
     }
     
     return(
-        <html>
+        <>
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
             <div className={Style.edicao_container}>
                 <Logo />
+
                 <div className={Style.edicao_align_field}>
-                    <p className={Style.edicao_p}>Editar Usuário</p>
+                    <span>
+                        <Link to="/tabela-users" className="btn">
+                        <i className="bx bx-arrow-back"></i>
+                        </Link>
+                        <p className={Style.edicao_p}>
+                            Editar Usuário
+                        </p>
+                    </span>
                     <div className={Style.edicao_login_form}>
                         <div className={Style.edicao_adicionar_htm}>   
                             <div className={Style.edicao_group}>
@@ -79,6 +113,6 @@ export function Edicao() {
                 </div>
             </div>
             <CirculosPerfil />
-        </html>
-    )
+        </>
+    );
 }

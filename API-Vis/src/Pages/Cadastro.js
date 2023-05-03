@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 export function Cadastro() {
     const [values, setValues] = useState();
@@ -61,13 +62,33 @@ export function Cadastro() {
             createdat: createdat,
             updatedat: updatedat
         }).then((response)=>{
-            alert(response.data.msg);
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: 'Cadastro realizado',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+              })
             clearCampos();
             navigate('/')
   
         });}
         else {
-            alert("Todos os campos devem ser preenchidos.")
+            Swal.fire({
+                icon: 'error',
+                title: 'Atenção',
+                text: 'Todos os campos devem ser preenchidos',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+              })
         }
     }
 

@@ -29,9 +29,6 @@ export function TabelaUsers() {
                 <div className={Style.estrutura_cabecalho}>
                     <Logo />
                     <div className={Style.tabela_user_profile}>
-                        <Link to='/perfil'>
-                        <a href="/perfil">Usuário</a>
-                        </Link>
                         <Perfil />
                     </div>
                 </div>

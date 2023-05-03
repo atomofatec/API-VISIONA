@@ -4,6 +4,8 @@ import Style from '../Styles/Adicionar.module.css';
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 export function Adicionar() {
     const [values, setValues] = useState();
@@ -60,22 +62,55 @@ export function Adicionar() {
             createdat: createdat,
             updatedat: updatedat
         }).then((response)=>{
-            alert(response.data.msg);
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso',
+                text: 'Alteração realizada',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+              })
             clearCampos();
             navigate('/tabela-users')
   
         });}
         else {
-            alert("Todos os campos devem ser preenchidos.")
+            Swal.fire({
+                icon: 'error',
+                title: 'Atenção',
+                text: 'Todos os campos devem ser preenchidos',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+              })
         }
     }
 
     return(
-        <html>
+        <>
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+
             <div className={Style.adicionar_container}>
                 <Logo />
+
                 <div className={Style.adicionar_align_field}>
-                    <p className={Style.adicionar_p}>Adicionar Usuário</p>
+                    <span>
+                        <Link to="/tabela-users" className="btn">
+                        <i className="bx bx-arrow-back"></i>
+                        </Link>
+                        <p className={Style.adicionar_p}>
+                            Adicionar Usuário
+                        </p>
+                    </span>
                     <div className={Style.adicionar_login_form}>
                         <div className={Style.adicionar_adicionar_htm}>   
                             <div className={Style.adicionar_group}>
@@ -128,6 +163,6 @@ export function Adicionar() {
                 </div>
             </div>
             <CirculosPerfil />
-        </html>
-    )
+            </>
+    );
 }

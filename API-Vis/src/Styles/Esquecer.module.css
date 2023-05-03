@@ -2,33 +2,28 @@ body {
   color: #E76100;
 }
 
-.adicionar_container img {
-  width: 30%;
-  min-width: 10%;
-  margin-top: 5%;
-  margin-left: 10%;
-}
-
-.adicionar_container{
+.esquecer_container{
   
   margin-top: none;
   max-width: 40%;
   white-space: nowrap;
   position: relative;
+  float: right;
+  margin-right: 3%;
 }
 
 
-.adicionar_align_field{
+.esquecer_align_field{
   width: 100%;
   height: 100%;
-
   padding: 70px 70px 10px 90px;
   background: none;
+  margin-top: 15%;
 }
 
 
-.adicionar_align_field .adicionar_login_htm,
-.adicionar_align_field .adicionar_cadastro_htm {
+.esquecer_align_field .esquecer_login_htm,
+.esquecer_align_field .esquecer_cadastro_htm {
   top: 12%; 
   left: 0;
   right: 0;
@@ -39,21 +34,21 @@ body {
 }
 
 
-.adicionar_align_field .adicionar_login,
-.adicionar_align_field .adicionar_cadastro,
-.adicionar_login_form .adicionar_group .adicionar_check {
+.esquecer_align_field .esquecer_login,
+.esquecer_align_field .esquecer_cadastro,
+.esquecer_login_form .esquecer_group .esquecer_check {
   display: none;
 }
 
 
-.adicionar_align_field .adicionar_item,
-.adicionar_login_form .adicionar_group .adicionar_label,
-.adicionar_login_form .adicionar_group .adicionar_button {
+.esquecer_align_field .esquecer_item,
+.esquecer_login_form .esquecer_group .esquecer_label,
+.esquecer_login_form .esquecer_group .esquecer_button {
   text-transform: uppercase;
 }
 
 
-.adicionar_align_field .adicionar_item {
+.esquecer_align_field .esquecer_item {
   font-size: 20px;
   margin-right: 5px;
   padding-bottom: 5px;
@@ -64,8 +59,8 @@ body {
 }
 
 
-.adicionar_align_field .adicionar_login:checked+.adicionar_item,
-.adicionar_align_field .adicionar_cadastro:checked+.adicionar_item {
+.esquecer_align_field .esquecer_login:checked+.esquecer_item,
+.esquecer_align_field .esquecer_cadastro:checked+.esquecer_item {
   color: #000000;
   border-color: #E76100; 
   -webkit-transform: scaleX(1);
@@ -75,7 +70,7 @@ body {
 }
 
 
-.adicionar_login_form {
+.esquecer_login_form {
   min-height: 345px;
   position: relative;
   perspective: 1000px;
@@ -83,20 +78,20 @@ body {
 }
 
 
-.adicionar_login_form .adicionar_group {
+.esquecer_login_form .esquecer_group {
   margin-bottom: 15px;
 }
 
 
 
-.adicionar_login_form .adicionar_group .adicionar_label,
-.adicionar_login_form .adicionar_group .adicionar_input {
+.esquecer_login_form .esquecer_group .esquecer_label,
+.esquecer_login_form .esquecer_group .esquecer_input {
   color: #000000;
   display: block;
 }
 
 
-.adicionar_login_form .adicionar_group .adicionar_button {
+.esquecer_login_form .esquecer_group .esquecer_button {
   height: 45px;
   width: 145px;
   color: #fff;
@@ -106,13 +101,16 @@ body {
 }
 
 
-.adicionar_button {
+.esquecer_button {
   cursor: pointer;
   margin-top: 10%;
 }
 
+.esquecer_esquecer_htm{
+  color: #9e9e9e;
+}
 
-.adicionar_login_form .adicionar_group .adicionar_input {
+.esquecer_login_form .esquecer_group .esquecer_input {
   border: none;
   border-radius: 15px;
   padding: 1rem 1rem;
@@ -121,41 +119,42 @@ body {
   background: #faf6f6;
   margin:0.6rem 0;
   box-shadow: 1px 1px 6px #000000c1;
+  margin-top: 8%;
 }
 
 
-.adicionar_login_form .adicionar_group .adicionar_label{
+.esquecer_login_form .esquecer_group .esquecer_label{
   color: #fff;
   font-size: 12px;
 }
 
 
-.adicionar_login_form .adicionar_group .adicionar_button{
+.esquecer_login_form .esquecer_group .esquecer_button{
   background: #E76100;
 }
 
 
-.adicionar_login_form .adicionar_group .adicionar_button:hover {
+.esquecer_login_form .esquecer_group .esquecer_button:hover {
 background: rgb(230, 87, 31);
 }
 
 
-.adicionar_login_form .adicionar_group .adicionar_check:checked+label {
+.esquecer_login_form .esquecer_group .esquecer_check:checked+label {
   color: #fff;
 }
 
 
-.adicionar_align_field .adicionar_login:checked+.adicionar_item+.adicionar_cadastro+.adicionar_item+.adicionar_login_form .adicionar_login_htm {
+.esquecer_align_field .esquecer_login:checked+.esquecer_item+.esquecer_cadastro+.esquecer_item+.esquecer_login_form .esquecer_login_htm {
   transform: rotate(0);
 }
 
 
-.adicionar_align_field .adicionar_cadastro:checked+.adicionar_item+.adicionar_login_form .adicionar_cadastro_htm {
+.esquecer_align_field .esquecer_cadastro:checked+.esquecer_item+.esquecer_login_form .esquecer_cadastro_htm {
   transform: rotate(0);
 }
 
 @media screen and (max-width: 1700px){
-.adicionar_container img {
+.esquecer_container img {
   width: 200px;
   margin-left: 61px;
 }
@@ -163,7 +162,7 @@ background: rgb(230, 87, 31);
 
 
 @media screen and (max-width: 1264px){
-  .adicionar_container{
+  .esquecer_container{
     margin-top: none;
     max-width: 500px;
     white-space: nowrap;
@@ -171,7 +170,7 @@ background: rgb(230, 87, 31);
 }
 }
 
-.adicionar_p {
+.esquecer_p {
   text-transform: uppercase;
   font-size: 20px;
   margin-right: 5px;
@@ -179,6 +178,7 @@ background: rgb(230, 87, 31);
   margin: 0 15px 10px 0;
   display: inline-block;
   border-bottom: 2px solid transparent;
-  color: black;
+  color: #000000;
   border-color: #E76100;
+  margin-bottom: 7%;
 }
