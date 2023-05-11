@@ -45,6 +45,7 @@ export function Login() {
             }).then((response) => {
                 console.log(response.data);
                 if(response.data.msg === "Usuário logado") {
+                    localStorage.setItem('user', response.data.id_user)
                     navigate('/tabela-users')
                 }
                 if(response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
