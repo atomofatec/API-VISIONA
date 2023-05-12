@@ -6,6 +6,7 @@ import { Edicao } from './Pages/Edicao';
 import { Esquecer } from './Pages/Esquecer';
 import { TabelaUsers } from './Pages/TabelaUsers';
 import { Adicionar } from './Pages/Adicionar';
+import { Dashboard } from './Pages/Dashboard';
 
 function App() {
   return (  
@@ -18,6 +19,7 @@ function App() {
         <Route path='/perfil' element={<Perfil />} />
         <Route path='/edicao' element={<Edicao />} />
         <Route path='/adicionar' element={<Adicionar />} />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   )
