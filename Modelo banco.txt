@@ -14,7 +14,7 @@ email VARCHAR (30) UNIQUE,
 password_user VARCHAR (30),
 perfil VARCHAR (30),
 cpf_user NUMERIC (11) UNIQUE,
-status_user VARCHAR (30),
+status_user VARCHAR (30),no
 createdat VARCHAR (30),
 updatedat VARCHAR (30),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
