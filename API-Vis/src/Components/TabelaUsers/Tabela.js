@@ -1,11 +1,14 @@
 import "../../Styles/Tabela.css"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Tabela({users}) {
 
     const navigate = useNavigate();
 
     async function editUser(item) {
+        
         const tabelaNome = item.name_user;
         const tabelaEmail = item.email;
         const tabelaId = item.id_user;
@@ -19,7 +22,31 @@ function Tabela({users}) {
         navigate('/edicao');
     }
 
+    async function addUser() {
+        navigate('/adicionar')
+    }
+
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm('Deseja realmente excluir o usuário?');
+        if (confirmDelete) {
+          try {
+            await axios.delete(`http://localhost:3333/users/${id}`);
+            //setUsers(users.filter((user) => user.id !== id));
+            alert('Usuário excluído com sucesso!');
+          } catch (error) {
+            alert('Não foi possível excluir o usuário');
+          }
+        }
+      };
+
 return (
+
+    <>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <article className="principal">
         <div className="row justify-content-center">
 			<div className="col-md-6 text-center mb-5">
@@ -29,22 +56,16 @@ return (
                             <table className="table table-responsive-xl">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Email</th>
                                         <th>Nome</th>
                                         <th>Status</th>
-                                        <th>Editar</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                             
                                 <tbody>
                                     {users.map((item, i) => (
                                         <tr key = {i}>
-                                            <td className="d-flex align-items-center">  
-                                                <div className="pl-3 email">
-                                                    <span >{item.id_user}</span>
-                                                </div>
-                                            </td>
 
                                             <td className="d-flex align-items-center">  
                                                 <div className="pl-3 email">
@@ -62,22 +83,43 @@ return (
                                             </td>
 
                                             <td>
-                                                <button type="button" onClick={() => {editUser(item);}}>
-                                                    <span><i >Editar</i></span>
-                                                </button>
+                                                <div className="button" onClick={() => {editUser(item);}}>
+                                                    <Link to="/edicao">
+                                                        <i className="bx bxs-edit-alt"></i>
+                                                    </Link>
+                                                </div>
+                                                {/* funcionalidade de excluir estaria por enquanto nesse botão. No vídeo q acompanhei ele excluia da própria tabela. Dps iria adaptar p deixar essa funcionalidade no botão "Excluir" de Edição */}
+                                                <div className="button">
+                                                    <a href={`/deletar/${item.id_user}`}>
+                                                        <i className="bx bx-x"></i>
+                                                    </a>
+                                                </div>
                                             </td>
+
+                                                {/* <div className="button">
+                                                    <Link to="deletar/{{id_user}}">
+                                                        <i className="bx bx-x"></i>
+                                                    </Link> 
+                                                </div> 
+                                            </td>*/}
                                         </tr>
                                         ))}
                                 </tbody>
                             </table>
+
+                            <Link to="/adicionar" className="btn">
+                                <i className="bx bxs-user-plus"></i>
+                            </Link>
+                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </article>
-
+    </>
     );
-};
+}
                 
-export default Tabela;               
+export default Tabela;                          

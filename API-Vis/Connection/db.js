@@ -1,13 +1,16 @@
 const express = require("express");
 const app = express();
 const { Pool } = require("pg");
-const cors = require("cors")
+const cors = require("cors");
+const session = require("express-session");
+const cookieParser = require("cookie-parser")
+
 
 const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'api_visiona'
+    database: 'visiona'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -16,6 +19,16 @@ function cadUser(name_user, email, password_user, perfil, cpf_user, status_user,
             console.log('erro SQL', err);
         } else {
             res.send({msg: "Usuário cadastrado com sucesso"})
+        };
+    })
+}
+
+function addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
+    cliente.query(('insert into users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user", "createdat", "updatedat") values ('+"'"+name_user+"', '"+email+"', '"+password_user+"', '"+perfil+"', '"+cpf_user+"', '"+status_user+"', '"+createdat+"', '"+updatedat+"');"), (err, result) => {
+        if(err) {
+            console.log('erro SQL', err);
+        } else {
+            res.send({msg: "Usuário adicionado com sucesso"})
         };
     })
 }
@@ -35,16 +48,7 @@ function logUser(email, password_user, res) {
 
   function attUser(name_user, email, id_user, updatedat, res) {
     cliente.query(
-        "UPDATE users SET name_user = '" 
-        + name_user + 
-        "', email = '" 
-        + email +   
-        "', updatedat = '" 
-        + updatedat +   
-        "' WHERE id_user = " 
-        + id_user + 
-        ";"
-    , (err, result) => {
+        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat +  "' WHERE id_user = "+ id_user +";", (err, result) => {
         if(err) {
             console.log("erro SQL", err);
         } else {
@@ -53,15 +57,74 @@ function logUser(email, password_user, res) {
     });
   }
 
+  function preencheCampos(id_user, res) {
+    cliente.query("SELECT * FROM users WHERE id_user = "+ id_user + ";", (err, result) => {
+        if(err) {
+            console.log("erro query: ", err);
+        }
+        if(result.rows.length === 1) {
+            const nomeUser = result.rows.values().next().value.name_user;
+            const emailUser = result.rows.values().next().value.email;
+            const cpfUser = result.rows.values().next().value.cpf_user;
+            const mensagem = 'Usuário logado';
+            const pessoa = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser}
+            res.send(pessoa);
+        }else{
+            res.send({msg: '"Usuário não cadastrado/Informações estão incorretas"'})
+        }
+    })
+  }
+
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "secret"
+}));
+
 
 app.post("/", (req, res) => {
     const email = req.body.email
     const password_user = req.body.password_user
 
     logUser(email, password_user, res)
+    
+    cliente.query(`select * from users where email = '${email}'`, (err, res) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            console.log(res.rows[0])
+            const user_session = {
+                id: res.rows[0].id_user,
+                name : res.rows[0].name_user,
+                email: res.rows[0].email,
+                password_user: res.rows[0].password_user,
+                perfil: res.rows[0].perfil,
+                cpf: res.rows[0].cpf_user,
+                status: res.rows[0].status_user,
+                updated: res.rows[0].updatedat
+            }
+            console.log(user_session)
+            req.session.user = user_session;
+            req.session.save();
+            // return res.send("User logged in");
+        }
+    })
 })
+
+app.get("/user", (req, res) => {
+    const sessionUser = req.session.user;
+    return res.send(sessionUser);
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy();
+    return res.send("User logged out!");
+});
+
+
 
 app.post("/cadastro", (req, res)=>{
     const {name_user} = req.body;
@@ -72,8 +135,22 @@ app.post("/cadastro", (req, res)=>{
     const status_user = "Ativo";
     const {createdat} = req.body;
     const {updatedat} = req.body
-
+    console.log(req.body)
     cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
+    
+})
+
+app.post("/adicionar", (req, res)=>{
+    const {name_user} = req.body;
+    const {email} = req.body;
+    const {password_user} = req.body;
+    const perfil = "Comum";
+    const {cpf_user} = req.body;
+    const status_user = "Ativo";
+    const {createdat} = req.body;
+    const {updatedat} = req.body
+
+    addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
     
 })
 
@@ -95,6 +172,36 @@ app.post("/confirmar-editar", (req, res) => {
     attUser(name_user, email, id_user, updatedat, res);
 });
 
+// TENTATIVAS DE DELETE
+
+// TENTATIVA 1
+//app.post("/deletar", (req, res) => {
+ //   const { id_user } = req.body;
+ //   deleteUser(id_user, res);
+//});
+
+// TENTATIVA 2 (https://webdesignemfoco.com/cursos/crud/crud-nodejs-06-delete)
+//app.get('deletar/:item.id_user', function(req, res){
+//    res.render('deletar');
+
+// TENTATIVA 3 (vídeo https://www.youtube.com/watch?v=Omf-6IDNlMg&ab_channel=Celke)
+ app.get('/deletar', function(req, res){
+     user_id.destroy({
+         where: { 'user_id': req.params.id}
+     }).then(function(){
+
+         res.send("Usuário deletado com sucesso!");
+     }).catch(function(erro){
+        res.send("Usuário não deletado!");
+     })
+
+})
+
+app.post('/editar', (req,res) => {
+    const { id_user } = req.body
+  
+    preencheCampos(id_user, res)
+  })
 
 app.listen(3001, () => {
     console.log("Servidor sendo executado");
