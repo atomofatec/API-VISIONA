@@ -84,7 +84,6 @@ app.use(session({
     secret: "secret"
 }));
 
-
 app.post("/", (req, res) => {
     const email = req.body.email
     const password_user = req.body.password_user
@@ -109,7 +108,6 @@ app.post("/", (req, res) => {
             console.log(user_session)
             req.session.user = user_session;
             req.session.save();
-            // return res.send("User logged in");
         }
     })
 })
