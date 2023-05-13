@@ -20,9 +20,6 @@ export function Dashboard() {
                     <Grafico />
                     <GraficoAdm />
                 </div>
-                <div className={Style.dashboard_principal}>
-                    <Grafico />
-                </div>
                 <div className={Style.dashboard_rodape}>
                     <Rodape />
                 </div>
