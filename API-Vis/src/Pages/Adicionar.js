@@ -111,7 +111,6 @@ export function Adicionar() {
                             Adicionar Usuário
                         </p>
                     </span>
-
                     <div className={Style.adicionar_login_form}>
                         <div className={Style.adicionar_adicionar_htm}>   
                             <div className={Style.adicionar_group}>

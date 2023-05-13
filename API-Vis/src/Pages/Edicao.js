@@ -32,7 +32,7 @@ export function Edicao() {
         const tabelaDataJson = localStorage.getItem('tabelaUsers');
         const tabelaData = JSON.parse(tabelaDataJson);
         const updatedat = new Date().toLocaleString();
-        axios.post("http://localhost:3001/confirmar-editar", {
+        axios.post("http://localhost:3001/editar-perfil", {
             name_user: document.getElementById("nome").value,
             email: document.getElementById("email").value,
             id_user: tabelaData.tabelaId,
@@ -85,7 +85,6 @@ export function Edicao() {
                             Editar Usuário
                         </p>
                     </span>
-
                     <div className={Style.edicao_login_form}>
                         <div className={Style.edicao_adicionar_htm}>   
                             <div className={Style.edicao_group}>

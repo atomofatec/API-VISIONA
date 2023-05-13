@@ -20,10 +20,6 @@ function Tabela({users}) {
         navigate('/edicao');
     }
 
-    async function addUser() {
-        navigate('/adicionar')
-    }
-
 return (
 
     <>
@@ -78,18 +74,14 @@ return (
                                                         <i className="bx bx-x"></i>
                                                     </Link>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         ))}
                                 </tbody>
                             </table>
-
                             <Link to="/adicionar" className="btn">
                                 <i className="bx bxs-user-plus"></i>
                             </Link>
-                            
-
                         </div>
                     </div>
                 </div>

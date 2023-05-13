@@ -38,12 +38,21 @@ function logUser(email, password_user, res) {
         if(err) {
             console.log('erro query:', err);
         }
-        if(result.rows.length > 0) {
-            res.send({msg: "Usuário logado"})
-        } else {
-            res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+        if (result.rows.length === 1) {
+            const idUser = result.rows.values().next().value.id_user
+            const perfilUser = result.rows.values().next().value.perfil;
+            if(result.rows.length > 0) {
+                const mensagem = 'Usuário logado'
+                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser}
+                res.send(data)
+            } else {
+                res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+            }
+            } else {
+                res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+            }
         }
-    })
+    )
 }
 
   function attUser(name_user, email, id_user, updatedat, res) {
@@ -66,9 +75,10 @@ function logUser(email, password_user, res) {
             const nomeUser = result.rows.values().next().value.name_user;
             const emailUser = result.rows.values().next().value.email;
             const cpfUser = result.rows.values().next().value.cpf_user;
+            const perfilUser = result.rows.values().next().value.perfil;
             const mensagem = 'Usuário logado';
-            const pessoa = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser}
-            res.send(pessoa);
+            const data = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser, perfil:perfilUser}
+            res.send(data);
         }else{
             res.send({msg: '"Usuário não cadastrado/Informações estão incorretas"'})
         }
@@ -161,7 +171,7 @@ app.get("/mostrarTabela", (req, res)=>{
 
 })
 
-app.post("/confirmar-editar", (req, res) => {
+app.post("/editar-perfil", (req, res) => {
     const { name_user } = req.body;
     const { email } = req.body;
     const { id_user } = req.body;
