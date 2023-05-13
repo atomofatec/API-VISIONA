@@ -1,7 +1,6 @@
 {
   "name": "aoi_js",
   "version": "1.0.0",
-  "description": "",
   "main": "db.js",
   "scripts": {
     "dev": "nodemon db.js",
@@ -16,5 +15,7 @@
     "express-session": "^1.17.3",
     "nodemon": "^2.0.22",
     "pg": "^8.10.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

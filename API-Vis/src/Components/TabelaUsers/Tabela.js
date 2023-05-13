@@ -1,25 +1,40 @@
 import "../../Styles/Tabela.css"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Tabela({users}) {
 
     const navigate = useNavigate();
 
     async function editUser(item) {
+        
         const tabelaNome = item.name_user;
         const tabelaEmail = item.email;
         const tabelaId = item.id_user;
+        const tabelaStatus = item.status_user;
         const tabelaData = {
             tabelaNome: tabelaNome,
             tabelaEmail: tabelaEmail,
-            tabelaId: tabelaId
+            tabelaId: tabelaId,
+            tabelaStatus: tabelaStatus
         };
         console.log(tabelaData);
         localStorage.setItem("tabelaUsers", JSON.stringify(tabelaData));
         navigate('/edicao');
     }
 
+    const handleDelete = async (tabelaId) => {
+        const confirmDelete = window.confirm("Deseja realmente excluir o usuário?");
+      
+        if (confirmDelete) {
+            axios.delete(`http://localhost:3001/usuarios/${tabelaId}`);
+            alert("Usuário excluído com sucesso!");
+        } else {
+            alert("Não foi possível excluir o usuário");
+        }
+    }
+    
 return (
 
     <>
@@ -60,7 +75,7 @@ return (
                                             </td>
 
                                             <td className="status">
-                                                <span className="active">{item.status_user}</span>
+                                                <span className={item.status_user === 'Ativo' ? 'active' : 'disabled'}>{item.status_user}</span>
                                             </td>
 
                                             <td>
@@ -69,10 +84,8 @@ return (
                                                         <i className="bx bxs-edit-alt"></i>
                                                     </Link>
                                                 </div>
-                                                <div className="button">
-                                                    <Link to="#">
-                                                        <i className="bx bx-x"></i>
-                                                    </Link>
+                                                <div className="button" onClick={() => handleDelete(item.id_user)}>
+                                                    <a href='#' className="bx bx-x"></a>
                                                 </div>
                                             </td>
                                         </tr>

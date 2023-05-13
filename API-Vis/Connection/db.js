@@ -33,6 +33,19 @@ function addUser(name_user, email, password_user, perfil, cpf_user, status_user,
     })
 }
 
+app.delete("/usuarios/:id", (req, res) => {
+    const id = req.params.id;
+  
+    cliente.query("DELETE FROM users WHERE id_user = $1", [id], (err, result) => {
+      if (err) {
+        console.log("erro SQL", err);
+        res.status(500).send({ msg: "Erro ao excluir usuário" });
+      } else {
+        res.send({ msg: "Usuário excluído com sucesso" });
+      }
+    });
+  });
+
 function logUser(email, password_user, res) {
     cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
         if(err) {
@@ -55,9 +68,9 @@ function logUser(email, password_user, res) {
     )
 }
 
-  function attUser(name_user, email, id_user, updatedat, res) {
+  function attUser(name_user, email, id_user, updatedat, status_user, res) {
     cliente.query(
-        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat +  "' WHERE id_user = "+ id_user +";", (err, result) => {
+        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat + "', status_user = '"+ status_user +"' WHERE id_user = "+ id_user +";", (err, result) => {
         if(err) {
             console.log("erro SQL", err);
         } else {
@@ -174,8 +187,9 @@ app.post("/editar-perfil", (req, res) => {
     const { email } = req.body;
     const { id_user } = req.body;
     const { updatedat } = req.body;
+    const { status_user } = req.body
 
-    attUser(name_user, email, id_user, updatedat, res);
+    attUser(name_user, email, id_user, updatedat, status_user, res);
 });
 
 app.post('/editar', (req,res) => {

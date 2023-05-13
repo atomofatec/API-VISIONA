@@ -123,7 +123,6 @@ body {
   box-shadow: 1px 1px 6px #000000c1;
 }
 
-
 .edicao_login_form .edicao_group .edicao_label{
   color: #fff;
   font-size: 12px;
@@ -135,7 +134,8 @@ body {
 }
 
 
-.edicao_login_form .edicao_group .edicao_button:hover {
+.edicao_login_form .edicao_group .edicao_button:hover,
+.edicao_login_form .edicao_group .excluir_button:hover {
 background: rgb(230, 87, 31);
 }
 
@@ -181,4 +181,20 @@ background: rgb(230, 87, 31);
   border-bottom: 2px solid transparent;
   color: #000000;
   border-color: #E76100;
+}
+
+.ativo {
+  color: #ee8600;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 11px;
+}
+
+.inativo {
+  color: rgb(143, 143, 218);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 7px;
 }
