@@ -6,21 +6,28 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
-import SwitchButton from '../Components/SwitchButton';
+import Toggle from '../Components/Toggle';
 
 export function Edicao() {
-    const [getUserId] = useState([]);
-    const [users, setUsers] = useState([]); 
     const [values, setValues] = useState();
+    const [status, setStatus] = useState('');
+    const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
+
+    const handleToggle = () => {
+        const newToggleValue = !toggle;
+        setToggle(newToggleValue);
+        const newStatus = newToggleValue ? 'Inativo' : 'Ativo';
+        setStatus(newStatus);
+    };
 
     const handleChangeValues = (value) => {
         setValues((prevValue) => ({
-          ...prevValue,
-          [value.target.name]: value.target.value,
+            ...prevValue,
+            [value.target.name]: value.target.value,
         }));
-      };
-    
+    };
+
     useEffect(() => {
         const tabelaDataJson = localStorage.getItem('tabelaUsers');
         const tabelaData = JSON.parse(tabelaDataJson);
@@ -28,77 +35,54 @@ export function Edicao() {
 
         document.getElementById('nome').value = tabelaData.tabelaNome;
         document.getElementById('email').value = tabelaData.tabelaEmail;
+
+        setStatus(tabelaData.tabelaStatus);
+        setToggle(tabelaData.tabelaStatus === 'Inativo');
     }, []);
 
     const handleClickButton = () => {
         const tabelaDataJson = localStorage.getItem('tabelaUsers');
         const tabelaData = JSON.parse(tabelaDataJson);
         const updatedat = new Date().toLocaleString();
-        axios.post("http://localhost:3001/confirmar-editar", {
-            name_user: document.getElementById("nome").value,
-            email: document.getElementById("email").value,
-            id_user: tabelaData.tabelaId,
-            updatedat: updatedat
-        }).then((response) => {
-            if(response.data.msg === "Usuário atualizado") {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sucesso',
-                    text: 'Alteração realizada',
-                    confirmButtonColor: '#E76100',
-                    showConfirmButton: false,
-                    iconColor: '#E76100',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showCloseButton: true,
-                  })
-                navigate('/tabela-users')
-            }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Atenção',
-                    text: 'Não foi possível editar o usuário',
-                    confirmButtonColor: '#E76100',
-                    showConfirmButton: false,
-                    iconColor: '#E76100',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showCloseButton: true,
-                  })
-            }
-        })
-    }
-
-    const handleClickDeleteButton = async (id) => {
-        const confirmDelete = window.confirm('Deseja realmente excluir o usuário?');
-        if (confirmDelete) {
-          try {
-            await axios.delete(`http://localhost:3001/edicao`);
-            setUsers(users.filter((user) => user.id !== id));
-            alert('Usuário excluído com sucesso!');
-          } catch (error) {
-            alert('Não foi possível excluir o usuário');
-          }
-        }
-      };
-
-    //   const handleClickStatusButton = document.querySelector();
-    //   switchButton.addEventListener('change', (event) => {
-    //     const userId = getUserId();
-    //     const isActive = event.target.checked;
-      
-    //     fetch(`/users/${userId}/activate`, {
-    //       method: 'PATCH',
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify({ is_active: isActive })
-    //     })
-    //       .then(response => response.json())
-    //       .then(data => console.log(data))
-    //       .catch(error => console.error(error));
-    //   });
-        
+        const newStatus = toggle ? 'Inativo' : 'Ativo';
+        setStatus(newStatus);
+        axios
+            .post('http://localhost:3001/confirmar-editar', {
+                name_user: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                id_user: tabelaData.tabelaId,
+                updatedat: updatedat,
+                status_user: newStatus,
+            })
+            .then((response) => {
+                if (response.data.msg === 'Usuário atualizado') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Alteração realizada',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                    });
+                    navigate('/tabela-users');
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Atenção',
+                        text: 'Não foi possível editar o usuário',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                    });
+                }
+            });
+    }       
     
     return(
         <>
@@ -108,7 +92,6 @@ export function Edicao() {
         />
             <div className={Style.edicao_container}>
                 <Logo />
-
                 <div className={Style.edicao_align_field}>
                     <span>
                         <Link to="/tabela-users" className="btn">
@@ -138,30 +121,17 @@ export function Edicao() {
                                     onChange={handleChangeValues} />
                             </div>                      
                         </div>
-                        <div>
-                            <span>
-                                <p className={Style.t1}>
-                                Status:
-                                </p>
-                            </span>
-                        </div>
                         <div className={Style.edicao_group}>
-                            <SwitchButton />
-                            {/* onClick={()=>handleClickStatusButton()} */}
+                            <Toggle status={status} onToggle={handleToggle} />
+                            <p className={status === 'Inativo' ? Style.inativo : Style.ativo}>{status}</p>
                         </div>
                         <div className={Style.edicao_group}> 
                             <button type="button" className={Style.edicao_button} onClick={()=>handleClickButton()}>
                                 Editar
                             </button>
                         </div>
-                        <div className={Style.edicao_group}> 
-                            <button type="button" className={Style.excluir_button} onClick={()=>handleClickDeleteButton()}>
-                                Excluir
-                            </button>
-                        </div>
-                        
                     </div>
-                </div>
+                </div>             
             </div>
             <CirculosPerfil />
         </>

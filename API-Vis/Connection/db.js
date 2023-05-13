@@ -59,9 +59,9 @@ function logUser(email, password_user, res) {
     })
 }
 
-  function attUser(name_user, email, id_user, updatedat, res) {
+  function attUser(name_user, email, id_user, updatedat, status_user, res) {
     cliente.query(
-        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat +  "' WHERE id_user = "+ id_user +";", (err, result) => {
+        "UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat + "', status_user = '"+ status_user +"' WHERE id_user = "+ id_user +";", (err, result) => {
         if(err) {
             console.log("erro SQL", err);
         } else {
@@ -181,34 +181,10 @@ app.post("/confirmar-editar", (req, res) => {
     const { email } = req.body;
     const { id_user } = req.body;
     const { updatedat } = req.body;
+    const { status_user } = req.body
 
-    attUser(name_user, email, id_user, updatedat, res);
+    attUser(name_user, email, id_user, updatedat, status_user, res);
 });
-
-// TENTATIVAS DE DELETE
-
-// TENTATIVA 1
-//app.post("/deletar", (req, res) => {
- //   const { id_user } = req.body;
- //   deleteUser(id_user, res);
-//});
-
-// TENTATIVA 2 (https://webdesignemfoco.com/cursos/crud/crud-nodejs-06-delete)
-//app.get('deletar/:item.id_user', function(req, res){
-//    res.render('deletar');
-
-// TENTATIVA 3 (vídeo https://www.youtube.com/watch?v=Omf-6IDNlMg&ab_channel=Celke)
-/* app.get('/deletar', function(req, res){
-     user_id.destroy({
-         where: { 'user_id': req.params.id}
-     }).then(function(){
-
-         res.send("Usuário deletado com sucesso!");
-     }).catch(function(erro){
-        res.send("Usuário não deletado!");
-     })
-
-})*/
 
 app.post('/editar', (req,res) => {
     const { id_user } = req.body

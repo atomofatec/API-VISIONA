@@ -12,10 +12,12 @@ function Tabela({users}) {
         const tabelaNome = item.name_user;
         const tabelaEmail = item.email;
         const tabelaId = item.id_user;
+        const tabelaStatus = item.status_user;
         const tabelaData = {
             tabelaNome: tabelaNome,
             tabelaEmail: tabelaEmail,
-            tabelaId: tabelaId
+            tabelaId: tabelaId,
+            tabelaStatus: tabelaStatus
         };
         console.log(tabelaData);
         localStorage.setItem("tabelaUsers", JSON.stringify(tabelaData));
@@ -73,7 +75,7 @@ return (
                                             </td>
 
                                             <td className="status">
-                                                <span className="active">{item.status_user}</span>
+                                                <span className={item.status_user === 'Ativo' ? 'active' : 'disabled'}>{item.status_user}</span>
                                             </td>
 
                                             <td>
