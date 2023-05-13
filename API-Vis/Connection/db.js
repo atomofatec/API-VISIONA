@@ -2,15 +2,15 @@ const express = require("express");
 const app = express();
 const { Pool } = require("pg");
 const cors = require("cors");
-const session = require("express-session");
-const cookieParser = require("cookie-parser")
+//const session = require("express-session");
+//const cookieParser = require("cookie-parser")
 
 
 const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'visiona'
+    database: 'api_visiona'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -87,12 +87,12 @@ function logUser(email, password_user, res) {
 
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
+/*app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: "secret"
-}));
+}));*/
 
 app.post("/", (req, res) => {
     const email = req.body.email
@@ -100,7 +100,7 @@ app.post("/", (req, res) => {
 
     logUser(email, password_user, res)
     
-    cliente.query(`select * from users where email = '${email}'`, (err, res) => {
+/*    cliente.query(`select * from users where email = '${email}'`, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
@@ -122,17 +122,15 @@ app.post("/", (req, res) => {
     })
 })
 
-app.get("/user", (req, res) => {
+ app.get("/user", (req, res) => {
     const sessionUser = req.session.user;
     return res.send(sessionUser);
 });
 
 app.get("/logout", (req, res) => {
     req.session.destroy();
-    return res.send("User logged out!");
-});
-
-
+    return res.send("User logged out!"); */
+}); 
 
 app.post("/cadastro", (req, res)=>{
     const {name_user} = req.body;
