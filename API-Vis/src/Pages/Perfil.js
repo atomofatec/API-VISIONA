@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 function Perfil() {
 
     var id_user = localStorage.getItem('user')
+    const perfilUsuario = localStorage.getItem('perfil');
+
     useEffect(()=>{
         axios.post("http://localhost:3001/editar",{
             id_user: id_user
@@ -41,14 +43,13 @@ function Perfil() {
 
     const handleClickButton = () => {
         const updatedat = new Date().toLocaleString();
-        //const idUser = id_user
         axios.post("http://localhost:3001/editar-perfil", {
             name_user: document.getElementById('nome').value,
             email: document.getElementById('email').value,
             id_user: id_user,
             updatedat: updatedat
         }).then((response) => {
-            if(response.data.msg === 'Usuário atualizado!'){
+            if(response.data.msg === 'Usuário atualizado'){
                 Swal.fire({
                     icon: 'success',
                     title: 'Sucesso',
@@ -59,8 +60,12 @@ function Perfil() {
                     timer: 2000,
                     timerProgressBar: true,
                     showCloseButton: true,
-                  })
-                navigate('/tabela-users')
+                })
+                if (perfilUsuario === 'Admin') {
+                    navigate('/tabela-users');
+                } else if (perfilUsuario === 'Comum') {
+                    navigate('/perfil');
+                }
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -72,10 +77,20 @@ function Perfil() {
                     timer: 2000,
                     timerProgressBar: true,
                     showCloseButton: true,
-                  })
+                })
             }
         });
     }
+
+    const btnClickBack = () => {
+        const perfilUsuario = localStorage.getItem('perfil');
+        if (perfilUsuario === 'Admin') {
+            navigate('/tabela-users');
+        } else if (perfilUsuario === 'Comum') {
+            navigate('/');
+        }
+    }
+    
 
     return(
         <>
@@ -88,9 +103,7 @@ function Perfil() {
                 
                 <div className={Style.perfiluser_align_field}>
                     <span>
-                        <Link to="/tabela-users" className="btn">
-                        <i className="bx bx-arrow-back"></i>
-                        </Link>
+                        <a href='#' className="bx bx-arrow-back" onClick={() => btnClickBack()}></a>
                         <p className={Style.perfiluser_p}>
                             Meu Perfil
                         </p>
@@ -123,7 +136,6 @@ function Perfil() {
                             </div>                      
                         </div>
                             <div className={Style.perfiluser_group}> 
-                            <Link to='/tabela-users'>
                                 <button 
                                     type="button" 
                                     id='btnEditar' 
@@ -131,7 +143,6 @@ function Perfil() {
                                     onClick={() => handleClickButton()}>
                                     Salvar
                                 </button>
-                            </Link>
                             </div>
                     </div>
                 </div>

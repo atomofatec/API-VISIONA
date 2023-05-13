@@ -46,7 +46,12 @@ export function Login() {
                 console.log(response.data);
                 if(response.data.msg === "Usuário logado") {
                     localStorage.setItem('user', response.data.id_user)
-                    navigate('/tabela-users')
+                    localStorage.setItem('perfil', response.data.perfil)
+                    if(response.data.perfil === "Admin") {
+                        navigate('/tabela-users')
+                    } else {
+                        navigate('/perfil')
+                    }
                 }
                 if(response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
                     Swal.fire({
@@ -108,7 +113,7 @@ export function Login() {
                             </div>
                             <div className={Style.footer}>
                                 <Link to='/Esquecer'>
-                                    <a>Esqueceu a senha?</a>
+                                    <p>Esqueceu a senha?</p>
                                 </ Link>
                             </div>
                         </div>
