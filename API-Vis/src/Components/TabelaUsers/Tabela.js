@@ -22,23 +22,17 @@ function Tabela({users}) {
         navigate('/edicao');
     }
 
-    async function addUser() {
-        navigate('/adicionar')
-    }
-
-    const handleDelete = async (id) => {
-        const confirmDelete = window.confirm('Deseja realmente excluir o usuário?');
+    const handleDelete = async (tabelaId) => {
+        const confirmDelete = window.confirm("Deseja realmente excluir o usuário?");
+      
         if (confirmDelete) {
-          try {
-            await axios.delete(`http://localhost:3333/users/${id}`);
-            //setUsers(users.filter((user) => user.id !== id));
-            alert('Usuário excluído com sucesso!');
-          } catch (error) {
-            alert('Não foi possível excluir o usuário');
-          }
+            axios.delete(`http://localhost:3001/usuarios/${tabelaId}`);
+            alert("Usuário excluído com sucesso!");
+        } else {
+            alert("Não foi possível excluir o usuário");
         }
-      };
-
+    }
+    
 return (
 
     <>
@@ -89,19 +83,10 @@ return (
                                                     </Link>
                                                 </div>
                                                 {/* funcionalidade de excluir estaria por enquanto nesse botão. No vídeo q acompanhei ele excluia da própria tabela. Dps iria adaptar p deixar essa funcionalidade no botão "Excluir" de Edição */}
-                                                <div className="button">
-                                                    <a href={`/deletar/${item.id_user}`}>
-                                                        <i className="bx bx-x"></i>
-                                                    </a>
+                                                <div className="button" onClick={() => handleDelete(item.id_user)}>
+                                                    <a href='#' className="bx bx-x"></a>
                                                 </div>
                                             </td>
-
-                                                {/* <div className="button">
-                                                    <Link to="deletar/{{id_user}}">
-                                                        <i className="bx bx-x"></i>
-                                                    </Link> 
-                                                </div> 
-                                            </td>*/}
                                         </tr>
                                         ))}
                                 </tbody>

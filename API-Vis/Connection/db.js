@@ -2,15 +2,15 @@ const express = require("express");
 const app = express();
 const { Pool } = require("pg");
 const cors = require("cors");
-const session = require("express-session");
-const cookieParser = require("cookie-parser")
+//const session = require("express-session");
+//const cookieParser = require("cookie-parser")
 
 
 const cliente = new Pool ({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'visiona'
+    database: 'api_visiona'
 })
 
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res){
@@ -32,6 +32,19 @@ function addUser(name_user, email, password_user, perfil, cpf_user, status_user,
         };
     })
 }
+
+app.delete("/usuarios/:id", (req, res) => {
+    const id = req.params.id;
+  
+    cliente.query("DELETE FROM users WHERE id_user = $1", [id], (err, result) => {
+      if (err) {
+        console.log("erro SQL", err);
+        res.status(500).send({ msg: "Erro ao excluir usuário" });
+      } else {
+        res.send({ msg: "Usuário excluído com sucesso" });
+      }
+    });
+  });
 
 function logUser(email, password_user, res) {
     cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
@@ -77,12 +90,12 @@ function logUser(email, password_user, res) {
 
 app.use(cors());
 app.use(express.json());
-app.use(cookieParser());
+/*app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: "secret"
-}));
+}));*/
 
 
 app.post("/", (req, res) => {
@@ -91,7 +104,7 @@ app.post("/", (req, res) => {
 
     logUser(email, password_user, res)
     
-    cliente.query(`select * from users where email = '${email}'`, (err, res) => {
+/*    cliente.query(`select * from users where email = '${email}'`, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
@@ -111,10 +124,10 @@ app.post("/", (req, res) => {
             req.session.save();
             // return res.send("User logged in");
         }
-    })
+    })*/
 })
 
-app.get("/user", (req, res) => {
+/*app.get("/user", (req, res) => {
     const sessionUser = req.session.user;
     return res.send(sessionUser);
 });
@@ -122,7 +135,7 @@ app.get("/user", (req, res) => {
 app.get("/logout", (req, res) => {
     req.session.destroy();
     return res.send("User logged out!");
-});
+});*/
 
 
 
@@ -185,7 +198,7 @@ app.post("/confirmar-editar", (req, res) => {
 //    res.render('deletar');
 
 // TENTATIVA 3 (vídeo https://www.youtube.com/watch?v=Omf-6IDNlMg&ab_channel=Celke)
- app.get('/deletar', function(req, res){
+/* app.get('/deletar', function(req, res){
      user_id.destroy({
          where: { 'user_id': req.params.id}
      }).then(function(){
@@ -195,7 +208,7 @@ app.post("/confirmar-editar", (req, res) => {
         res.send("Usuário não deletado!");
      })
 
-})
+})*/
 
 app.post('/editar', (req,res) => {
     const { id_user } = req.body

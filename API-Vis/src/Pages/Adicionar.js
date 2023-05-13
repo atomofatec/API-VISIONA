@@ -65,7 +65,7 @@ export function Adicionar() {
             Swal.fire({
                 icon: 'success',
                 title: 'Sucesso',
-                text: 'Alteração realizada',
+                text: 'Usuário adicionado',
                 confirmButtonColor: '#E76100',
                 showConfirmButton: false,
                 iconColor: '#E76100',
