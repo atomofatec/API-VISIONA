@@ -47,10 +47,25 @@ export function Login() {
                 if(response.data.msg === "Usuário logado") {
                     localStorage.setItem('user', response.data.id_user)
                     localStorage.setItem('perfil', response.data.perfil)
-                    if(response.data.perfil === "Admin") {
-                        navigate('/tabela-users')
+                    localStorage.setItem('status', response.data.status_user)
+                    if(response.data.status_user === "Ativo"){
+                        if(response.data.perfil === "Admin") {
+                            navigate('/tabela-users')
+                        } else {
+                            navigate('/perfil')
+                        }
                     } else {
-                        navigate('/perfil')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Atenção',
+                            text: 'Não foi possível entrar',
+                            confirmButtonColor: '#E76100',
+                            showConfirmButton: false,
+                            iconColor: '#E76100',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            showCloseButton: true,
+                          })
                     }
                 }
                 if(response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {

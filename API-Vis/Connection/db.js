@@ -54,18 +54,18 @@ function logUser(email, password_user, res) {
         if (result.rows.length === 1) {
             const idUser = result.rows.values().next().value.id_user
             const perfilUser = result.rows.values().next().value.perfil;
+            const statusUser = result.rows.values().next().value.status_user;
             if(result.rows.length > 0) {
                 const mensagem = 'Usuário logado'
-                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser}
+                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser, status_user:statusUser}
                 res.send(data)
             } else {
                 res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
             }
-            } else {
-                res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
-            }
+        } else {
+            res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
         }
-    )
+    })
 }
 
   function attUser(name_user, email, id_user, updatedat, status_user, res) {

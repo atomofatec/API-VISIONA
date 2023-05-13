@@ -11,6 +11,7 @@ function Perfil() {
     var id_user = localStorage.getItem('user')
     const perfilUsuario = localStorage.getItem('perfil');
 
+
     useEffect(()=>{
         axios.post("http://localhost:3001/editar",{
             id_user: id_user
@@ -42,12 +43,14 @@ function Perfil() {
     };
 
     const handleClickButton = () => {
+        const statusUsuario = localStorage.getItem('status');
         const updatedat = new Date().toLocaleString();
         axios.post("http://localhost:3001/editar-perfil", {
             name_user: document.getElementById('nome').value,
             email: document.getElementById('email').value,
             id_user: id_user,
-            updatedat: updatedat
+            updatedat: updatedat,
+            status_user: statusUsuario
         }).then((response) => {
             if(response.data.msg === 'Usuário atualizado'){
                 Swal.fire({
