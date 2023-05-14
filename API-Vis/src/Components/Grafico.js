@@ -32,7 +32,7 @@ export function Grafico() {
                   }, {
                     name: 'inativo',
                     color: '#544FC5',
-                    y: 5
+                    y: 0
                   }]
               }
         ]

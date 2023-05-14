@@ -198,6 +198,28 @@ app.post('/editar', (req,res) => {
     preencheCampos(id_user, res)
   })
 
+  app.get("/usuarios/ativos-inativos", (req, res) => {
+    cliente.query("SELECT COUNT(*) AS ativos FROM users WHERE status_user = 'Ativo';", (err, resultAtivos) => {
+        if (err) {
+            console.log("erro SQL", err);
+            res.status(500).send({ msg: "Erro ao obter a contagem de usuários ativos" });
+        } else {
+            cliente.query("SELECT COUNT(*) AS inativos FROM users WHERE status_user = 'Inativo';", (err, resultInativos) => {
+                if (err) {
+                    console.log("erro SQL", err);
+                    res.status(500).send({ msg: "Erro ao obter a contagem de usuários inativos" });
+                } else {
+                    const ativos = resultAtivos.rows[0].ativos;
+                    const inativos = resultInativos.rows[0].inativos;
+                    const data = {ativos: ativos, inativos: inativos}
+                    res.send(data);
+                }
+            });
+        }
+    });
+});
+
+
 app.listen(3001, () => {
     console.log("Servidor sendo executado");
 });
