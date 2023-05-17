@@ -1,29 +1,62 @@
 import "../../Styles/Tabela.css"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function Tabela({users}) {
 
     const navigate = useNavigate();
 
     async function editUser(item) {
+        
         const tabelaNome = item.name_user;
         const tabelaEmail = item.email;
         const tabelaId = item.id_user;
+        const tabelaStatus = item.status_user;
         const tabelaData = {
             tabelaNome: tabelaNome,
             tabelaEmail: tabelaEmail,
-            tabelaId: tabelaId
+            tabelaId: tabelaId,
+            tabelaStatus: tabelaStatus
         };
         console.log(tabelaData);
         localStorage.setItem("tabelaUsers", JSON.stringify(tabelaData));
         navigate('/edicao');
     }
 
-    async function addUser() {
-        navigate('/adicionar')
+    const handleDelete = async (tabelaId) => {
+        Swal.fire({
+            title: "Atenção",
+            text: "Quer mesmo excluir o usuário?",
+            icon: "question",
+            iconColor: '#E76100',
+            showCancelButton: true,
+            confirmButtonText: "Sim",
+            confirmButtonColor: '#E76100',
+            cancelButtonText: "Não",
+            cancelButtonColor: 'rgba(115, 120, 127, 76%)',
+            reverseButtons: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3001/usuarios/${tabelaId}`);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'Usuário excluido com sucesso',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                  })
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              Swal.close();
+            }
+          });
     }
-
+    
 return (
 
     <>
@@ -64,7 +97,7 @@ return (
                                             </td>
 
                                             <td className="status">
-                                                <span className="active">{item.status_user}</span>
+                                                <span className={item.status_user === 'Ativo' ? 'active' : 'disabled'}>{item.status_user}</span>
                                             </td>
 
                                             <td>
@@ -73,23 +106,17 @@ return (
                                                         <i className="bx bxs-edit-alt"></i>
                                                     </Link>
                                                 </div>
-                                                <div className="button">
-                                                    <Link to="#">
-                                                        <i className="bx bx-x"></i>
-                                                    </Link>
+                                                <div className="button" onClick={() => handleDelete(item.id_user)}>
+                                                    <a href='#' className="bx bx-x"></a>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         ))}
                                 </tbody>
                             </table>
-
                             <Link to="/adicionar" className="btn">
                                 <i className="bx bxs-user-plus"></i>
                             </Link>
-                            
-
                         </div>
                     </div>
                 </div>

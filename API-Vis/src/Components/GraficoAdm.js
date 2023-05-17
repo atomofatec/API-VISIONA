@@ -25,7 +25,7 @@ export function GraficoAdm() {
             {
                 data: [{
                     name: 'usuário comum',
-                    y: 8,
+                    y: 2,
                     color: '#6B8ABC'
                   }, {
                     name: 'administradores',

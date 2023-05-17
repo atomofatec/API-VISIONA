@@ -2,7 +2,7 @@ import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Login.module.css';
 import { Link } from 'react-router-dom'
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,10 @@ import Swal from 'sweetalert2'
 
 
 export function Login() {
+
+    useEffect(() => {
+        localStorage.clear()
+    })
 
     const[values, setValues] = useState();
     const navigate = useNavigate();
@@ -39,8 +43,30 @@ export function Login() {
                 email: values.email,
                 password_user: values.password,
             }).then((response) => {
+                console.log(response.data);
                 if(response.data.msg === "Usuário logado") {
-                    navigate('/tabela-users')
+                    localStorage.setItem('user', response.data.id_user)
+                    localStorage.setItem('perfil', response.data.perfil)
+                    localStorage.setItem('status', response.data.status_user)
+                    if(response.data.status_user === "Ativo"){
+                        if(response.data.perfil === "Admin") {
+                            navigate('/tabela-users')
+                        } else {
+                            navigate('/perfil')
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Atenção',
+                            text: 'Não foi possível entrar',
+                            confirmButtonColor: '#E76100',
+                            showConfirmButton: false,
+                            iconColor: '#E76100',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            showCloseButton: true,
+                          })
+                    }
                 }
                 if(response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
                     Swal.fire({
@@ -102,7 +128,7 @@ export function Login() {
                             </div>
                             <div className={Style.footer}>
                                 <Link to='/Esquecer'>
-                                    <a>Esqueceu a senha?</a>
+                                    <p>Esqueceu a senha?</p>
                                 </ Link>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import Tabela from "../Components/TabelaUsers/Tabela"
 import Logo from "../Components/Logo";
-import Perfil from "../Components/Perfil";
+import MenuPerfil from "../Components/MenuPerfil";
 import Rodape from "../Components/Rodape";
 import Style from "../Styles/TabelaUsers.module.css"
 import React, { useEffect, useState } from 'react'
@@ -29,7 +29,7 @@ export function TabelaUsers() {
                 <div className={Style.estrutura_cabecalho}>
                     <Logo />
                     <div className={Style.tabela_user_profile}>
-                        <Perfil />
+                        <MenuPerfil />
                     </div>
                 </div>
                 <Tabela users = {users}/>
