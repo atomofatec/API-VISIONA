@@ -6,7 +6,7 @@ import axios from 'axios'
 import { React, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
-function Perfil() {
+export function Perfil() {
 
     var id_user = localStorage.getItem('user')
     const perfilUsuario = localStorage.getItem('perfil');
@@ -32,9 +32,10 @@ function Perfil() {
             localStorage.setItem('userData', JSON.stringify(dataUser))
             console.log(emailUserData);
         })
-    }, []);
+    }, [id_user]);
 
     const [values, setValues] = useState();
+    console.log(values)
     const navigate = useNavigate();
     const handleChangeValues = (value) => {
         setValues(prevValue => ({
@@ -105,7 +106,9 @@ function Perfil() {
                 
                 <div className={Style.perfiluser_align_field}>
                     <span>
-                        <a href='#' className="bx bx-arrow-back" onClick={() => btnClickBack()}></a>
+                        <span className={Style.perfil_seta}>
+                        <i className="bx bx-arrow-back" onClick={() => btnClickBack()}></i>
+                        </span>
                         <p className={Style.perfiluser_p}>
                             Meu Perfil
                         </p>
@@ -158,5 +161,3 @@ function Perfil() {
         </>
     );
 }
-
-export default Perfil;

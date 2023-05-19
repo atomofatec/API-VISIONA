@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Cadastro } from './Pages/Cadastro';
 import { Login } from './Pages/Login';
-import Perfil from './Pages/Perfil';
+import { Perfil } from './Pages/Perfil';
 import { Edicao } from './Pages/Edicao';
 import { Esquecer } from './Pages/Esquecer';
 import { TabelaUsers } from './Pages/TabelaUsers';

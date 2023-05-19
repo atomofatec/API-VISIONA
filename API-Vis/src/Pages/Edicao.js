@@ -2,14 +2,14 @@ import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Edicao.module.css';
 import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import Toggle from '../Components/Toggle';
 
 export function Edicao() {
     const [values, setValues] = useState();
+    console.log(values)
     const [status, setStatus] = useState('');
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();

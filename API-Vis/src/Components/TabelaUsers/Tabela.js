@@ -50,10 +50,12 @@ function Tabela({users}) {
                     timer: 2000,
                     timerProgressBar: true,
                     showCloseButton: true,
+                  }).then(() => {
+                      window.location.reload()
                   })
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-              Swal.close();
-            }
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.close();
+                }
           });
     }
     
@@ -107,7 +109,9 @@ return (
                                                     </Link>
                                                 </div>
                                                 <div className="button" onClick={() => handleDelete(item.id_user)}>
-                                                    <a href='#' className="bx bx-x"></a>
+                                                    <div className="botao">
+                                                    <i className="bx bx-x"></i>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>

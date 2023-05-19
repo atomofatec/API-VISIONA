@@ -1,9 +1,8 @@
 import CirculosAlterar from '../Components/CirculosAlterar';
 import LogoAlterar from '../Components/LogoAlterar';
 import Style from '../Styles/Alterar.module.css';
-import React from "react";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 

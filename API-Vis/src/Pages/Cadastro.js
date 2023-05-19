@@ -1,10 +1,9 @@
 import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Cadastro.module.css';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 export function Cadastro() {

@@ -194,3 +194,7 @@ background: rgb(230, 87, 31);
   margin: 0;
   overflow: hidden;
 }
+
+.perfil_seta{
+  cursor: pointer;
+}

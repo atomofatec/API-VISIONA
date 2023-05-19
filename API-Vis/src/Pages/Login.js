@@ -1,11 +1,9 @@
 import Circulos from '../Components/Circulos';
 import Logo from '../Components/Logo';
 import Style from '../Styles/Login.module.css';
-import { Link } from 'react-router-dom'
-import React, { useEffect } from "react";
+import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 

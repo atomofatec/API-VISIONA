@@ -1,11 +1,9 @@
 import CirculosEsquecer from '../Components/CirculosEsquecer';
 import LogoEsquecer from '../Components/LogoEsquecer';
 import Style from '../Styles/Esquecer.module.css';
-import { Link } from 'react-router-dom';
-import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 
@@ -78,7 +76,7 @@ export function Esquecer() {
 
                     <div className={Style.esquecer_login_form}>
                         <div className={Style.esquecer_esquecer_htm}>   
-                        <a>Para redefinir sua senha informe o email cadastrado<br/> e enviaremos um código para alteração</a> 
+                        <p>Para redefinir sua senha informe o email cadastrado<br/> e enviaremos um código para alteração</p> 
                             <div className={Style.esquecer_group}>
                                 <input placeholder="E-mail" 
                                     id="Email" 
