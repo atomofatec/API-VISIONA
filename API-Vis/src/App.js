@@ -7,6 +7,7 @@ import { Esquecer } from './Pages/Esquecer';
 import { TabelaUsers } from './Pages/TabelaUsers';
 import { Adicionar } from './Pages/Adicionar';
 import { Dashboard } from './Pages/Dashboard';
+import { Alterar } from './Pages/Alterar';
 
 function App() {
   return (  
@@ -20,6 +21,7 @@ function App() {
         <Route path='/edicao' element={<Edicao />} />
         <Route path='/adicionar' element={<Adicionar />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/alterar' element={<Alterar />} />
       </Routes>
     </BrowserRouter>
   )
