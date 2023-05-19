@@ -48,6 +48,7 @@ export function Login() {
                     localStorage.setItem('user', response.data.id_user)
                     localStorage.setItem('perfil', response.data.perfil)
                     localStorage.setItem('status', response.data.status_user)
+                    localStorage.setItem('senha', response.data.password_user)
                     if(response.data.status_user === "Ativo"){
                         if(response.data.perfil === "Admin") {
                             navigate('/tabela-users')

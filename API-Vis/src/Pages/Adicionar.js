@@ -81,7 +81,7 @@ export function Adicionar() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Atenção',
-                    text: 'A senha e a sua confirmação devem ser iguais',
+                    text: 'As senhas devem ser iguais',
                     confirmButtonColor: '#E76100',
                     showConfirmButton: false,
                     iconColor: '#E76100',

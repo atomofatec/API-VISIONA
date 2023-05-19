@@ -118,7 +118,7 @@ body {
   margin-top: 10%;
   position: absolute;
   top: 50%;
-  left: 29%;
+  left: 31%;
 }
 
 .esquecer_esquecer_htm{
@@ -200,9 +200,11 @@ background: rgb(230, 87, 31);
   top: 19%;
   left: 29%;
 }
+
 .esquecer_seta {
   display: inline-block;
   position: absolute;
   top: 17%;
   left: 18%;
+  cursor: pointer;
 }

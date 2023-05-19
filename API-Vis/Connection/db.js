@@ -55,9 +55,10 @@ function logUser(email, password_user, res) {
             const idUser = result.rows.values().next().value.id_user
             const perfilUser = result.rows.values().next().value.perfil;
             const statusUser = result.rows.values().next().value.status_user;
+            const senhaUser = result.rows.values().next().value.password_user;
             if(result.rows.length > 0) {
                 const mensagem = 'Usuário logado'
-                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser, status_user:statusUser}
+                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser, status_user:statusUser, password_user:senhaUser}
                 res.send(data)
             } else {
                 res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
@@ -79,6 +80,17 @@ function logUser(email, password_user, res) {
     });
   }
 
+  function alteraSenha(id_user, updatedat, password_user, res) {
+    cliente.query(
+        "UPDATE users SET password_user = '"+ password_user +"', updatedat = '"+ updatedat + "' WHERE id_user = "+ id_user +";", (err, result) => {
+        if(err) {
+            console.log("erro SQL", err);
+        } else {
+            res.send({msg: "Senha alterada"})
+        };
+    });
+  }
+
   function preencheCampos(id_user, res) {
     cliente.query("SELECT * FROM users WHERE id_user = "+ id_user + ";", (err, result) => {
         if(err) {
@@ -89,8 +101,9 @@ function logUser(email, password_user, res) {
             const emailUser = result.rows.values().next().value.email;
             const cpfUser = result.rows.values().next().value.cpf_user;
             const perfilUser = result.rows.values().next().value.perfil;
+            const senhaUser = result.rows.values().next().value.password_user;
             const mensagem = 'Usuário logado';
-            const data = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser, perfil:perfilUser}
+            const data = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser, perfil:perfilUser, password_user:senhaUser}
             res.send(data);
         }else{
             res.send({msg: '"Usuário não cadastrado/Informações estão incorretas"'})
@@ -190,6 +203,14 @@ app.post("/editar-perfil", (req, res) => {
     const { status_user } = req.body
 
     attUser(name_user, email, id_user, updatedat, status_user, res);
+});
+
+app.post("/alterar-senha", (req, res) => {
+    const { id_user } = req.body;
+    const { updatedat } = req.body;
+    const { password_user } = req.body
+
+    alteraSenha(id_user, updatedat, password_user, res);
 });
 
 app.post('/editar', (req,res) => {
