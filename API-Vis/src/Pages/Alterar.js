@@ -1,7 +1,6 @@
 import CirculosAlterar from '../Components/CirculosAlterar';
 import LogoAlterar from '../Components/LogoAlterar';
 import Style from '../Styles/Alterar.module.css';
-import { Link } from 'react-router-dom';
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
@@ -10,7 +9,11 @@ import Swal from 'sweetalert2';
 
 
 export function Alterar() {
+
+    var id_user = localStorage.getItem('user')
+
     const [values, setValues] = useState();
+    console.log(values)
     const navigate = useNavigate();
     const handleChangeValues = (value)=>{
       setValues(prevValue=>({
@@ -37,29 +40,87 @@ export function Alterar() {
     }
 
     const handleClickButton = () =>{
-      
-        if (!checkVazio()){
-          axios.post("http://localhost:3001/esquecer", {
-            email: values.email
-        }).then(()=>{
-            clearCampos();
-            navigate('/login')
-  
-        });}
-        else {
+        const senhaUser = localStorage.getItem('senha');
+        const updatedat = new Date().toLocaleString();
+        if(!checkVazio()){
+            if(document.getElementById('password').value === senhaUser){
+                if(document.getElementById('newpassword').value !== senhaUser){
+                    axios.post("http://localhost:3001/alterar-senha", {
+                        id_user: id_user,
+                        password_user: document.getElementById('newpassword').value,
+                        updatedat: updatedat
+                    }).then((response) => {
+                        if(response.data.msg === 'Senha alterada'){
+                            localStorage.setItem('senha', document.getElementById('newpassword').value)
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sucesso',
+                                text: 'Senha alterada',
+                                confirmButtonColor: '#E76100',
+                                showConfirmButton: false,
+                                iconColor: '#E76100',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                showCloseButton: true,
+                            })
+                            clearCampos()
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Atenção',
+                                text: 'Não foi possível alterar a senha',
+                                confirmButtonColor: '#E76100',
+                                showConfirmButton: false,
+                                iconColor: '#E76100',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                showCloseButton: true,
+                            })
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Atenção',
+                        text: 'A nova senha não pode ser igual a antiga',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                    })
+                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Atenção',
+                    text: 'Senha incorreta',
+                    confirmButtonColor: '#E76100',
+                    showConfirmButton: false,
+                    iconColor: '#E76100',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showCloseButton: true,
+                })
+            }
+        } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Atenção',
-                text: 'Os campos devem ser preenchidos',
+                text: 'Todos os campos devem ser preenchidos',
                 confirmButtonColor: '#E76100',
                 showConfirmButton: false,
                 iconColor: '#E76100',
                 timer: 2000,
                 timerProgressBar: true,
                 showCloseButton: true,
-              })
+            })
         }
-        
+    }
+
+    const btnClickBack = () => {
+        navigate('/perfil')
     }
     
     return(
@@ -75,9 +136,7 @@ export function Alterar() {
                     <div className={Style.esquecer_align_field}>
                         <span>
                             <p className={Style.esquecer_seta}>
-                                <Link to="/" className="btn">
-                                <i className="bx bx-arrow-back"></i>
-                                </Link>
+                                <i className="bx bx-arrow-back" onClick={() => btnClickBack()}></i>
                             </p>
                             <p className={Style.esquecer_p}>
                                 Alterar minha senha
@@ -86,7 +145,7 @@ export function Alterar() {
 
                         <div className={Style.esquecer_login_form}>
                             <div className={Style.esquecer_esquecer_htm}>   
-                            <a>Para redefinir sua senha informe o email cadastrado<br/> e enviaremos um código para alteração</a> 
+                            <p>Para redefinir sua senha informe a senha atual<br/> e a nova senha para a alteração.</p> 
                                 <div className={Style.esquecer_group}>
                                     <input placeholder="Senha" 
                                         id="password" 

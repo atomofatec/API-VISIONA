@@ -135,7 +135,12 @@ function Perfil() {
                                     name='cpf' 
                                     className={Style.perfiluser_input}
                                     onChange={handleChangeValues}/>
-                            </div>                      
+                            </div> 
+                            <div>
+                                <Link to='/alterar'>
+                                    <p className={Style.alterar_texto}>Alterar a senha</p>
+                                </ Link>
+                            </div>                     
                         </div>
                             <div className={Style.perfiluser_group}> 
                                 <button 
