@@ -15,7 +15,6 @@ const Toggle = ({ perfil, onToggle }) => {
     setToggle(!toggle);
     onToggle(novoPerfil);
   };
-  
 
   return (
     <div className="toggleContainer">

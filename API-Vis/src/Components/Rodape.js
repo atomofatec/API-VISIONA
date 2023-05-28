@@ -1,7 +1,7 @@
 export function Rodape() {
-    return(
-        <p> 
-            VISIONA TECNOLOGIA ESPACIAL S.A. <br/>
+    return (
+        <p>
+            VISIONA TECNOLOGIA ESPACIAL S.A. <br />
             2023 &copy; TODOS OS DIREITOS RESERVADOS.
         </p>
     )

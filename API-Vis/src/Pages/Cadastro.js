@@ -9,38 +9,39 @@ import Swal from 'sweetalert2';
 export function Cadastro() {
     const [values, setValues] = useState();
     const navigate = useNavigate();
-    const handleChangeValues = (value)=>{
-      setValues(prevValue=>({
-        ...prevValue,
-        [value.target.name]: value.target.value,
-      }))
+    
+    const handleChangeValues = (value) => {
+        setValues(prevValue => ({
+            ...prevValue,
+            [value.target.name]: value.target.value,
+        }))
     };
 
     const checkVazio = () => {
         let isVazio = false
-        if(document.getElementById('Nome').value === ''){
-          isVazio = true
-          return isVazio
+        if (document.getElementById('Nome').value === '') {
+            isVazio = true
+            return isVazio
         }
-        if(document.getElementById('CPF').value === ''){
-          isVazio = true
-          return isVazio
+        if (document.getElementById('CPF').value === '') {
+            isVazio = true
+            return isVazio
         }
-        if(document.getElementById('Email').value === ''){
-          isVazio = true
-          return isVazio
+        if (document.getElementById('Email').value === '') {
+            isVazio = true
+            return isVazio
         }
-        if(document.getElementById('Senha').value === ''){
-          isVazio = true
-          return isVazio
+        if (document.getElementById('Senha').value === '') {
+            isVazio = true
+            return isVazio
         }
-        if(document.getElementById('CSenha').value === ''){
-          isVazio = true
-          return isVazio
+        if (document.getElementById('CSenha').value === '') {
+            isVazio = true
+            return isVazio
         }
     }
 
-    const clearCampos = ()=>{
+    const clearCampos = () => {
         document.getElementById('Nome').value = ''
         document.getElementById('CPF').value = ''
         document.getElementById('Email').value = ''
@@ -48,10 +49,9 @@ export function Cadastro() {
         document.getElementById('CSenha').value = ''
     }
 
-    const handleClickButton = () =>{
-      
-        if (!checkVazio()){
-            if(document.getElementById('Senha').value === document.getElementById('CSenha').value) {
+    const handleClickButton = () => {
+        if (!checkVazio()) {
+            if (document.getElementById('Senha').value === document.getElementById('CSenha').value) {
                 const createdat = new Date().toLocaleString();
                 const updatedat = new Date().toLocaleString();
                 axios.post("http://localhost:3001/cadastro", {
@@ -61,21 +61,21 @@ export function Cadastro() {
                     cpf_user: values.cpf,
                     createdat: createdat,
                     updatedat: updatedat
-                }).then((response)=>{
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Sucesso',
-                            text: 'Cadastro realizado',
-                            confirmButtonColor: '#E76100',
-                            showConfirmButton: false,
-                            iconColor: '#E76100',
-                            timer: 2000,
-                            timerProgressBar: true,
-                            showCloseButton: true,
-                        })
-                        clearCampos();
-                        navigate('/')
+                }).then((response) => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Cadastro realizado',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
                     })
+                    clearCampos();
+                    navigate('/')
+                })
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -100,11 +100,11 @@ export function Cadastro() {
                 timer: 2000,
                 timerProgressBar: true,
                 showCloseButton: true,
-              })
+            })
         }
     }
 
-    return(
+    return (
         <html>
             <div className={Style.cadastro_container}>
                 <Logo />
@@ -116,26 +116,26 @@ export function Cadastro() {
                     <input id="item-2" type="radio" name="item" className={Style.cadastro_cadastro} checked />
                     <label for="item-2" className={Style.cadastro_item}>Cadastro</label>
                     <div className={Style.cadastro_login_form}>
-                        <div className={Style.cadastro_adicionar_htm}>   
+                        <div className={Style.cadastro_adicionar_htm}>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Nome"
-                                    id="Nome" 
+                                    id="Nome"
                                     type="nome"
                                     name='nome'
                                     className={Style.cadastro_input}
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.cadastro_group}>
-                                <input placeholder="E-mail" 
-                                    id="Email" 
+                                <input placeholder="E-mail"
+                                    id="Email"
                                     type="email"
-                                    name='email' 
+                                    name='email'
                                     className={Style.cadastro_input}
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="CPF"
-                                    id="CPF" 
+                                    id="CPF"
                                     type="cpf"
                                     name='cpf'
                                     className={Style.cadastro_input}
@@ -143,26 +143,26 @@ export function Cadastro() {
                             </div>
                             <div className={Style.cadastro_group}>
                                 <input placeholder="Senha"
-                                    id="Senha" 
-                                    type="password" 
+                                    id="Senha"
+                                    type="password"
                                     name='password'
                                     className={Style.cadastro_input}
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.cadastro_group}>
-                                <input placeholder="Confirmar Senha" 
-                                    id="CSenha" 
+                                <input placeholder="Confirmar Senha"
+                                    id="CSenha"
                                     type="password"
                                     name='password'
                                     className={Style.cadastro_input}
                                     onChange={handleChangeValues} />
                             </div>
                         </div>
-                            <div className={Style.cadastro_group}> 
-                                <button type="button" className={Style.cadastro_button} onClick={()=>handleClickButton()}>
-                                    Cadastrar
-                                </button>
-                            </div>
+                        <div className={Style.cadastro_group}>
+                            <button type="button" className={Style.cadastro_button} onClick={() => handleClickButton()}>
+                                Cadastrar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ const cors = require("cors");
 //const session = require("express-session");
 //const cookieParser = require("cookie-parser")
 
-const cliente = new Pool ({
+const cliente = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
@@ -14,11 +14,11 @@ const cliente = new Pool ({
 
 //Função cadastro
 function cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res) {
-    const query =   `INSERT INTO users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user",     
+    const query = `INSERT INTO users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user",     
                     "createdat", "updatedat") 
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
     const values = [name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat];
-  
+
     cliente.query(query, values, (err, result) => {
         if (err) {
             console.log('Erro SQL:', err);
@@ -31,25 +31,25 @@ function cadUser(name_user, email, password_user, perfil, cpf_user, status_user,
 
 //Função adiciona user
 function addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res) {
-    const query =   `INSERT INTO users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user", 
+    const query = `INSERT INTO users ("name_user", "email", "password_user", "perfil", "cpf_user", "status_user", 
                     "createdat", "updatedat")
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
     const values = [name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat];
-  
+
     cliente.query(query, values, (err, result) => {
-      if (err) {
-        console.error('Erro SQL:', err);
-        res.send({ msg: 'Erro ao adicionar usuário' });
-      } else {
-        res.send({ msg: 'Usuário adicionado com sucesso' });
-      }
+        if (err) {
+            console.error('Erro SQL:', err);
+            res.send({ msg: 'Erro ao adicionar usuário' });
+        } else {
+            res.send({ msg: 'Usuário adicionado com sucesso' });
+        }
     });
 }
 
 //Rota deleta user
 app.delete("/usuarios/:id", (req, res) => {
     const id = req.params.id;
-  
+
     cliente.query("DELETE FROM users WHERE id_user = $1", [id], (err, result) => {
         if (err) {
             console.log("erro SQL", err);
@@ -62,8 +62,8 @@ app.delete("/usuarios/:id", (req, res) => {
 
 //Função login
 function logUser(email, password_user, res) {
-    cliente.query("SELECT * FROM users WHERE email = '"+email+"' AND password_user = '"+password_user+"' ;", (err, result) => {
-        if(err) {
+    cliente.query("SELECT * FROM users WHERE email = '" + email + "' AND password_user = '" + password_user + "' ;", (err, result) => {
+        if (err) {
             console.log('erro query:', err);
         }
         if (result.rows.length === 1) {
@@ -71,58 +71,58 @@ function logUser(email, password_user, res) {
             const perfilUser = result.rows.values().next().value.perfil;
             const statusUser = result.rows.values().next().value.status_user;
             const senhaUser = result.rows.values().next().value.password_user;
-            if(result.rows.length > 0) {
+            if (result.rows.length > 0) {
                 const mensagem = 'Usuário logado'
-                const data = {msg: mensagem, id_user:idUser, perfil:perfilUser, status_user:statusUser, password_user:senhaUser}
+                const data = { msg: mensagem, id_user: idUser, perfil: perfilUser, status_user: statusUser, password_user: senhaUser }
                 res.send(data)
             } else {
-                res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+                res.send({ msg: "Usuário não cadastrado/Informações estão incorretas" })
             }
         } else {
-            res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+            res.send({ msg: "Usuário não cadastrado/Informações estão incorretas" })
         }
     })
 }
 
 //Função atualiza user
 function updtUser(name_user, email, id_user, updatedat, status_user, res) {
-    cliente.query("UPDATE users SET name_user = '"+ name_user +"', email = '"+ email +  "', updatedat = '"+ updatedat + "', status_user = '"+ status_user +"' WHERE id_user = "+ id_user +";", (err, result) => {
-        if(err) {
+    cliente.query("UPDATE users SET name_user = '" + name_user + "', email = '" + email + "', updatedat = '" + updatedat + "', status_user = '" + status_user + "' WHERE id_user = " + id_user + ";", (err, result) => {
+        if (err) {
             console.log("erro SQL", err);
         } else {
-            res.send({msg: "Usuário atualizado"})
+            res.send({ msg: "Usuário atualizado" })
         };
     });
 }
 
 //Função altera senha
 function alteraSenha(id_user, updatedat, password_user, res) {
-    cliente.query("UPDATE users SET password_user = '"+ password_user +"', updatedat = '"+ updatedat + "' WHERE id_user = "+ id_user +";", (err, result) => {
-        if(err) {
+    cliente.query("UPDATE users SET password_user = '" + password_user + "', updatedat = '" + updatedat + "' WHERE id_user = " + id_user + ";", (err, result) => {
+        if (err) {
             console.log("erro SQL", err);
         } else {
-            res.send({msg: "Senha alterada"})
+            res.send({ msg: "Senha alterada" })
         };
     });
 }
 
 //Função preenche campos
 function preencheCampos(id_user, res) {
-    cliente.query("SELECT * FROM users WHERE id_user = "+ id_user + ";", (err, result) => {
-        if(err) {
+    cliente.query("SELECT * FROM users WHERE id_user = " + id_user + ";", (err, result) => {
+        if (err) {
             console.log("erro query: ", err);
         }
-        if(result.rows.length === 1) {
+        if (result.rows.length === 1) {
             const nomeUser = result.rows.values().next().value.name_user;
             const emailUser = result.rows.values().next().value.email;
             const cpfUser = result.rows.values().next().value.cpf_user;
             const perfilUser = result.rows.values().next().value.perfil;
             const senhaUser = result.rows.values().next().value.password_user;
             const mensagem = 'Usuário logado';
-            const data = {msg:mensagem, name_user:nomeUser, email:emailUser, cpf_user:cpfUser, perfil:perfilUser, password_user:senhaUser}
+            const data = { msg: mensagem, name_user: nomeUser, email: emailUser, cpf_user: cpfUser, perfil: perfilUser, password_user: senhaUser }
             res.send(data);
         } else {
-            res.send({msg: '"Usuário não cadastrado/Informações estão incorretas"'})
+            res.send({ msg: '"Usuário não cadastrado/Informações estão incorretas"' })
         }
     })
 }
@@ -178,36 +178,36 @@ app.get("/logout", (req, res) => {
 
 //Rota cadastro
 app.post("/cadastro", (req, res) => {
-    const {name_user} = req.body;
-    const {email} = req.body;
-    const {password_user} = req.body;
+    const { name_user } = req.body;
+    const { email } = req.body;
+    const { password_user } = req.body;
     const perfil = "Comum";
-    const {cpf_user} = req.body;
+    const { cpf_user } = req.body;
     const status_user = "Ativo";
-    const {createdat} = req.body;
-    const {updatedat} = req.body
+    const { createdat } = req.body;
+    const { updatedat } = req.body
     console.log(req.body)
-    cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)    
+    cadUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
 });
 
 //Rota adiciona user
 app.post("/adicionar", (req, res) => {
-    const {name_user} = req.body;
-    const {email} = req.body;
-    const {password_user} = req.body;
-    const {perfil} = req.body;
-    const {cpf_user} = req.body;
+    const { name_user } = req.body;
+    const { email } = req.body;
+    const { password_user } = req.body;
+    const { perfil } = req.body;
+    const { cpf_user } = req.body;
     const status_user = "Ativo";
-    const {createdat} = req.body;
-    const {updatedat} = req.body
+    const { createdat } = req.body;
+    const { updatedat } = req.body
 
-    addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)    
+    addUser(name_user, email, password_user, perfil, cpf_user, status_user, createdat, updatedat, res)
 });
 
 //Rota preenche tabela
 app.get("/mostrarTabela", (req, res) => {
-    cliente.query('select id_user, name_user, email, perfil, status_user, createdat from users', (err, result)=>{
-        if(err) console.log(err);
+    cliente.query('select id_user, name_user, email, perfil, status_user, createdat from users', (err, result) => {
+        if (err) console.log(err);
         else res.json(result.rows);
     })
 });
@@ -233,9 +233,9 @@ app.post("/alterar-senha", (req, res) => {
 });
 
 //Rota edita user
-app.post('/editar', (req,res) => {
+app.post('/editar', (req, res) => {
     const { id_user } = req.body
-  
+
     preencheCampos(id_user, res)
 });
 
@@ -253,7 +253,7 @@ app.get("/usuarios/ativos-inativos", (req, res) => {
                 } else {
                     const ativos = resultAtivos.rows[0].ativos;
                     const inativos = resultInativos.rows[0].inativos;
-                    const data = {ativos: ativos, inativos: inativos}
+                    const data = { ativos: ativos, inativos: inativos }
                     res.send(data);
                 }
             });

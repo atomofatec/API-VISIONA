@@ -2,11 +2,11 @@
     .circle1,
     .circle2,
     .circle3 {
-      display: none;
+        display: none;
     }
 }
-  
-@media screen and (max-height: 474px) {  
+
+@media screen and (max-height: 474px) {
     .circle1,
     .circle2,
     .circle3 {
@@ -17,13 +17,13 @@
 .circle1 {
     position: absolute;
     top: -15%;
-    right: -35%; 
+    right: -35%;
     width: 70%;
     height: 130%;
     border-radius: 50%;
     background-color: #f5ab00;
 }
-  
+
 .circle2 {
     position: absolute;
     right: -30%;
@@ -32,14 +32,16 @@
     height: 110%;
     border-radius: 50%;
     background-color: #ee8600;
-} 
-  
+}
+
 .circle3 {
     position: absolute;
-    right: -25%; 
+    right: -25%;
     top: 5%;
-    width: 50%; /*LARGURA*/
-    height: 90%; /*ALTURA*/
+    width: 50%;
+    /*LARGURA*/
+    height: 90%;
+    /*ALTURA*/
     border-radius: 50%;
     background-color: #E76100;
 }

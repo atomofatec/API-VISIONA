@@ -10,7 +10,7 @@ import { Dashboard } from './Pages/Dashboard';
 import { Alterar } from './Pages/Alterar';
 
 function App() {
-  return (  
+  return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />

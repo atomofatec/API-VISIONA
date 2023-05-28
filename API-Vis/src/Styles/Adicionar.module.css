@@ -9,27 +9,23 @@ body {
   margin-left: 10%;
 }
 
-.adicionar_container{
-  
+.adicionar_container {
   margin-top: none;
   max-width: 40%;
   white-space: nowrap;
   position: relative;
 }
 
-
-.adicionar_align_field{
+.adicionar_align_field {
   width: 100%;
   height: 100%;
-
   padding: 70px 70px 10px 90px;
   background: none;
 }
 
-
 .adicionar_align_field .adicionar_login_htm,
 .adicionar_align_field .adicionar_cadastro_htm {
-  top: 12%; 
+  top: 12%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -38,20 +34,17 @@ body {
   backface-visibility: hidden;
 }
 
-
 .adicionar_align_field .adicionar_login,
 .adicionar_align_field .adicionar_cadastro,
 .adicionar_login_form .adicionar_group .adicionar_check {
   display: none;
 }
 
-
 .adicionar_align_field .adicionar_item,
 .adicionar_login_form .adicionar_group .adicionar_label,
 .adicionar_login_form .adicionar_group .adicionar_button {
   text-transform: uppercase;
 }
-
 
 .adicionar_align_field .adicionar_item {
   font-size: 20px;
@@ -63,17 +56,15 @@ body {
   cursor: pointer;
 }
 
-
 .adicionar_align_field .adicionar_login:checked+.adicionar_item,
 .adicionar_align_field .adicionar_cadastro:checked+.adicionar_item {
   color: #000000;
-  border-color: #E76100; 
+  border-color: #E76100;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition: all 1.0s ease-in-out 0s;
   transition: all 1.0s ease-in-out 0s;
 }
-
 
 .adicionar_login_form {
   min-height: 345px;
@@ -82,19 +73,15 @@ body {
   transform-style: preserve-3d;
 }
 
-
 .adicionar_login_form .adicionar_group {
   margin-bottom: 15px;
 }
-
-
 
 .adicionar_login_form .adicionar_group .adicionar_label,
 .adicionar_login_form .adicionar_group .adicionar_input {
   color: #000000;
   display: block;
 }
-
 
 .adicionar_login_form .adicionar_group .adicionar_button {
   height: 45px;
@@ -105,12 +92,10 @@ body {
   border: none;
 }
 
-
 .adicionar_button {
   cursor: pointer;
   margin-top: 10%;
 }
-
 
 .adicionar_login_form .adicionar_group .adicionar_input {
   border: none;
@@ -119,56 +104,49 @@ body {
   width: 100%;
   min-width: 345px;
   background: #faf6f6;
-  margin:0.6rem 0;
+  margin: 0.6rem 0;
   box-shadow: 1px 1px 6px #000000c1;
 }
 
-
-.adicionar_login_form .adicionar_group .adicionar_label{
+.adicionar_login_form .adicionar_group .adicionar_label {
   color: #fff;
   font-size: 12px;
 }
 
-
-.adicionar_login_form .adicionar_group .adicionar_button{
+.adicionar_login_form .adicionar_group .adicionar_button {
   background: #E76100;
 }
 
-
 .adicionar_login_form .adicionar_group .adicionar_button:hover {
-background: rgb(230, 87, 31);
+  background: rgb(230, 87, 31);
 }
-
 
 .adicionar_login_form .adicionar_group .adicionar_check:checked+label {
   color: #fff;
 }
 
-
 .adicionar_align_field .adicionar_login:checked+.adicionar_item+.adicionar_cadastro+.adicionar_item+.adicionar_login_form .adicionar_login_htm {
   transform: rotate(0);
 }
-
 
 .adicionar_align_field .adicionar_cadastro:checked+.adicionar_item+.adicionar_login_form .adicionar_cadastro_htm {
   transform: rotate(0);
 }
 
-@media screen and (max-width: 1700px){
-.adicionar_container img {
-  width: 200px;
-  margin-left: 61px;
-}
+@media screen and (max-width: 1700px) {
+  .adicionar_container img {
+    width: 200px;
+    margin-left: 61px;
+  }
 }
 
-
-@media screen and (max-width: 1264px){
-  .adicionar_container{
+@media screen and (max-width: 1264px) {
+  .adicionar_container {
     margin-top: none;
     max-width: 500px;
     white-space: nowrap;
     position: relative;
-}
+  }
 }
 
 .adicionar_p {
@@ -189,7 +167,8 @@ background: rgb(230, 87, 31);
 }
 
 .adicionar_toggle_text {
-  margin-left: 10px; /* Ajuste a margem conforme necessário */
+  margin-left: 10px;
+  /* Ajuste a margem conforme necessário */
 }
 
 .comum {

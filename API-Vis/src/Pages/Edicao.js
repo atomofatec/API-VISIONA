@@ -9,10 +9,10 @@ import Toggle from '../Components/Toggle';
 
 export function Edicao() {
     const [values, setValues] = useState();
-    console.log(values)
     const [status, setStatus] = useState('');
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
+    console.log(values)
 
     const handleToggle = () => {
         const newToggleValue = !toggle;
@@ -46,15 +46,13 @@ export function Edicao() {
         const updatedat = new Date().toLocaleString();
         const newStatus = toggle ? 'Inativo' : 'Ativo';
         setStatus(newStatus);
-        axios
-            .post('http://localhost:3001/editar-perfil', {
+        axios.post('http://localhost:3001/editar-perfil', {
                 name_user: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 id_user: tabelaData.tabelaId,
                 updatedat: updatedat,
                 status_user: newStatus,
-            })
-            .then((response) => {
+            }).then((response) => {
                 if (response.data.msg === 'Usuário atualizado') {
                     Swal.fire({
                         icon: 'success',
@@ -82,56 +80,56 @@ export function Edicao() {
                     });
                 }
             });
-    }       
-    
-    return(
+    }
+
+    return (
         <>
-        <link
-            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-            rel="stylesheet"
-        />
+            <link
+                href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+                rel="stylesheet"
+            />
+
             <div className={Style.edicao_container}>
                 <Logo />
-
                 <div className={Style.edicao_align_field}>
                     <span>
                         <Link to="/tabela-users" className="btn">
-                        <i className="bx bx-arrow-back"></i>
+                            <i className="bx bx-arrow-back"></i>
                         </Link>
                         <p className={Style.edicao_p}>
                             Editar Usuário
                         </p>
                     </span>
                     <div className={Style.edicao_login_form}>
-                        <div className={Style.edicao_adicionar_htm}>   
+                        <div className={Style.edicao_adicionar_htm}>
                             <div className={Style.edicao_group}>
                                 <input placeholder="Nome"
-                                    id="nome" 
-                                    type="nome" 
+                                    id="nome"
+                                    type="nome"
                                     name='nome'
                                     className={Style.edicao_input}
                                     onChange={handleChangeValues} />
                             </div>
                             <div className={Style.edicao_group}>
-                                <input placeholder="E-mail" 
-                                    id="email" 
+                                <input placeholder="E-mail"
+                                    id="email"
                                     type="email"
-                                    name='email' 
+                                    name='email'
                                     className={Style.edicao_input}
                                     onChange={handleChangeValues} />
-                            </div>                      
+                            </div>
                         </div>
                         <div className={Style.edicao_group}>
                             <Toggle status={status} onToggle={handleToggle} />
                             <p className={status === 'Inativo' ? Style.inativo : Style.ativo}>{status}</p>
                         </div>
-                        <div className={Style.edicao_group}> 
-                            <button type="button" className={Style.edicao_button} onClick={()=>handleClickButton()}>
+                        <div className={Style.edicao_group}>
+                            <button type="button" className={Style.edicao_button} onClick={() => handleClickButton()}>
                                 Editar
                             </button>
                         </div>
                     </div>
-                </div>             
+                </div>
             </div>
             <CirculosPerfil />
         </>

@@ -9,19 +9,16 @@ body {
   margin-left: 10%;
 }
 
-.perfiluser_container{
-  
+.perfiluser_container {
   margin-top: none;
   max-width: 40%;
   white-space: nowrap;
   position: relative;
 }
 
-
-.perfiluser_align_field{
+.perfiluser_align_field {
   width: 100%;
   height: 100%;
-
   padding: 70px 70px 10px 90px;
   background: none;
 }
@@ -29,7 +26,7 @@ body {
 
 .perfiluser_align_field .perfiluser_login_htm,
 .perfiluser_align_field .perfiluser_cadastro_htm {
-  top: 12%; 
+  top: 12%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -38,20 +35,17 @@ body {
   backface-visibility: hidden;
 }
 
-
 .perfiluser_align_field .perfiluser_login,
 .perfiluser_align_field .perfiluser_cadastro,
 .perfiluser_login_form .perfiluser_group .perfiluser_check {
   display: none;
 }
 
-
 .perfiluser_align_field .perfiluser_item,
 .perfiluser_login_form .perfiluser_group .perfiluser_label,
 .perfiluser_login_form .perfiluser_group .perfiluser_button {
   text-transform: uppercase;
 }
-
 
 .perfiluser_align_field .perfiluser_item {
   font-size: 20px;
@@ -63,17 +57,15 @@ body {
   cursor: pointer;
 }
 
-
 .perfiluser_align_field .perfiluser_login:checked+.perfiluser_item,
 .perfiluser_align_field .perfiluser_cadastro:checked+.perfiluser_item {
   color: #000000;
-  border-color: #E76100; 
+  border-color: #E76100;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition: all 1.0s ease-in-out 0s;
   transition: all 1.0s ease-in-out 0s;
 }
-
 
 .perfiluser_login_form {
   min-height: 345px;
@@ -82,19 +74,15 @@ body {
   transform-style: preserve-3d;
 }
 
-
 .perfiluser_login_form .perfiluser_group {
   margin-bottom: 15px;
 }
-
-
 
 .perfiluser_login_form .perfiluser_group .perfiluser_label,
 .perfiluser_login_form .perfiluser_group .perfiluser_input {
   color: #000000;
   display: block;
 }
-
 
 .perfiluser_login_form .perfiluser_group .perfiluser_button {
   height: 45px;
@@ -105,12 +93,10 @@ body {
   border: none;
 }
 
-
 .perfiluser_button {
   cursor: pointer;
   margin-top: 10%;
 }
-
 
 .perfiluser_login_form .perfiluser_group .perfiluser_input {
   border: none;
@@ -119,56 +105,49 @@ body {
   width: 100%;
   min-width: 345px;
   background: #faf6f6;
-  margin:0.6rem 0;
+  margin: 0.6rem 0;
   box-shadow: 1px 1px 6px #000000c1;
 }
 
-
-.perfiluser_login_form .perfiluser_group .perfiluser_label{
+.perfiluser_login_form .perfiluser_group .perfiluser_label {
   color: #fff;
   font-size: 12px;
 }
 
-
-.perfiluser_login_form .perfiluser_group .perfiluser_button{
+.perfiluser_login_form .perfiluser_group .perfiluser_button {
   background: #E76100;
 }
 
-
 .perfiluser_login_form .perfiluser_group .perfiluser_button:hover {
-background: rgb(230, 87, 31);
+  background: rgb(230, 87, 31);
 }
-
 
 .perfiluser_login_form .perfiluser_group .perfiluser_check:checked+label {
   color: #fff;
 }
 
-
 .perfiluser_align_field .perfiluser_login:checked+.perfiluser_item+.perfiluser_cadastro+.perfiluser_item+.perfiluser_login_form .perfiluser_login_htm {
   transform: rotate(0);
 }
-
 
 .perfiluser_align_field .perfiluser_cadastro:checked+.perfiluser_item+.perfiluser_login_form .perfiluser_cadastro_htm {
   transform: rotate(0);
 }
 
-@media screen and (max-width: 1700px){
-.perfiluser_container img {
-  width: 200px;
-  margin-left: 61px;
-}
+@media screen and (max-width: 1700px) {
+  .perfiluser_container img {
+    width: 200px;
+    margin-left: 61px;
+  }
 }
 
-
-@media screen and (max-width: 1264px){
-  .perfiluser_container{
+@media screen and (max-width: 1264px) {
+  .perfiluser_container {
     margin-top: none;
     max-width: 500px;
     white-space: nowrap;
     position: relative;
-}
+  }
 }
 
 .perfiluser_p {
@@ -195,6 +174,6 @@ background: rgb(230, 87, 31);
   overflow: hidden;
 }
 
-.perfil_seta{
+.perfil_seta {
   cursor: pointer;
 }
