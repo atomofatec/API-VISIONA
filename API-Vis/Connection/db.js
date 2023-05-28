@@ -269,6 +269,32 @@ app.get("/usuarios/ativos-inativos", (req, res) => {
     });
 });
 
+// rota dashboard (lista a quantidade de usuários comuns e admins)
+app.get("/usuarios/comum-admin", (req, res) => {
+    // consulta o banco, conta a quantidade de usuários ativos, e nomeia o resultado como 'ativos'
+    cliente.query("SELECT COUNT(*) AS comuns FROM users WHERE perfil = 'Comum';", (err, resultComuns) => {
+        if (err) {
+            console.log("erro SQL", err);
+            res.status(500).send({ msg: "Erro ao obter a contagem de usuários comuns" });
+        } else {
+            // consulta o banco, conta a quantidade de usuários inativos, e nomeia o resultado como 'inativos'
+            cliente.query("SELECT COUNT(*) AS admins FROM users WHERE perfil = 'Admin';", (err, resultAdmins) => {
+                if (err) {
+                    console.log("erro SQL", err);
+                    res.status(500).send({ msg: "Erro ao obter a contagem de usuários admins" });
+                } else {
+                    // valores das contagens são extraídos dos resultados das consultas e armazenados nas variáveis
+                    const comuns = resultComuns.rows[0].comuns;
+                    const admins = resultAdmins.rows[0].admins;
+                    // um objeto 'data' é criado contendo essas variáveis, e é enviado como resposta
+                    const data = { comuns: comuns, admins: admins }
+                    res.send(data);
+                }
+            });
+        }
+    });
+});
+
 // testa o servidor
 app.listen(3001, () => {
     console.log("Servidor sendo executado");

@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import axios from 'axios';
 
 export function GraficoAdm() {
+  const [dados, setDados] = useState({ comuns: 0, admins: 0 });
+
+  useEffect(() => {
+      axios.get('http://localhost:3001/usuarios/comum-admin')
+          .then(response => {
+              const { comuns, admins } = response.data;
+              setDados({ comuns: parseInt(comuns), admins: parseInt(admins) });
+          })
+          .catch(error => {
+              console.log('Erro ao obter os dados do servidor', error);
+          });
+  }, []);
+
   const options = {
     chart: {
       type: 'pie'
@@ -23,15 +37,15 @@ export function GraficoAdm() {
     series: [
       {
         data: [{
-          name: 'usuário comum',
-          y: 2,
+          name: 'usuários comuns',
+          y: dados.comuns,
           color: '#6B8ABC'
         }, {
           name: 'administradores',
           sliced: true,
           selected: true,
           color: '#544FC5',
-          y: 1
+          y: dados.admins
         }]
       }
     ]

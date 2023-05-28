@@ -7,7 +7,7 @@ import Style from "../Styles/Dashboard.module.css"
 
 export function Dashboard() {
 
-    return (
+    return(
         <>
             <div className={Style.dashboard_corpo}>
                 <div className={Style.dashboard_cabecalho}>
