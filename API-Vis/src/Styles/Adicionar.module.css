@@ -182,3 +182,28 @@ background: rgb(230, 87, 31);
   color: black;
   border-color: #E76100;
 }
+
+.adicionar_toggle_container {
+  display: flex;
+  align-items: center;
+}
+
+.adicionar_toggle_text {
+  margin-left: 10px; /* Ajuste a margem conforme necessário */
+}
+
+.comum {
+  color: #ee8600;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 11px;
+}
+
+.admin {
+  color: rgb(143, 143, 218);
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 7px;
+}

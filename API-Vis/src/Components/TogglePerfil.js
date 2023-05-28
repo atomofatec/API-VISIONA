@@ -11,9 +11,11 @@ const Toggle = ({ perfil, onToggle }) => {
   }, [perfil]);
 
   const handleToggle = () => {
+    const novoPerfil = toggle ? 'Comum' : 'Admin';
     setToggle(!toggle);
-    onToggle(!toggle);
+    onToggle(novoPerfil);
   };
+  
 
   return (
     <div className="toggleContainer">

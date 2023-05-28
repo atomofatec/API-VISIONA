@@ -1,5 +1,6 @@
 import CirculosPerfil from '../Components/CirculosPerfil';
 import Logo from '../Components/Logo';
+import TogglePerfil from '../Components/TogglePerfil';
 import Style from '../Styles/Adicionar.module.css';
 import React, { useState } from "react";
 import axios from "axios";
@@ -7,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 export function Adicionar() {
+    const [perfil, setPerfil] = useState('Comum');
+
     const [values, setValues] = useState();
     const navigate = useNavigate();
     const handleChangeValues = (value)=>{
@@ -58,6 +61,7 @@ export function Adicionar() {
                     name_user: values.nome,
                     email: values.email,
                     password_user: values.password,
+                    perfil: perfil,
                     cpf_user: values.cpf,
                     createdat: createdat,
                     updatedat: updatedat
@@ -166,11 +170,15 @@ export function Adicionar() {
                                     onChange={handleChangeValues} />
                             </div>
                         </div>
-                            <div className={Style.adicionar_group}> 
-                                <button type="button" className={Style.adicionar_button} onClick={()=>handleClickButton()}>
-                                    Adicionar
-                                </button>
-                            </div>
+                        <div className={Style.adicionar_toggle_container}>
+                            <TogglePerfil perfil={perfil} onToggle={setPerfil} />
+                            <p className={`${Style.adicionar_toggle_text} ${perfil === 'Admin' ? Style.admin : Style.comum}`}>{perfil}</p>
+                        </div>
+                        <div className={Style.adicionar_group}> 
+                            <button type="button" className={Style.adicionar_button} onClick={()=>handleClickButton()}>
+                                Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
