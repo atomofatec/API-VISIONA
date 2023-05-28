@@ -3,8 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Paginacao from "./Paginacao";
 
-function Tabela({users}) {
+function Tabela({ users, paginaAtual, onPageChange }) {
+    const usuariosPorPagina = 3;
+    const indexUltimoUsuario = paginaAtual * usuariosPorPagina;
+    const indexPrimeiroUsuario = indexUltimoUsuario - usuariosPorPagina;
+    const usuariosPaginados = users.slice(indexPrimeiroUsuario, indexUltimoUsuario);
 
     const navigate = useNavigate();
 
@@ -84,8 +89,9 @@ return (
                                 </thead>
                             
                                 <tbody>
-                                    {users.map((item, i) => (
-                                        <tr key = {i}>
+                                {usuariosPaginados.map((item, i) => (
+                                    <tr key={i}>
+                                    
 
                                             <td className="d-flex align-items-center">  
                                                 <div className="pl-3 email">
@@ -118,6 +124,13 @@ return (
                                         ))}
                                 </tbody>
                             </table>
+                            <Paginacao
+                                totalUsuarios={users.length}
+                                usuariosPorPagina={usuariosPorPagina}
+                                paginaAtual={paginaAtual}
+                                onPageChange={onPageChange}
+                            />
+
                             <Link to="/adicionar" className="btn">
                                 <i className="bx bxs-user-plus"></i>
                             </Link>
