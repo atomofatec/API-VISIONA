@@ -7,14 +7,14 @@ export function GraficoAdm() {
   const [dados, setDados] = useState({ comuns: 0, admins: 0 });
 
   useEffect(() => {
-      axios.get('http://localhost:3001/usuarios/comum-admin')
-          .then(response => {
-              const { comuns, admins } = response.data;
-              setDados({ comuns: parseInt(comuns), admins: parseInt(admins) });
-          })
-          .catch(error => {
-              console.log('Erro ao obter os dados do servidor', error);
-          });
+    axios.get('http://localhost:3001/usuarios/comum-admin')
+      .then(response => {
+        const { comuns, admins } = response.data;
+        setDados({ comuns: parseInt(comuns), admins: parseInt(admins) });
+      })
+      .catch(error => {
+        console.log('Erro ao obter os dados do servidor', error);
+      });
   }, []);
 
   const options = {

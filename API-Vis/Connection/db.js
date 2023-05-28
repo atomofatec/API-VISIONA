@@ -203,7 +203,7 @@ app.get("/mostrarTabela", (req, res) => {
         } else {
             // retorna o resultado da consulta em formato json
             res.json(result.rows);
-        } 
+        }
     })
 });
 
@@ -272,13 +272,13 @@ app.get("/usuarios/ativos-inativos", (req, res) => {
 
 // rota dashboard (lista a quantidade de usuários comuns e admins)
 app.get("/usuarios/comum-admin", (req, res) => {
-    // consulta o banco, conta a quantidade de usuários ativos, e nomeia o resultado como 'ativos'
+    // consulta o banco, conta a quantidade de usuários comuns, e nomeia o resultado como 'comuns'
     cliente.query("SELECT COUNT(*) AS comuns FROM users WHERE perfil = 'Comum';", (err, resultComuns) => {
         if (err) {
             console.log("erro SQL", err);
             res.status(500).send({ msg: "Erro ao obter a contagem de usuários comuns" });
         } else {
-            // consulta o banco, conta a quantidade de usuários inativos, e nomeia o resultado como 'inativos'
+            // consulta o banco, conta a quantidade de usuários admins, e nomeia o resultado como 'admins'
             cliente.query("SELECT COUNT(*) AS admins FROM users WHERE perfil = 'Admin';", (err, resultAdmins) => {
                 if (err) {
                     console.log("erro SQL", err);
@@ -292,6 +292,22 @@ app.get("/usuarios/comum-admin", (req, res) => {
                     res.send(data);
                 }
             });
+        }
+    });
+});
+
+// rota contagem de emails
+app.get("/usuarios/emails", (req, res) => {
+    // consulta o banco e seleciona todos os valores dos campos 'email'
+    cliente.query("SELECT email FROM users;", (err, result) => {
+        if (err) {
+            console.log("erro SQL", err);
+            res.status(500).send({ msg: "Erro ao obter os emails dos usuários" });
+        } else {
+            // Extrai os emails dos resultados da consulta
+            const emails = result.rows.map(row => row.email);
+            // Envia os emails como resposta
+            res.send(emails);
         }
     });
 });

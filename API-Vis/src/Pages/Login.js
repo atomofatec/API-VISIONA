@@ -35,28 +35,76 @@ export function Login() {
 
     const handleClickButton = () => {
         if (!checkVazio()) {
-            axios.post("http://localhost:3001/", {
-                email: values.email,
-                password_user: values.password,
-            }).then((response) => {
-                console.log(response.data);
-                if (response.data.msg === "Usuário logado") {
-                    localStorage.setItem('user', response.data.id_user)
-                    localStorage.setItem('nome', response.data.name_user)
-                    localStorage.setItem('perfil', response.data.perfil)
-                    localStorage.setItem('status', response.data.status_user)
-                    localStorage.setItem('senha', response.data.password_user)
-                    if (response.data.status_user === "Ativo") {
-                        if (response.data.perfil === "Admin") {
-                            navigate('/tabela-users')
-                        } else {
-                            navigate('/perfil')
-                        }
+            axios.get("http://localhost:3001/usuarios/emails")
+                .then((response) => {
+                    const emailsCadastrados = response.data;
+                    const { email } = values;
+
+                    if (emailsCadastrados.includes(email)) {
+                        axios.post("http://localhost:3001/", {
+                            email: values.email,
+                            password_user: values.password,
+                        }).then((response) => {
+                            console.log(response.data);
+                            if (response.data.msg === "Usuário logado") {
+                                localStorage.setItem('user', response.data.id_user)
+                                localStorage.setItem('nome', response.data.name_user)
+                                localStorage.setItem('perfil', response.data.perfil)
+                                localStorage.setItem('status', response.data.status_user)
+                                localStorage.setItem('senha', response.data.password_user)
+                                if (response.data.status_user === "Ativo") {
+                                    if (response.data.perfil === "Admin") {
+                                        navigate('/tabela-users')
+                                    } else {
+                                        navigate('/perfil')
+                                    }
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Atenção',
+                                        text: 'Não foi possível entrar',
+                                        confirmButtonColor: '#E76100',
+                                        showConfirmButton: false,
+                                        iconColor: '#E76100',
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        showCloseButton: true,
+                                    })
+                                }
+                            }
+                            if (response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
+                                if (document.getElementById('Senha') !== response.data.password_user) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Atenção',
+                                        text: 'Senha incorreta',
+                                        confirmButtonColor: '#E76100',
+                                        showConfirmButton: false,
+                                        iconColor: '#E76100',
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        showCloseButton: true,
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Atenção',
+                                        text: 'Usuário não cadastrado/Informações estão incorretas',
+                                        confirmButtonColor: '#E76100',
+                                        showConfirmButton: false,
+                                        iconColor: '#E76100',
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        showCloseButton: true,
+                                    })
+                                }
+                            }
+                        });
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Atenção',
-                            text: 'Não foi possível entrar',
+                            text: 'E-mail não cadastrado',
                             confirmButtonColor: '#E76100',
                             showConfirmButton: false,
                             iconColor: '#E76100',
@@ -65,21 +113,7 @@ export function Login() {
                             showCloseButton: true,
                         })
                     }
-                }
-                if (response.data.msg === "Usuário não cadastrado/Informações estão incorretas") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Atenção',
-                        text: 'Usuário não cadastrado/Informações estão incorretas',
-                        confirmButtonColor: '#E76100',
-                        showConfirmButton: false,
-                        iconColor: '#E76100',
-                        timer: 2000,
-                        timerProgressBar: true,
-                        showCloseButton: true,
-                    })
-                }
-            });
+                })
         } else {
             Swal.fire({
                 icon: 'error',
