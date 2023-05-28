@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Style from "../Styles/Perfil.module.css";
 
 function DropdownButton({ isOpen, onClick }) {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const userName = localStorage.getItem("nome");
+    setUserName(userName);
+  }, []);
+
   return (
     <button className="btn" onClick={onClick}>
       <i className="bx bx-user-circle"></i>
-      Usuário
+      {userName}
       <i className={`bx ${isOpen ? "bx-chevron-up" : "bx-chevron-down"}`}></i>
     </button>
   );

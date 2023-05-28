@@ -81,12 +81,13 @@ function logUser(email, password_user, res) {
         // se a linha encontrada for igual a 1 (ou seja, se o usuário existir)...
         if (result.rows.length === 1) {
             // armazena os dados do usuário no objeto 'data' e retorna seu valor, ou retorna erro
-            const idUser = result.rows.values().next().value.id_user
+            const idUser = result.rows.values().next().value.id_user;
+            const nomeUser = result.rows.values().next().value.name_user;
             const perfilUser = result.rows.values().next().value.perfil;
             const statusUser = result.rows.values().next().value.status_user;
             const senhaUser = result.rows.values().next().value.password_user;
             const mensagem = 'Usuário logado'
-            const data = { msg: mensagem, id_user: idUser, perfil: perfilUser, status_user: statusUser, password_user: senhaUser }
+            const data = { msg: mensagem, id_user: idUser, name_user: nomeUser, perfil: perfilUser, status_user: statusUser, password_user: senhaUser }
             res.send(data)
         } else {
             res.send({ msg: "Usuário não cadastrado/Informações estão incorretas" })

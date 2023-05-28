@@ -42,6 +42,7 @@ export function Login() {
                 console.log(response.data);
                 if (response.data.msg === "Usuário logado") {
                     localStorage.setItem('user', response.data.id_user)
+                    localStorage.setItem('nome', response.data.name_user)
                     localStorage.setItem('perfil', response.data.perfil)
                     localStorage.setItem('status', response.data.status_user)
                     localStorage.setItem('senha', response.data.password_user)
