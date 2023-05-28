@@ -162,8 +162,8 @@
         font-size: 15px;
         color: #797979; }
   
-  .table-wrap {
-    overflow-x: scroll; }
+/*  .table-wrap {
+    overflow-x: scroll; } */
   
     .table {
       min-width: 1000px !important;
