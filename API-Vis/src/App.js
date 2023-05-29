@@ -1,14 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Cadastro } from './Pages/Cadastro';
 import { Login } from './Pages/Login';
-import Perfil from './Pages/Perfil';
+import { Perfil } from './Pages/Perfil';
 import { Edicao } from './Pages/Edicao';
 import { Esquecer } from './Pages/Esquecer';
 import { TabelaUsers } from './Pages/TabelaUsers';
 import { Adicionar } from './Pages/Adicionar';
+import { Dashboard } from './Pages/Dashboard';
+import { Alterar } from './Pages/Alterar';
 
 function App() {
-  return (  
+  return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
@@ -18,6 +20,8 @@ function App() {
         <Route path='/perfil' element={<Perfil />} />
         <Route path='/edicao' element={<Edicao />} />
         <Route path='/adicionar' element={<Adicionar />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/alterar' element={<Alterar />} />
       </Routes>
     </BrowserRouter>
   )

@@ -4,7 +4,9 @@
     white-space: nowrap;
     position: relative;
     float: right;
-    margin-right: 23%;
+    /* adicionado */
+    margin-right: 7%;
+    /* adicionado */
 }
 
 .logo_container img {

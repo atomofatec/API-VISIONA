@@ -4,27 +4,27 @@ html {
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    color: #9e9e9e;
-    background: #ffffff;
-    font-family: Arial;
-    font-weight: bold;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  color: #9e9e9e;
+  background: #ffffff;
+  font-family: Arial;
+  font-weight: bold;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
 *,
 :after,
 :before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @media screen and (max-height: 474px) {
-    body {
-      overflow: auto;   
-    }
+  body {
+    overflow: auto;
+  }
 }
 
 a {

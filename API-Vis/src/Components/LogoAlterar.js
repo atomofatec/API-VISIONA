@@ -1,8 +1,8 @@
 import LogoPNG from '../Imgs/Logo_Visiona.png';
-import Style from '../Styles/Logo.module.css';
+import Style from '../Styles/LogoAlterar.module.css';
 import { Link } from 'react-router-dom';
 
-function Logo() {
+function LogoAlterar() {
     return (
         <Link to='/'>
             <div className={Style.logo_container}>
@@ -12,4 +12,4 @@ function Logo() {
     );
 }
 
-export default Logo;
+export default LogoAlterar;

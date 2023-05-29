@@ -1,4 +1,4 @@
-.estrutura_corpo {
+.dashboard_corpo {
   display: grid;
   grid-template-areas:
     "head head"
@@ -8,7 +8,7 @@
   grid-template-columns: auto auto;
 }
 
-.estrutura_cabecalho {
+.dashboard_cabecalho {
   grid-area: head;
   background-color: white;
   display: flex;
@@ -17,7 +17,20 @@
   padding: 20px;
 }
 
-.estrutura_rodape {
+.dashboard_principal {
+  grid-area: content;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard_graficos {
+  display: flex;
+}
+
+.dashboard_rodape {
   grid-area: foot;
   background-color: rgba(115, 120, 127, 76%);
   text-align: center;
@@ -28,7 +41,7 @@
   font-size: 14px;
 }
 
-.tabela_user_profile {
+.dashboard_user_profile {
   display: flex;
   align-items: center;
 }

@@ -1,6 +1,6 @@
-import Style from '../Styles/CirculosPerfil.module.css'
+import Style from '../Styles/CirculosAlterar.module.css'
 
-function Circulos() {
+function CirculosAlterar() {
     return (
         <body>
             <div className={Style.circle1}></div>
@@ -10,4 +10,4 @@ function Circulos() {
     )
 }
 
-export default Circulos;
+export default CirculosAlterar;
