@@ -312,6 +312,22 @@ app.get("/usuarios/emails", (req, res) => {
     });
 });
 
+// rota contagem de cpfs
+app.get("/usuarios/cpfs", (req, res) => {
+    // consulta o banco e seleciona todos os valores dos campos 'email'
+    cliente.query("SELECT cpf_user FROM users;", (err, result) => {
+        if (err) {
+            console.log("erro SQL", err);
+            res.status(500).send({ msg: "Erro ao obter os cpfs dos usuários" });
+        } else {
+            // Extrai os cpfs dos resultados da consulta
+            const cpfs = result.rows.map(row => row.cpf_user);
+            // Envia os cpfs como resposta
+            res.send(cpfs);
+        }
+    });
+});
+
 // testa o servidor
 app.listen(3001, () => {
     console.log("Servidor sendo executado");

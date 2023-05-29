@@ -162,6 +162,15 @@ body {
   border-color: #E76100;
 }
 
+.edicao_toggle_container {
+  display: flex;
+  align-items: center;
+}
+
+.edicao_toggle_text {
+  margin-left: 10px;
+}
+
 .ativo {
   color: #ee8600;
   text-decoration: none;

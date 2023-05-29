@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 export function Cadastro() {
     const [values, setValues] = useState();
     const navigate = useNavigate();
-    
+
     const handleChangeValues = (value) => {
         setValues(prevValue => ({
             ...prevValue,
@@ -51,44 +51,83 @@ export function Cadastro() {
 
     const handleClickButton = () => {
         if (!checkVazio()) {
-            if (document.getElementById('Senha').value === document.getElementById('CSenha').value) {
-                const createdat = new Date().toLocaleString();
-                const updatedat = new Date().toLocaleString();
-                axios.post("http://localhost:3001/cadastro", {
-                    name_user: values.nome,
-                    email: values.email,
-                    password_user: values.password,
-                    cpf_user: values.cpf,
-                    createdat: createdat,
-                    updatedat: updatedat
-                }).then((response) => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Sucesso',
-                        text: 'Cadastro realizado',
-                        confirmButtonColor: '#E76100',
-                        showConfirmButton: false,
-                        iconColor: '#E76100',
-                        timer: 2000,
-                        timerProgressBar: true,
-                        showCloseButton: true,
-                    })
-                    clearCampos();
-                    navigate('/')
+            axios.get("http://localhost:3001/usuarios/cpfs")
+                .then((response) => {
+                    const cpfsCadastrados = response.data;
+                    const { cpf } = values;
+                    if (cpfsCadastrados.includes(cpf)) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Atenção',
+                            text: 'CPF já cadastrado',
+                            confirmButtonColor: '#E76100',
+                            showConfirmButton: false,
+                            iconColor: '#E76100',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            showCloseButton: true
+                        })
+                    } else {
+                        axios.get("http://localhost:3001/usuarios/emails")
+                            .then((response) => {
+                                const emailsCadastrados = response.data;
+                                const { email } = values;
+
+                                if (emailsCadastrados.includes(email)) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Atenção',
+                                        text: 'E-mail já cadastrado',
+                                        confirmButtonColor: '#E76100',
+                                        showConfirmButton: false,
+                                        iconColor: '#E76100',
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        showCloseButton: true
+                                    })
+                                } else {
+                                    if (document.getElementById('Senha').value === document.getElementById('CSenha').value) {
+                                        const createdat = new Date().toLocaleString();
+                                        const updatedat = new Date().toLocaleString();
+                                        axios.post("http://localhost:3001/cadastro", {
+                                            name_user: values.nome,
+                                            email: values.email,
+                                            password_user: values.password,
+                                            cpf_user: values.cpf,
+                                            createdat: createdat,
+                                            updatedat: updatedat
+                                        }).then((response) => {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Sucesso',
+                                                text: 'Cadastro realizado',
+                                                confirmButtonColor: '#E76100',
+                                                showConfirmButton: false,
+                                                iconColor: '#E76100',
+                                                timer: 2000,
+                                                timerProgressBar: true,
+                                                showCloseButton: true,
+                                            })
+                                            clearCampos();
+                                            navigate('/')
+                                        })
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Atenção',
+                                            text: 'As senhas devem ser iguais',
+                                            confirmButtonColor: '#E76100',
+                                            showConfirmButton: false,
+                                            iconColor: '#E76100',
+                                            timer: 2000,
+                                            timerProgressBar: true,
+                                            showCloseButton: true
+                                        })
+                                    }
+                                }
+                            })
+                    }
                 })
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Atenção',
-                    text: 'As senhas devem ser iguais',
-                    confirmButtonColor: '#E76100',
-                    showConfirmButton: false,
-                    iconColor: '#E76100',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showCloseButton: true
-                })
-            }
         } else {
             Swal.fire({
                 icon: 'error',

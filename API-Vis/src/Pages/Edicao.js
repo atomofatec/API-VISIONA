@@ -119,9 +119,9 @@ export function Edicao() {
                                     onChange={handleChangeValues} />
                             </div>
                         </div>
-                        <div className={Style.edicao_group}>
+                        <div className={Style.edicao_toggle_container}>
                             <Toggle status={status} onToggle={handleToggle} />
-                            <p className={status === 'Inativo' ? Style.inativo : Style.ativo}>{status}</p>
+                            <p className={`${Style.edicao_toggle_text} ${status === 'Inativo' ? Style.inativo : Style.ativo}`}>{status}</p>
                         </div>
                         <div className={Style.edicao_group}>
                             <button type="button" className={Style.edicao_button} onClick={() => handleClickButton()}>
