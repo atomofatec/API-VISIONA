@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function LogoEsquecer() {
     return (
         <Link to='/'>
-        <div className={Style.logo_container}>
-            <img src={LogoPNG} alt='logo'/>
-        </div>
+            <div className={Style.logo_container}>
+                <img src={LogoPNG} alt='logo' />
+            </div>
         </Link>
     );
 }

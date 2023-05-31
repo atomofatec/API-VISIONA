@@ -1,10 +1,12 @@
-.logo_container {    
+.logo_container {
     margin-top: none;
     max-width: 40%;
     white-space: nowrap;
     position: relative;
-    float: right; /* adicionado */
-    margin-right: 7%; /* adicionado */
+    float: right;
+    /* adicionado */
+    margin-right: 7%;
+    /* adicionado */
 }
 
 .logo_container img {
@@ -14,19 +16,18 @@
     margin-left: 10%;
 }
 
-
-@media screen and (max-width: 1700px){
+@media screen and (max-width: 1700px) {
     .logo_container img {
         width: 200px;
         margin-left: 61px;
     }
 }
 
-@media screen and (max-width: 1264px){
-    .logo_container{
-      margin-top: none;
-      max-width: 500px;
-      white-space: nowrap;
-      position: relative;
-  }
+@media screen and (max-width: 1264px) {
+    .logo_container {
+        margin-top: none;
+        max-width: 500px;
+        white-space: nowrap;
+        position: relative;
+    }
 }

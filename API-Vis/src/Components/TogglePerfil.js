@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { BsSunFill, BsMoonStarsFill } from 'react-icons/bs';
 import '../Styles/Toggle.css';
 
-const Toggle = ({ status, onToggle }) => {
+const Toggle = ({ perfil, onToggle }) => {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    if (status === 'Inativo') {
+    if (perfil === 'Admin') {
       setToggle(true);
     }
-  }, [status]);
+  }, [perfil]);
 
   const handleToggle = () => {
+    const novoPerfil = toggle ? 'Comum' : 'Admin';
     setToggle(!toggle);
-    onToggle(!toggle);
+    onToggle(novoPerfil);
   };
 
   return (
