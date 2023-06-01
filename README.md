@@ -93,7 +93,13 @@
 
 <h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/401d5aa17e5a566613af0444718e8b5bce1aa6d0/Visual%20-%20Visiona/Burndown%202.png" height=350px width=auto></h1> 
 
+<br>
+  
+<h3>3ª Sprint</h3>
 
+<h1 align="center"> <img src = "https://github.com/atomofatec/API-VISIONA/blob/main/Visual%20-%20Visiona/Burndown3.jpeg" height=350px width=auto></h1> 
+
+<br>
 
 
 
