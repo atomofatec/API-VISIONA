@@ -8,8 +8,8 @@ const cors = require("cors");
 const cliente = new Pool({
     host: 'localhost',
     user: 'postgres',
-    password: 'viktor',
-    database: 'api_visiona22'
+    password: 'fatec',
+    database: 'api_visiona'
 })
 
 // função cadastrar usuário
