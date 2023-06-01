@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Style from '../Styles/Grafico.module.css';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
@@ -17,7 +18,6 @@ export function GraficoAdm() {
       });
   }, []);
 
-
   const seriesData = [];
 
   if (dados.comuns > 0) {
@@ -30,11 +30,11 @@ export function GraficoAdm() {
     });
   }
   
-  if (dados.admins > 0) {
+  if (32 > 0) {
     seriesData.push({
       name: 'Administradores',
       color: '#E76100',
-      y: dados.admins
+      y: 32
     });
   }
 
@@ -79,26 +79,26 @@ export function GraficoAdm() {
   const totalUsuarios = dados.comuns + dados.admins;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div className="testeText" style={{ marginTop: '10px', marginBottom: '20px', fontSize: '18px', color: '#000000' }}>
+    <div className={Style.container}>
+      <div className={Style.testeText}>
         Usuários comuns / Administradores
       </div>
-      <div className="legendContainer" style={{ display: 'flex', alignItems: 'center', marginBottom: '10px', color: '#000000' }}>
-        <div className="legendItem" style={{ display: 'flex', alignItems: 'center', marginRight: '30px' }}>
-          <div className="legendSquare" style={{ width: '20px', height: '20px', borderRadius: '6px', backgroundColor: '#f5ab00', marginRight: '5px' }}></div>
+      <div className={Style.legendContainer}>
+        <div className={Style.legendItem}>
+          <div className={Style.legendSquare3}></div>
           <div className="legendText">Usuários comuns</div>
         </div>
-        <div className="legendItem" style={{ display: 'flex', alignItems: 'center' }}>
-          <div className="legendSquare" style={{ width: '20px', height: '20px', borderRadius: '6px', backgroundColor: '#E76100', marginRight: '5px' }}></div>
+        <div className={Style.legendItem2}>
+          <div className={Style.legendSquare4}></div>
           <div className="legendText">Administradores</div>
         </div>
       </div>
       <div className="graficoContainer">
-        <div className="chartWrapper" style={{ width: '100%', height: '100%' }}>
+      <div className={Style.chartWrapper}>
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
       </div>
-      <div className="totalUsuarios" style={{ marginTop: '0px', fontSize: '18px', color: '#000000' }}>
+      <div className={Style.totalUsuarios}>
         Total de usuários: {totalUsuarios}
       </div>
     </div>
