@@ -30,11 +30,11 @@ export function GraficoAdm() {
     });
   }
   
-  if (32 > 0) {
+  if (dados.admins > 0) {
     seriesData.push({
       name: 'Administradores',
       color: '#E76100',
-      y: 32
+      y: dados.admins
     });
   }
 
