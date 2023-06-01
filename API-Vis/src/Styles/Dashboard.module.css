@@ -45,3 +45,27 @@
   display: flex;
   align-items: center;
 }
+
+.testeUsuario {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.totalUsuarios {
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.totalUsuariosContainer {
+  border: 2px solid #ee8600;
+  padding: 10px;
+  margin-top: 10px;
+
+  font-weight: bold;
+}

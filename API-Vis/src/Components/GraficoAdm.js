@@ -30,11 +30,11 @@ export function GraficoAdm() {
     });
   }
   
-  if (32 > 0) {
+  if (dados.admins > 0) {
     seriesData.push({
       name: 'Administradores',
       color: '#E76100',
-      y: 32
+      y: dados.admins
     });
   }
 
@@ -76,8 +76,6 @@ export function GraficoAdm() {
     ]
   };
 
-  const totalUsuarios = dados.comuns + dados.admins;
-
   return (
     <div className={Style.container}>
       <div className={Style.testeText}>
@@ -94,12 +92,9 @@ export function GraficoAdm() {
         </div>
       </div>
       <div className="graficoContainer">
-      <div className={Style.chartWrapper}>
+        <div className={Style.chartWrapper}>
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
-      </div>
-      <div className={Style.totalUsuarios}>
-        Total de usuários: {totalUsuarios}
       </div>
     </div>
   );

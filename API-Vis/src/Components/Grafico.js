@@ -5,7 +5,7 @@ import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
 
 export function Grafico() {
-  const [dados, setDados] = useState({ ativos: 0, inativos: 0 });
+  const [dados, setDados] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:3001/usuarios/ativos-inativos')
@@ -73,8 +73,6 @@ export function Grafico() {
     ]
   };
 
-  const totalUsuarios = dados.ativos + dados.inativos;
-
   return (
     <div className={Style.container}>
       <div className={Style.testeText}>
@@ -83,7 +81,7 @@ export function Grafico() {
       <div className={Style.legendContainer}>
         <div className={Style.legendItem}>
           <div className={Style.legendSquare2}></div>
-          <div className="legendText" >Ativos</div>
+          <div className="legendText">Ativos</div>
         </div>
         <div className={Style.legendItem2}>
           <div className={Style.legendSquare}></div>
@@ -95,11 +93,6 @@ export function Grafico() {
           <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
       </div>
-      <div className={Style.totalUsuarios}>
-        Total de usuários: {totalUsuarios}
-      </div>
     </div>
   );
-
-  
 }
