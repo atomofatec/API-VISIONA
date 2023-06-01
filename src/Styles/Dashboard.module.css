@@ -1,0 +1,47 @@
+.dashboard_corpo {
+  display: grid;
+  grid-template-areas:
+    "head head"
+    "content content"
+    "foot foot";
+  grid-template-rows: 25vh 65vh 10vh;
+  grid-template-columns: auto auto;
+}
+
+.dashboard_cabecalho {
+  grid-area: head;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard_principal {
+  grid-area: content;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard_graficos {
+  display: flex;
+}
+
+.dashboard_rodape {
+  grid-area: foot;
+  background-color: rgba(115, 120, 127, 76%);
+  text-align: center;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  font-family: Lato;
+  font-size: 14px;
+}
+
+.dashboard_user_profile {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,195 @@
+body {
+  color: #E76100;
+}
+
+.alterar_container {
+  margin-top: none;
+  max-width: 40%;
+  white-space: nowrap;
+  position: relative;
+  float: right;
+  margin-right: 3%;
+}
+
+.alterar_center {
+  margin-top: none;
+  max-width: 40%;
+  white-space: nowrap;
+  position: absolute;
+  top: 15%;
+  left: 33%;
+  margin: -25px 0 0 -25px;
+}
+
+.alterar_align_field {
+  width: 100%;
+  height: 100%;
+  padding: 70px 70px 10px 90px;
+  background: none;
+  margin-top: 15%;
+}
+
+.alterar_align_field .alterar_login_htm,
+.alterar_align_field .alterar_cadastro_htm {
+  top: 12%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.alterar_align_field .alterar_login,
+.alterar_align_field .alterar_cadastro,
+.alterar_login_form .alterar_group .alterar_check {
+  display: none;
+}
+
+.alterar_align_field .alterar_item,
+.alterar_login_form .alterar_group .alterar_label,
+.alterar_login_form .alterar_group .alterar_button {
+  text-transform: uppercase;
+}
+
+.alterar_align_field .alterar_item {
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.alterar_align_field .alterar_login:checked+.alterar_item,
+.alterar_align_field .alterar_cadastro:checked+.alterar_item {
+  color: #000000;
+  border-color: #E76100;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition: all 1.0s ease-in-out 0s;
+  transition: all 1.0s ease-in-out 0s;
+}
+
+.alterar_login_form {
+  min-height: 345px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.alterar_login_form .alterar_group {
+  margin-bottom: 15px;
+}
+
+.alterar_login_form .alterar_group .alterar_label,
+.alterar_login_form .alterar_group .alterar_input {
+  color: #000000;
+  display: block;
+}
+
+.alterar_login_form .alterar_group .alterar_button {
+  height: 45px;
+  width: 145px;
+  color: #fff;
+  float: right;
+  border-radius: 15px;
+  border: none;
+  margin-top: 70px;
+}
+
+.alterar_button {
+  cursor: pointer;
+  margin-top: 10%;
+  position: absolute;
+  top: 50%;
+  left: 31%;
+}
+
+.alterar_alterar_htm {
+  color: #9e9e9e;
+}
+
+.alterar_login_form .alterar_group .alterar_input {
+  border: none;
+  border-radius: 15px;
+  padding: 1rem 1rem;
+  width: 100%;
+  min-width: 345px;
+  background: #faf6f6;
+  margin: 0.6rem 0;
+  box-shadow: 1px 1px 6px #000000c1;
+  margin-top: 8%;
+}
+
+.alterar_login_form .alterar_group .alterar_label {
+  color: #fff;
+  font-size: 12px;
+}
+
+
+.alterar_login_form .alterar_group .alterar_button {
+  background: #E76100;
+}
+
+.alterar_login_form .alterar_group .alterar_button:hover {
+  background: rgb(230, 87, 31);
+}
+
+.alterar_login_form .alterar_group .alterar_check:checked+label {
+  color: #fff;
+}
+
+.alterar_align_field .alterar_login:checked+.alterar_item+.alterar_cadastro+.alterar_item+.alterar_login_form .alterar_login_htm {
+  transform: rotate(0);
+}
+
+.alterar_align_field .alterar_cadastro:checked+.alterar_item+.alterar_login_form .alterar_cadastro_htm {
+  transform: rotate(0);
+}
+
+@media screen and (max-width: 1700px) {
+  .alterar_container img {
+    width: 200px;
+    margin-left: 61px;
+  }
+}
+
+@media screen and (max-width: 1264px) {
+  .alterar_container {
+    margin-top: none;
+    max-width: 500px;
+    white-space: nowrap;
+    position: relative;
+  }
+}
+
+.alterar_p {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  color: #000000;
+  border-color: #E76100;
+  margin-bottom: 7%;
+  position: absolute;
+  top: 19%;
+  left: 29%;
+}
+
+.alterar_seta {
+  display: inline-block;
+  position: absolute;
+  top: 17%;
+  left: 18%;
+  cursor: pointer;
+}
+
+.error_message {
+  color: #FE2E2E;
+  font-size: 12px;
+}

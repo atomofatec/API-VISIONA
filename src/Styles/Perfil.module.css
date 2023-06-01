@@ -1,0 +1,50 @@
+.perfil_user_profile {
+  margin-right: 50px;
+}
+
+.dropdown {
+  display: block;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  border-radius: 5px;
+  transform: translateY(0.5rem);
+  transition: all 0.1s cubic-bezier(0.16, 1, 0.5, 1);
+  margin-top: 0.3rem;
+  background: white;
+}
+
+.dropdown a {
+  padding: 8px;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: black;
+  column-gap: 0.5rem;
+}
+
+.btn {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  position: relative;
+}
+
+.bx {
+  font-size: 1.1rem;
+}
+
+.dropdown a:hover {
+  background-color: white;
+  color: #E76100;
+}
