@@ -197,7 +197,9 @@ app.post("/esquecer", (req, res)=> {
                 from: 'visionafatec3ads@outlook.com', // Substitua pelo seu email do Gmail
                 to: email, // Substitua pelo email do destinatário
                 subject: 'Recuperação de Senha',
-                text: `Olá ${email} \n \n Para trocar a senha acesse localhost:3000/alterarsenha/${token}`,
+                html: `<p>Olá ${email},</p>
+                <p>Para trocar a senha, clique no link abaixo:</p>
+                <p><a href="http://localhost:3000/alterarsenha/${token}">Trocar senha</a></p>`,
                 //html: '<p>Conteúdo do email em formato HTML</p>',
               });
           
