@@ -3,13 +3,15 @@ const express = require("express");
 const app = express();
 const { Pool } = require("pg");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 // cria instância de conexão com o banco
 const cliente = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'api_visiona'
+    database: 'visiona'
 })
 
 // função cadastrar usuário
@@ -109,16 +111,29 @@ function updtUser(name_user, email, id_user, updatedat, status_user, res) {
 }
 
 // função alterar senha
-function alteraSenha(id_user, updatedat, password_user, res) {
+function alteraSenha(id_user, updatedat, password_user, email, res) {
     // executa a consula SQL e atualiza o campo 'password_user' com um novo valor
-    cliente.query("UPDATE users SET password_user = '" + password_user + "', updatedat = '" + updatedat + "' WHERE id_user = " + id_user + ";", (err, result) => {
-        // retorna erro ou mensagem de sucesso
-        if (err) {
-            console.log("erro SQL", err);
-        } else {
-            res.send({ msg: "Senha alterada" })
-        };
-    });
+    console.log(id_user, updatedat, password_user, email)
+    if (!email) {
+        cliente.query(`UPDATE users SET password_user = '${password_user}', updatedat = '${updatedat}' WHERE id_user = '${id_user}';`, (err, result) => {
+            // retorna erro ou mensagem de sucesso
+            if (err) {
+                console.log("erro SQL", err);
+            } else {
+                res.send({ msg: "Senha alterada" })
+            };
+        });
+        
+    }else {
+        cliente.query(`UPDATE users SET password_user = '${password_user}', updatedat = '${updatedat}' WHERE email = '${email}';`, (err, result) => {
+            // retorna erro ou mensagem de sucesso
+            if (err) {
+                console.log("erro SQL", err);
+            } else {
+                res.send({ msg: "Senha alterada" })
+            };
+        });
+    }
 }
 
 // função preencher campos
@@ -158,6 +173,59 @@ app.post("/", (req, res) => {
     logUser(email, password_user, res)
 });
 
+app.post("/esquecer", (req, res)=> {
+    const {email} = req.body;
+    //1. fazer um find no banco utilizando email como referencia
+    cliente.query("SELECT * FROM users WHERE email = '"+email+"' ;", async(err, result) => {
+        if(err) {
+            console.log('erro query:', err);
+        }
+        if (result.rows.length === 1) {
+            const token = jwt.sign({email}, 'SECRET', {expiresIn: '12h'})
+
+            var transporter = nodemailer.createTransport({
+                host: 'smtp.office365.com',
+                port: 587,
+                secure: false,
+                auth: {
+                  user: 'visionafatec3ads@outlook.com',
+                  pass: 'visiona123'
+                }
+            });
+
+            let info = await transporter.sendMail({
+                from: 'visionafatec3ads@outlook.com', // Substitua pelo seu email do Gmail
+                to: email, // Substitua pelo email do destinatário
+                subject: 'Recuperação de Senha',
+                text: `Olá ${email} \n \n Para trocar a senha acesse localhost:3000/alterarsenha/${token}`,
+                //html: '<p>Conteúdo do email em formato HTML</p>',
+              });
+          
+              console.log('Email enviado:', info.messageId);
+              res.send({msg: "Email enviado"})
+        } else {
+            console.log('usuario nao cadastrado')
+            res.send({msg: "Usuário não cadastrado/Informações estão incorretas"})
+        }
+    })
+    //se nao tiver retorna como erro
+    //se tiver usuario cria token com jwt
+    //configurar o nodemailer (precisa de um email padrao pra enviar os emails)
+    //enviar o email que conste uma url com esqueci minha senha, usuario, token e o token
+    //
+    
+})
+
+app.post("/validartoken", (req, res)=>{
+    const {token} = req.body;
+    try {
+        const payload = jwt.verify(token, 'SECRET');
+        res.json(payload);
+      } catch (error) {
+        console.error('Erro ao validar o token:', error);
+        res.json({error: true, message: 'deu ruim irmao'})
+      }
+})
 // rota cadastrar usuário
 app.post("/cadastro", (req, res) => {
     // extrai os dados enviados pelo cliente no corpo da requisição e os armazena nas varíaveis correspondentes
@@ -226,13 +294,14 @@ app.post("/editar-perfil", (req, res) => {
 app.post("/alterar-senha", (req, res) => {
     // extrai os dados enviados pelo cliente no corpo da requisição e os armazena nas varíaveis correspondentes
     const { id_user } = req.body;
+    const { email } = req.body;
     const { updatedat } = req.body;
     const { password_user } = req.body
     // imprime o corpo da requisição no console
     console.log(req.body)
 
     // invoca a função de alterar senha e utiliza os valores da rota como argumentos
-    alteraSenha(id_user, updatedat, password_user, res);
+    alteraSenha(id_user, updatedat, password_user, email, res);
 });
 
 // rota edita user

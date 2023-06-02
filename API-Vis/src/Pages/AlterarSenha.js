@@ -2,100 +2,71 @@ import CirculosAlterar from '../Components/CirculosAlterar';
 import LogoAlterar from '../Components/LogoAlterar';
 import Style from '../Styles/Alterar.module.css';
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import {useParams} from 'react-router-dom';
 
 
 export function AlterarSenha() {
-    var id_user = localStorage.getItem('user')
+    const {token} = useParams();
     const [values, setValues] = useState();
     const navigate = useNavigate();
     console.log(values)
 
+    let email_teste = ''
+    useEffect(() => {
+        axios.post('http://localhost:3001/validartoken', {token})
+        .then(resp=> {
+            if (resp.data.error) {
+                return navigate('/')
+            }
+            email_teste = resp.data.email 
+            console.log(resp)
+        });
+    },[]);
+
     const handleChangeValues = (value) => {
-        setValues(prevValue => ({
-            ...prevValue,
-            [value.target.name]: value.target.value,
-        }))
+        // setValues(prevValue => ({
+        //     ...prevValue,
+        //     [value.target.name]: value.target.value,
+        // }))
     };
 
-    const checkVazio = () => {
-        let isVazio = false
-        if (document.getElementById('newpassword').value === '') {
-            isVazio = true
-            return isVazio
+    const checkVazio = () => !document.getElementById('newpassword').value.length;
+        
+    const fireMessage = (type, title, text) => {
+        Swal.fire({
+            icon: type,
+            title: title,
+            text: text,
+            confirmButtonColor: '#E76100',
+            showConfirmButton: false,
+            iconColor: '#E76100',
+            timer: 2000,
+            timerProgressBar: true,
+            showCloseButton: true,
+        })
+    };
+    
+    const handleClickButton = () => {    
+        if(checkVazio()){
+            return fireMessage('error', 'Atenção', 'Todos os campos devem ser preenchidos');
         }
-    }
-
-    const clearCampos = () => {
-        document.getElementById('newpassword').value = ''
-    }
-
-    const handleClickButton = () => {
-        const senhaUser = localStorage.getItem('senha');
-        const updatedat = new Date().toLocaleString();
-        if (!checkVazio()) {      
-                if (document.getElementById('newpassword').value !== senhaUser) {
-                    axios.post("http://localhost:3001/alterar-senha", {
-                        id_user: id_user,
-                        password_user: document.getElementById('newpassword').value,
-                        updatedat: updatedat
-                    }).then((response) => {
-                        if (response.data.msg === 'Senha alterada') {
-                            localStorage.setItem('senha', document.getElementById('newpassword').value)
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Sucesso',
-                                text: 'Senha alterada',
-                                confirmButtonColor: '#E76100',
-                                showConfirmButton: false,
-                                iconColor: '#E76100',
-                                timer: 2000,
-                                timerProgressBar: true,
-                                showCloseButton: true,
-                            })
-                            clearCampos()
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Atenção',
-                                text: 'Não foi possível alterar a senha',
-                                confirmButtonColor: '#E76100',
-                                showConfirmButton: false,
-                                iconColor: '#E76100',
-                                timer: 2000,
-                                timerProgressBar: true,
-                                showCloseButton: true,
-                            })
-                        }
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Atenção',
-                        text: 'A nova senha não pode ser igual a antiga',
-                        confirmButtonColor: '#E76100',
-                        showConfirmButton: false,
-                        iconColor: '#E76100',
-                        timer: 2000,
-                        timerProgressBar: true,
-                        showCloseButton: true,
-                    })
-                }
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Atenção',
-                text: 'Todos os campos devem ser preenchidos',
-                confirmButtonColor: '#E76100',
-                showConfirmButton: false,
-                iconColor: '#E76100',
-                timer: 2000,
-                timerProgressBar: true,
-                showCloseButton: true,
-            })
-        }
+        
+        console.log(email_teste)
+        axios.post("http://localhost:3001/alterar-senha", {
+            email: email_teste,
+            password_user: document.getElementById('newpassword').value,
+            updatedat: new Date().toLocaleString()
+        })
+        .then((response) => {
+            if (response.data.msg === 'Senha alterada') {
+                return navigate('/');
+            } else {
+                fireMessage('error', 'Atenção', 'Não foi possível alterar a senha');
+            }
+        })
     }
 
     const btnClickBack = () => {

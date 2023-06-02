@@ -23,7 +23,7 @@ function App() {
         <Route path='/adicionar' element={<Adicionar />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/alterar' element={<Alterar />} />
-        <Route path='/alterarsenha' element={<AlterarSenha />} />
+        <Route path='/alterarsenha/:token' element={<AlterarSenha />} />
       </Routes>
     </BrowserRouter>
   )
