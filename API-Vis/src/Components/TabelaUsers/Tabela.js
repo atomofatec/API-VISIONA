@@ -1,6 +1,5 @@
 import "../../Styles/Tabela.css"
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Paginacao from "./Paginacao";
@@ -30,37 +29,52 @@ function Tabela({ users, paginaAtual, onPageChange }) {
     }
 
     const handleDelete = async (tabelaId) => {
-        Swal.fire({
-            title: "Atenção",
-            text: "Quer mesmo excluir o usuário?",
-            icon: "question",
-            iconColor: '#E76100',
-            showCancelButton: true,
-            confirmButtonText: "Sim",
-            confirmButtonColor: '#E76100',
-            cancelButtonText: "Não",
-            cancelButtonColor: 'rgba(115, 120, 127, 76%)',
-            reverseButtons: true,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`http://localhost:3001/usuarios/${tabelaId}`);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sucesso',
-                    text: 'Usuário excluido com sucesso',
-                    confirmButtonColor: '#E76100',
-                    showConfirmButton: false,
-                    iconColor: '#E76100',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    showCloseButton: true,
-                }).then(() => {
-                    window.location.reload()
-                })
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.close();
-            }
-        });
+        var idLogado = localStorage.getItem('user')
+        if(tabelaId === idLogado) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Atenção',
+                text: 'Não é possível excluir o usuário',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true,
+            })
+        } else {
+            Swal.fire({
+                title: "Atenção",
+                text: "Quer mesmo excluir o usuário?",
+                icon: "question",
+                iconColor: '#E76100',
+                showCancelButton: true,
+                confirmButtonText: "Sim",
+                confirmButtonColor: '#E76100',
+                cancelButtonText: "Não",
+                cancelButtonColor: 'rgba(115, 120, 127, 76%)',
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(`http://localhost:3001/usuarios/${tabelaId}`);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Usuário excluido com sucesso',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                    }).then(() => {
+                        window.location.reload()
+                    })
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.close();
+                }
+            });
+        }
     }
 
     return (

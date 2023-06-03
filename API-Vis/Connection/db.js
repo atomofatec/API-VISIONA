@@ -11,7 +11,7 @@ const cliente = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'fatec',
-    database: 'visiona'
+    database: 'api_visiona'
 })
 
 // função cadastrar usuário

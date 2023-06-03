@@ -5,26 +5,26 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 export function AlterarSenha() {
-    const {token} = useParams();
+    const { token } = useParams();
     const [values, setValues] = useState();
     const navigate = useNavigate();
     console.log(values)
 
     let email_teste = ''
     useEffect(() => {
-        axios.post('http://localhost:3001/validartoken', {token})
-        .then(resp=> {
-            if (resp.data.error) {
-                return navigate('/')
-            }
-            email_teste = resp.data.email 
-            console.log(resp)
-        });
-    },[]);
+        axios.post('http://localhost:3001/validartoken', { token })
+            .then(resp => {
+                if (resp.data.error) {
+                    return navigate('/')
+                }
+                email_teste = resp.data.email
+                console.log(resp)
+            });
+    }, []);
 
     const handleChangeValues = (value) => {
         // setValues(prevValue => ({
@@ -34,7 +34,7 @@ export function AlterarSenha() {
     };
 
     const checkVazio = () => !document.getElementById('newpassword').value.length;
-        
+
     const fireMessage = (type, title, text) => {
         Swal.fire({
             icon: type,
@@ -48,25 +48,29 @@ export function AlterarSenha() {
             showCloseButton: true,
         })
     };
-    
-    const handleClickButton = () => {    
-        if(checkVazio()){
+
+    const handleClickButton = () => {
+        if (checkVazio()) {
             return fireMessage('error', 'Atenção', 'Todos os campos devem ser preenchidos');
         }
-        
+
         console.log(email_teste)
-        axios.post("http://localhost:3001/alterar-senha", {
-            email: email_teste,
-            password_user: document.getElementById('newpassword').value,
-            updatedat: new Date().toLocaleString()
-        })
-        .then((response) => {
-            if (response.data.msg === 'Senha alterada') {
-                return navigate('/');
-            } else {
-                fireMessage('error', 'Atenção', 'Não foi possível alterar a senha');
-            }
-        })
+        if (document.getElementById('newpassword').value === document.getElementById('confirmpassword').value) {
+            axios.post("http://localhost:3001/alterar-senha", {
+                email: email_teste,
+                password_user: document.getElementById('newpassword').value,
+                updatedat: new Date().toLocaleString()
+            })
+                .then((response) => {
+                    if (response.data.msg === 'Senha alterada') {
+                        return navigate('/');
+                    } else {
+                        fireMessage('error', 'Atenção', 'Não foi possível alterar a senha');
+                    }
+                })
+        } else {
+            return fireMessage('error', 'Atenção', 'As senhas devem ser iguais')
+        }
     }
 
     const btnClickBack = () => {
@@ -94,10 +98,18 @@ export function AlterarSenha() {
 
                     <div className={Style.alterar_login_form}>
                         <div className={Style.alterar_alterar_htm}>
-                            <p>Redefina a sua senha</p>
+                            <p className={Style.alterar_centralizar}>Redefina a sua senha</p>
                             <div className={Style.alterar_group}>
                                 <input placeholder="Nova senha"
                                     id="newpassword"
+                                    type="password"
+                                    name='password'
+                                    className={Style.alterar_input}
+                                    onChange={handleChangeValues} />
+                            </div>
+                            <div className={Style.alterar_group}>
+                                <input placeholder="Confirmar senha"
+                                    id="confirmpassword"
                                     type="password"
                                     name='password'
                                     className={Style.alterar_input}

@@ -35,7 +35,7 @@ export function Esquecer() {
                 email: values.email
             }).then(() => {
                 clearCampos();
-                navigate('/login')
+                navigate('/')
 
             });
         } else {

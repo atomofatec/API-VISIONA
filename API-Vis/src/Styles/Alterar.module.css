@@ -186,3 +186,7 @@ body {
   left: 18%;
   cursor: pointer;
 }
+
+.alterar_centralizar {
+  text-align: center;
+}
