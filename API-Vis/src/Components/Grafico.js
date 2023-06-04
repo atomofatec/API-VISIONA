@@ -26,10 +26,7 @@ export function Grafico() {
       y: dados.ativos,
       sliced: true,
       selected: true,
-      color: '#ee8600',
-      dataLabels: {
-        enabled: false // Remover as etiquetas dos dados
-      }
+      color: '#ee8600'
     });
   }
 
@@ -37,10 +34,7 @@ export function Grafico() {
     seriesData.push({
       name: 'Inativos',
       color: '#353a47',
-      y: dados.inativos,
-      dataLabels: {
-        enabled: false // Remover as etiquetas dos dados
-      }
+      y: dados.inativos
     });
   }
 
@@ -55,7 +49,16 @@ export function Grafico() {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.y}',
+          style: {
+            fontSize: '18px',
+            
+          }
+        },
         size: '80%'
+      
       }
     },
     tooltip: {
@@ -73,7 +76,7 @@ export function Grafico() {
   return (
     <div className={Style.container}>
       <div className={Style.testeText}>
-        Usuários ativos / inativos
+      Usuários ativos / inativos
       </div>
       <div className={Style.legendContainer}>
         <div className={Style.legendItem}>
