@@ -193,3 +193,7 @@ body {
   color: #FE2E2E;
   font-size: 12px;
 }
+
+.alterar_centralizar {
+  text-align: center;
+}

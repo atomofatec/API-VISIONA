@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom';
 
-
 export function AlterarSenha() {
     const { token } = useParams();
     const [values, setValues] = useState();
