@@ -9,6 +9,7 @@ import { Adicionar } from './Pages/Adicionar';
 import { Dashboard } from './Pages/Dashboard';
 import { Alterar } from './Pages/Alterar';
 import { AlterarSenha } from './Pages/AlterarSenha';
+import CirculoTabela from './Components/CirculoTabela';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/alterar' element={<Alterar />} />
         <Route path='/alterarsenha' element={<AlterarSenha />} />
+        <Route path='/curva' element={<CirculoTabela />} />
       </Routes>
     </BrowserRouter>
   )
