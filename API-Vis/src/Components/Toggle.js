@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BsSunFill, BsMoonStarsFill } from 'react-icons/bs';
 import '../Styles/Toggle.css';
 
 const Toggle = ({ status, onToggle }) => {

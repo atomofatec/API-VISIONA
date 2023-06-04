@@ -8,6 +8,7 @@ import { TabelaUsers } from './Pages/TabelaUsers';
 import { Adicionar } from './Pages/Adicionar';
 import { Dashboard } from './Pages/Dashboard';
 import { Alterar } from './Pages/Alterar';
+import { AlterarSenha } from './Pages/AlterarSenha';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/adicionar' element={<Adicionar />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/alterar' element={<Alterar />} />
+        <Route path='/alterarsenha/:token' element={<AlterarSenha />} />
       </Routes>
     </BrowserRouter>
   )
