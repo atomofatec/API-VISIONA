@@ -9,6 +9,7 @@ import { Adicionar } from './Pages/Adicionar';
 import { Dashboard } from './Pages/Dashboard';
 import { Alterar } from './Pages/Alterar';
 import { AlterarSenha } from './Pages/AlterarSenha';
+import CirculoTabela from './Components/CirculoTabela';
 
 function App() {
   return (

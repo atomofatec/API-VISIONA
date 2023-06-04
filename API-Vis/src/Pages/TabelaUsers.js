@@ -5,6 +5,7 @@ import Rodape from "../Components/Rodape";
 import Style from "../Styles/TabelaUsers.module.css"
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
+import CirculoTabela from "../Components/CirculoTabela";
 
 export function TabelaUsers() {
   const [users, setUsers] = useState([]);
@@ -29,6 +30,7 @@ export function TabelaUsers() {
 
   return (
     <html>
+      <CirculoTabela />
       <div className={Style.estrutura_corpo}>
         <div className={Style.estrutura_cabecalho}>
           <Logo />

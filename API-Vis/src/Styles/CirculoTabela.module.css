@@ -1,0 +1,80 @@
+/* .curva3 {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    right: 0px;
+    border-radius: 0 0 0 70px;
+    background-color: #f5ab00;
+  }
+.curva2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 0px;
+    border-radius: 0 0 0 100px;
+    background-color: #ee8600;
+  }
+.curva1 {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    right: 0px;
+    border-radius: 0 0 0 130px;
+    background-color: #E76100;
+  }
+
+  .curva4 {
+    width: 130px;
+    height: 70px;
+    top: -10px;
+    position: absolute;
+    right: 100px;
+    border-radius: 0px 0px 0px 70px;
+    background-color: #E76100;
+  }
+  .curva5 {
+    width: 100px;
+    height: 70px;
+    top: -30px;
+    position: absolute;
+    right: 80px;
+    border-radius: 0px 0px 0px 70px;
+    background-color: #ee8600;
+  }
+  .curva6 {
+    width: 70px;
+    height: 70px;
+    top: -45px;
+    position: absolute;
+    right: 50px;
+    border-radius: 0px 0px 0px 70px;
+    background-color: #f5ab00;
+  }
+*/
+
+.curva3 {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0px;
+  border-radius: 0 0 0 80px;
+  background-color: #f5ab00;
+}
+
+.curva2 {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  right: 0px;
+  border-radius: 0 0 0 130px;
+  background-color: #ee8600;
+}
+
+.curva1 {
+  width: 175px;
+  height: 175px;
+  position: absolute;
+  right: 0px;
+  border-radius: 0 0 0 175px;
+  background-color: #E76100;
+}

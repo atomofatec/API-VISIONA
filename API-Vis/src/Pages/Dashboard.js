@@ -1,3 +1,4 @@
+import CirculoTabela from "../Components/CirculoTabela";
 import { Grafico } from "../Components/Grafico";
 import { GraficoAdm } from "../Components/GraficoAdm";
 import Logo from "../Components/Logo"
@@ -9,6 +10,7 @@ export function Dashboard() {
 
     return (
         <>
+            <CirculoTabela />
             <div className={Style.dashboard_corpo}>
                 <div className={Style.dashboard_cabecalho}>
                     <Logo />
