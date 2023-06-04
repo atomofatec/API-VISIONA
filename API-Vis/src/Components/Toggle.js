@@ -20,7 +20,7 @@ const Toggle = ({ status, onToggle }) => {
     <div className="toggleContainer">
       <label className="switch">
         <input type="checkbox" checked={toggle} onChange={handleToggle} />
-        <span className="slider round"></span>
+        <span className="slider"></span>
       </label>
     </div>
   );

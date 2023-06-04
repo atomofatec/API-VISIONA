@@ -26,7 +26,7 @@ export function Perfil() {
   };
 
   const validateNome = () => {
-    const nomeRegex = /^[A-Za-z]{3,}$/;
+    const nomeRegex = /^(?=[^\s]{3,})[A-Za-zãõáóíéêôâ\s]{3,}$/;
     if (values.nome.trim() === '') {
     } else if (!nomeRegex.test(values.nome)) {
       return 'Preencha um nome válido';

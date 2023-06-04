@@ -28,8 +28,32 @@ export function Adicionar() {
     }));
   };
 
+  const checkVazio = () => {
+    let isVazio = false
+    if (document.getElementById('Nome').value === '') {
+      isVazio = true
+      return isVazio
+    }
+    if (document.getElementById('CPF').value === '') {
+      isVazio = true
+      return isVazio
+    }
+    if (document.getElementById('Email').value === '') {
+      isVazio = true
+      return isVazio
+    }
+    if (document.getElementById('Senha').value === '') {
+      isVazio = true
+      return isVazio
+    }
+    if (document.getElementById('CSenha').value === '') {
+      isVazio = true
+      return isVazio
+    }
+  }
+
   const validateNome = () => {
-    const nomeRegex = /^[A-Za-z]{3,}$/;
+    const nomeRegex = /^(?=[^\s]{3,})[A-Za-zãõáóíéêôâ\s]{3,}$/;
     if (values.nome.trim() === '') {
     } else if (!nomeRegex.test(values.nome)) {
       return 'Preencha um nome válido';
@@ -69,7 +93,7 @@ export function Adicionar() {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{11,}$/;
     if (values.password.trim() === '') {
     } else if (!passwordRegex.test(values.password)) {
-      return 'deve conter no mínimo 11 caracteres. Deve conter letras maiúsculas e minúsculas, números e caractere especial.';
+      return 'Deve conter no mínimo 11 caracteres. Deve conter letras maiúsculas e minúsculas, números e caractere especial.';
     }
     return '';
   };
@@ -99,51 +123,105 @@ export function Adicionar() {
     const passwordError = validatePassword();
     const confirmPasswordError = validateConfirmPassword();
 
-    if (nomeError || emailError || cpfError || passwordError || confirmPasswordError) {
+    if (!checkVazio()) {
+      if (nomeError || emailError || cpfError || passwordError || confirmPasswordError) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Atenção',
+          html: `${nomeError ? `${nomeError}<br>` : ''}
+                 ${emailError ? `${emailError}<br>` : ''}
+                 ${cpfError ? `${cpfError}<br>` : ''}
+                 ${passwordError ? `${passwordError}<br>` : ''}
+                 ${confirmPasswordError ? confirmPasswordError : ''}`,
+          confirmButtonColor: '#E76100',
+          showConfirmButton: false,
+          iconColor: '#E76100',
+          timer: 2000,
+          timerProgressBar: true,
+          showCloseButton: true
+        });
+        return;
+      } else {
+        axios.get("http://localhost:3001/usuarios/cpfs")
+          .then((response) => {
+            const cpfsCadastrados = response.data;
+            const { cpf } = values;
+
+            if (cpfsCadastrados.includes(cpf)) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Atenção',
+                text: 'CPF já cadastrado',
+                confirmButtonColor: '#E76100',
+                showConfirmButton: false,
+                iconColor: '#E76100',
+                timer: 2000,
+                timerProgressBar: true,
+                showCloseButton: true
+              })
+            } else {
+              axios.get("http://localhost:3001/usuarios/emails")
+                .then((response) => {
+                  const emailsCadastrados = response.data;
+                  const { email } = values;
+
+                  if (emailsCadastrados.includes(email)) {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Atenção',
+                      text: 'E-mail já cadastrado',
+                      confirmButtonColor: '#E76100',
+                      showConfirmButton: false,
+                      iconColor: '#E76100',
+                      timer: 2000,
+                      timerProgressBar: true,
+                      showCloseButton: true
+                    })
+                  } else {
+                    const createdat = new Date().toLocaleString();
+                    const updatedat = new Date().toLocaleString();
+                    axios.post("http://localhost:3001/adicionar", {
+                      name_user: values.nome,
+                      email: values.email,
+                      password_user: values.password,
+                      perfil: perfil,
+                      cpf_user: values.cpf,
+                      createdat: createdat,
+                      updatedat: updatedat
+                    }).then((response) => {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Usuário adicionado',
+                        confirmButtonColor: '#E76100',
+                        showConfirmButton: false,
+                        iconColor: '#E76100',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showCloseButton: true,
+                      });
+                      clearCampos();
+                      navigate('/tabela-users');
+                    });
+                  }
+                })
+            }
+          })
+      };
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Atenção',
-        html: `${nomeError ? `${nomeError}<br>` : ''}
-               ${emailError ? `${emailError}<br>` : ''}
-               ${cpfError ? `${cpfError}<br>` : ''}
-               ${passwordError ? `${passwordError}<br>` : ''}
-               ${confirmPasswordError ? confirmPasswordError : ''}`,
-        confirmButtonColor: '#E76100',
-        showConfirmButton: false,
-        iconColor: '#E76100',
-        timer: 2000,
-        timerProgressBar: true,
-        showCloseButton: true
-      });
-      return;
-    }
-
-    const createdat = new Date().toLocaleString();
-    const updatedat = new Date().toLocaleString();
-    axios.post("http://localhost:3001/adicionar", {
-      name_user: values.nome,
-      email: values.email,
-      password_user: values.password,
-      perfil: perfil,
-      cpf_user: values.cpf,
-      createdat: createdat,
-      updatedat: updatedat
-    }).then((response) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Sucesso',
-        text: 'Cadastro realizado',
+        text: 'Todos os campos devem ser preenchidos',
         confirmButtonColor: '#E76100',
         showConfirmButton: false,
         iconColor: '#E76100',
         timer: 2000,
         timerProgressBar: true,
         showCloseButton: true,
-      });
-      clearCampos();
-      navigate('/tabela-users');
-    });
-  };
+      })
+    }
+  }
 
 
   return (
@@ -228,8 +306,8 @@ export function Adicionar() {
                   {validateConfirmPassword() && <p className={Style.error_message}>{validateConfirmPassword()}</p>}
                 </div>
                 <div className={Style.adicionar_toggle_container}>
-                      <TogglePerfil perfil={perfil} onToggle={setPerfil} />
-                      <p className={`${Style.adicionar_toggle_text} ${perfil === 'Admin' ? Style.admin : Style.comum}`}>{perfil}</p>
+                  <TogglePerfil perfil={perfil} onToggle={setPerfil} />
+                  <p className={`${Style.adicionar_toggle_text} ${perfil === 'Admin' ? Style.admin : Style.comum}`}>{perfil}</p>
                 </div>
                 <div className={Style.adicionar_group}>
                   <button type="button" className={Style.adicionar_button} onClick={() => handleClickButton()}>
