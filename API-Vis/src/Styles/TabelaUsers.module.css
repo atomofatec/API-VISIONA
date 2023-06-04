@@ -18,14 +18,17 @@
 }
 
 .estrutura_rodape {
-  grid-area: foot;
-  background-color: rgba(115, 120, 127, 76%);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(142, 146, 153);
   text-align: center;
   padding: 5px;
   color: white;
   font-weight: bold;
   font-family: Lato;
   font-size: 14px;
+  z-index: 9999;
 }
 
 .tabela_user_profile {
