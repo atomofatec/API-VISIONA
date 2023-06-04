@@ -26,21 +26,15 @@ export function GraficoAdm() {
       y: dados.comuns,
       sliced: true,
       selected: true,
-      color: '#f5ab00',
-      dataLabels: {
-        enabled: false // Remover as etiquetas dos dados
-      }
+      color: '#f5ab00'
     });
   }
-
+  
   if (dados.admins > 0) {
     seriesData.push({
       name: 'Administradores',
       color: '#E76100',
-      y: dados.admins,
-      dataLabels: {
-        enabled: false // Remover as etiquetas dos dados
-      }
+      y: dados.admins
     });
   }
 
@@ -58,6 +52,15 @@ export function GraficoAdm() {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.y}',
+          style: {
+            fontSize: '18px',
+            color: '#000000',
+            whiteSpace: 'nowrap'
+          }
+        },
         size: '80%'
       }
     },
@@ -81,7 +84,7 @@ export function GraficoAdm() {
       <div className={Style.legendContainer}>
         <div className={Style.legendItem}>
           <div className={Style.legendSquare3}></div>
-          <div className="legendText">Comuns</div>
+          <div className="legendText">Usuários comuns</div>
         </div>
         <div className={Style.legendItem2}>
           <div className={Style.legendSquare4}></div>
