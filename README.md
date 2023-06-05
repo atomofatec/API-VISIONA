@@ -68,6 +68,13 @@
 > [Protótipo do Projeto] [https://www.figma.com/file/CVTjd7Q6JZlAeHtRpOkRzp/PrototipoTrackCash?node-id=0%3A1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=SuNcOw9XLdRU1DTd-1](https://www.figma.com/file/gHpxxAvYjXMp0ota8KjEIN/API---Visiona?node-id=2003%3A502433&t=FlI7gF1VD1xOds6J-1))
 
 <br>
+## :bulb: Manual do usuário
+
+**:link: Clique no link abaixo para visualizar o manual do usuário.**  
+> [Manual do Usuário] [https://github.com/atomofatec/API-VISIONA/blob/604d8f45a603dba48c6d36c71287b944be24d47f/Manual%20do%20usuario%20-%20Visiona.pdf]
+  
+ 
+<br>
 
 <span id="cronograma-das-sprints">
 
