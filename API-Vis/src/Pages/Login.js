@@ -118,7 +118,7 @@ export function Login() {
             Swal.fire({
                 icon: 'error',
                 title: 'Atenção',
-                text: 'Todos os campos devem ser preenchidos',
+                text: 'Todos os campos devem serapreenchidos',
                 confirmButtonColor: '#E76100',
                 showConfirmButton: false,
                 iconColor: '#E76100',

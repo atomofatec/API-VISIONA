@@ -31,17 +31,45 @@
 }
 
 .dashboard_rodape {
-  grid-area: foot;
-  background-color: rgba(115, 120, 127, 76%);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(142, 146, 153);
   text-align: center;
   padding: 5px;
   color: white;
   font-weight: bold;
   font-family: Lato;
   font-size: 14px;
+  z-index: 9999;
 }
+
 
 .dashboard_user_profile {
   display: flex;
   align-items: center;
+}
+
+.testeUsuario {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.totalUsuarios {
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.totalUsuariosContainer {
+  border-bottom: solid #ee8600;
+  padding: 10px;
+  margin-bottom: 100px;
+  font-size: 15px;
+  font-weight: bold;
 }

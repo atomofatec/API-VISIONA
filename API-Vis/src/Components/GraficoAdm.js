@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Style from '../Styles/Grafico.module.css';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import axios from 'axios';
@@ -17,12 +18,35 @@ export function GraficoAdm() {
       });
   }, []);
 
+  const seriesData = [];
+
+  if (dados.comuns > 0) {
+    seriesData.push({
+      name: 'Comuns',
+      y: dados.comuns,
+      sliced: true,
+      selected: true,
+      color: '#f5ab00'
+    });
+  }
+  
+  if (dados.admins > 0) {
+    seriesData.push({
+      name: 'Administradores',
+      color: '#E76100',
+      y: dados.admins
+    });
+  }
+
   const options = {
     chart: {
-      type: 'pie'
+      type: 'pie',
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
     },
     title: {
-      text: 'Usuários comuns/Admnistradores'
+      text: ''
     },
     plotOptions: {
       pie: {
@@ -30,30 +54,48 @@ export function GraficoAdm() {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.y}'
-        }
+          format: '<b>{point.name}</b>: {point.y}',
+          style: {
+            fontSize: '12px',
+            color: '#000000',
+            whiteSpace: 'nowrap'
+          }
+        },
+        size: '70%'
+      }
+    },
+    tooltip: {
+      formatter: function() {
+        return this.point.name + ': ' + this.point.y;
       }
     },
     series: [
       {
-        data: [{
-          name: 'usuários comuns',
-          y: dados.comuns,
-          color: '#6B8ABC'
-        }, {
-          name: 'administradores',
-          sliced: true,
-          selected: true,
-          color: '#544FC5',
-          y: dados.admins
-        }]
+        data: seriesData
       }
     ]
   };
 
   return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={options} />
+    <div className={Style.container}>
+      <div className={Style.testeText}>
+        Usuários comuns / Administradores
+      </div>
+      <div className={Style.legendContainer}>
+        <div className={Style.legendItem}>
+          <div className={Style.legendSquare3}></div>
+          <div className={Style.legendText}>Usuários comuns</div>
+        </div>
+        <div className={Style.legendItem2}>
+          <div className={Style.legendSquare4}></div>
+          <div className={Style.legendText}>Administradores</div>
+        </div>
+      </div>
+      <div className="graficoContainer">
+        <div className={Style.chartWrapper}>
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+      </div>
     </div>
-  )
+  );
 }

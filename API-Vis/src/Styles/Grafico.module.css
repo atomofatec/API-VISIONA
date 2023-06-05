@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legendText {
+  font-size: 15px;
+}
+
+.testeText {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size:15px;
+  color: #000000;
+}
+
+.legendContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.legendSquare {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  margin-right: 5px;
+}
+
+.legendSquare {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-color: #353a47;
+  margin-right: 5px;
+}
+
+.legendSquare2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  margin-right: 5px;
+  background-color: #ee8600;
+}
+
+.legendSquare3 {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  margin-right: 5px;
+  background-color:  #f5ab00;
+}
+
+.legendSquare4 {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  margin-right: 5px;
+  background-color:  #E76100;
+}
+
+.legendItem2 {
+  display: flex;
+  align-items: center;
+}
+
+.chartWrapper {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.totalUsuarios {
+  margin-top: 0px;
+  font-size: 15px;
+  color: #000000;
+
+}
