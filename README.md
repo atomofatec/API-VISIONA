@@ -71,7 +71,7 @@
 <br>
 <span id="manual">
  
-## :dart: Manual do usuário
+## :clipboard: Manual do usuário
 
 **:link: Clique no link abaixo para visualizar o manual do usuário.**  
 > [Manual do Usuário] [https://github.com/atomofatec/API-VISIONA/blob/604d8f45a603dba48c6d36c71287b944be24d47f/Manual%20do%20usuario%20-%20Visiona.pdf]
