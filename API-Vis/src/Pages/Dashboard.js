@@ -6,6 +6,7 @@ import PerfilDashboard from "../Components/PerfilDashboard";
 import Rodape from "../Components/Rodape"
 import Style from "../Styles/Dashboard.module.css"
 import axios from 'axios';
+import CirculoTabela from '../Components/CirculoTabela';
 
 export function Dashboard() {
   const [dados, setDados] = useState({ ativos: 0, inativos: 0 });
@@ -25,6 +26,7 @@ export function Dashboard() {
 
   return (
     <>
+    <CirculoTabela />
       <div className={Style.dashboard_corpo}>
         <div className={Style.dashboard_cabecalho}>
           <Logo />
