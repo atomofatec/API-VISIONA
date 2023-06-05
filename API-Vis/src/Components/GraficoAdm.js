@@ -56,12 +56,12 @@ export function GraficoAdm() {
           enabled: true,
           format: '<b>{point.name}</b>: {point.y}',
           style: {
-            fontSize: '18px',
+            fontSize: '12px',
             color: '#000000',
             whiteSpace: 'nowrap'
           }
         },
-        size: '80%'
+        size: '70%'
       }
     },
     tooltip: {
@@ -84,11 +84,11 @@ export function GraficoAdm() {
       <div className={Style.legendContainer}>
         <div className={Style.legendItem}>
           <div className={Style.legendSquare3}></div>
-          <div className="legendText">Usuários comuns</div>
+          <div className={Style.legendText}>Usuários comuns</div>
         </div>
         <div className={Style.legendItem2}>
           <div className={Style.legendSquare4}></div>
-          <div className="legendText">Administradores</div>
+          <div className={Style.legendText}>Administradores</div>
         </div>
       </div>
       <div className="graficoContainer">

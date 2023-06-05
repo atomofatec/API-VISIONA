@@ -53,11 +53,11 @@ export function Grafico() {
           enabled: true,
           format: '<b>{point.name}</b>: {point.y}',
           style: {
-            fontSize: '18px',
+            fontSize: '12px',
             
           }
         },
-        size: '80%'
+        size: '70%'
       
       }
     },
@@ -81,11 +81,11 @@ export function Grafico() {
       <div className={Style.legendContainer}>
         <div className={Style.legendItem}>
           <div className={Style.legendSquare2}></div>
-          <div className="legendText">Ativos</div>
+          <div className={Style.legendText}>Ativos</div>
         </div>
         <div className={Style.legendItem2}>
           <div className={Style.legendSquare}></div>
-          <div className="legendText">Inativos</div>
+          <div className={Style.legendText}>Inativos</div>
         </div>
       </div>
       <div className="graficoContainer">

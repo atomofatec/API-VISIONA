@@ -4,10 +4,14 @@
   align-items: center;
 }
 
+.legendText {
+  font-size: 15px;
+}
+
 .testeText {
   margin-top: 10px;
   margin-bottom: 20px;
-  font-size:22px;
+  font-size:15px;
   color: #000000;
 }
 
@@ -76,7 +80,7 @@
 
 .totalUsuarios {
   margin-top: 0px;
-  font-size: 19px;
+  font-size: 15px;
   color: #000000;
 
 }
